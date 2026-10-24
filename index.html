@@ -67,6 +67,16 @@
 .tb-page{flex:none;text-align:left}
 @media(max-width:1200px){.tb-store{font-size:20px}.top-actions #userLabel{display:none}}
 @media(max-width:700px){.topbar{gap:6px}.tb-store{font-size:15px;text-align:left}.tb-page{display:none}.toplogo{height:34px;max-width:70px}.top-actions{gap:4px}.top-actions button{padding:8px;font-size:12px;white-space:nowrap}#syncPill{max-width:24px;overflow:hidden;white-space:nowrap;padding:4px 7px}}
+.nav .ico{width:24px;height:24px;flex:none}
+.nav{font-size:14.5px}
+.topbar{height:auto;min-height:72px}
+.tb-page{display:flex;align-items:center;gap:10px}
+.top-title{font-size:clamp(20px,2.2vw,36px);font-weight:800;line-height:1.1;letter-spacing:-.5px;white-space:nowrap}
+.tb-store{font-size:clamp(20px,2.6vw,40px)}
+.toplogo{height:52px;max-width:140px}
+#todayLabel{font-size:14px!important;line-height:1.25!important}
+@media(max-width:1200px){.top-title{font-size:22px}.tb-store{font-size:22px}}
+@media(max-width:700px){.tb-store{font-size:15px}.toplogo{height:34px}}
 </style>
 </head>
 <body>
@@ -85,18 +95,18 @@
 <div class="app hidden" id="appRoot">
 <aside class="sidebar" id="sidebar">
   <div class="brand">Con-Nect <span>POS</span><div class="muted" style="font-size:11px;font-weight:600;letter-spacing:0">by Sio Creations<br>☎ 075 510 3772</div></div>
-  <button class="nav active" data-view="dashboard">▦ <span>Dashboard</span></button>
-  <button class="nav" data-view="pos">▣ <span>Point of Sale</span></button>
-  <button class="nav" data-view="inventory">▤ <span>Inventory & Products</span></button>
-  <button class="nav" data-view="sales">↗ <span>Sales & Receipts</span></button>
-  <button class="nav" data-view="returns">↩ <span>Returns</span></button>
-  <button class="nav" data-view="debts">🧾 <span>Due Payments</span></button>
-  <button class="nav" data-view="customers">♙ <span>Customers</span></button>
-  <button class="nav" data-view="expenses">↘ <span>Expenses</span></button>
-  <button class="nav" data-view="reports">▥ <span>Reports</span></button>
-  <button class="nav" data-view="report30">📅 <span>Last 30 Days Report</span></button>
-  <button class="nav" data-view="reportyear">🗓 <span>Last 1 Year Report</span></button>
-  <button class="nav" data-view="settings">⚙ <span>Settings & Backup</span></button>
+  <button class="nav active" data-view="dashboard"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg><span>Dashboard</span></button>
+  <button class="nav" data-view="pos"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg><span>Point of Sale</span></button>
+  <button class="nav" data-view="inventory"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 8.7 5 8.7-5"/></svg><span>Inventory & Products</span></button>
+  <button class="nav" data-view="sales"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></svg><span>Sales & Receipts</span></button>
+  <button class="nav" data-view="returns"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></svg><span>Returns</span></button>
+  <button class="nav" data-view="debts"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Due Payments</span></button>
+  <button class="nav" data-view="customers"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Customers</span></button>
+  <button class="nav" data-view="expenses"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg><span>Expenses</span></button>
+  <button class="nav" data-view="reports"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg><span>Reports</span></button>
+  <button class="nav" data-view="report30"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg><span>Last 30 Days Report</span></button>
+  <button class="nav" data-view="reportyear"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg><span>Last 1 Year Report</span></button>
+  <button class="nav" data-view="settings"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg><span>Settings & Backup</span></button>
   <div class="sidefoot"><span id="storeLabel">Cloud synced</span><br>v3.0 Cloud • Sri Lankan Rupees (LKR)</div>
 </aside>
 <main class="main">
@@ -298,7 +308,7 @@ function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');
 function go(name){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('active',b.dataset.view===name));$('topTitle').textContent=({dashboard:'Dashboard',pos:'Point of Sale',inventory:'Inventory & Products',sales:'Sales & Receipts',customers:'Customers',expenses:'Expenses',reports:'Reports',report30:'Last 30 Days Report',reportyear:'Last 1 Year Report',settings:'Settings & Backup',debts:'Due Payments',returns:'Returns'})[name]||name;$('sidebar').classList.remove('open');if(name==='pos')renderPOS();if(name==='inventory')renderInventory();if(name==='sales')renderSales();if(name==='debts')renderDebts();if(name==='returns')renderReturns();if(name==='customers')renderCustomers();if(name==='expenses')renderExpenses();if(name==='reports')renderReports();if(name==='report30')renderPeriodReport(30);if(name==='reportyear')renderPeriodReport(365);if(name==='settings')fillSettings()}
 document.querySelectorAll('.nav').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view)));
 $('menuBtn').onclick=()=>$('sidebar').classList.toggle('open');
-$('todayLabel').innerHTML=esc(new Date().toLocaleDateString())+'<br>Have a nice day!';
+$('todayLabel').innerHTML=esc(new Date().toLocaleDateString())+'<br>Have A Nice Day!';
 $('themeBtn').onclick=()=>{let t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.setItem('connectpos_theme',t);$('themeBtn').textContent=t==='dark'?'☀ Light mode':'☾ Dark mode'};
 (function(){let t=localStorage.getItem('connectpos_theme')||'light';document.documentElement.dataset.theme=t;$('themeBtn').textContent=t==='dark'?'☀ Light mode':'☾ Dark mode'})();
 function fmtDate(d){return d?new Date(d).toLocaleDateString():''}
