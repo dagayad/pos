@@ -39,20 +39,43 @@
 .loginform{display:flex;flex-direction:column;gap:12px}
 .loginmsg{color:var(--bad);font-size:13px;margin-top:12px;min-height:18px}
 .logincontact{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);text-align:center;font-size:12px;color:var(--muted);line-height:1.6}.logincontact b{color:var(--text)}.logincontact a{color:var(--primary);text-decoration:none;font-weight:700}
+.loginscreen{overflow:hidden;background:radial-gradient(1100px 650px at 15% 5%,color-mix(in srgb,var(--primary) 16%,var(--bg)),transparent 60%),radial-gradient(900px 600px at 95% 95%,color-mix(in srgb,#22d3ee 12%,var(--bg)),transparent 60%),var(--bg)}
+.loginwrap{position:relative;z-index:2;width:min(400px,100%);display:flex;flex-direction:column;align-items:center;gap:26px}
+.loginwrap .logincard{width:100%;animation:cardIn .8s cubic-bezier(.2,.8,.2,1) .25s both;background:color-mix(in srgb,var(--panel) 92%,transparent);backdrop-filter:blur(8px)}
+.logintag{margin:0;text-align:center;font-size:clamp(28px,7vw,44px);line-height:1.15;font-weight:800;letter-spacing:-1px;color:var(--text);white-space:nowrap;animation:tagIn .9s cubic-bezier(.2,.8,.2,1) both}
+.logintag span{color:var(--primary)}
+.remember{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);cursor:pointer;user-select:none;margin-top:2px}
+.remember input{width:16px;height:16px;padding:0;flex:none;accent-color:var(--primary)}
+.lsbg{position:absolute;inset:0;z-index:1;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.45}
+.b1{width:380px;height:380px;left:-90px;top:-70px;background:var(--primary);animation:drift1 24s ease-in-out infinite}
+.b2{width:340px;height:340px;right:-80px;bottom:-50px;background:#22d3ee;animation:drift2 28s ease-in-out infinite}
+.b3{width:260px;height:260px;left:58%;top:6%;background:#f59e0b;opacity:.28;animation:drift3 30s ease-in-out infinite}
+.fl{position:absolute;bottom:-50px;font-size:24px;opacity:0;animation:floatUp 22s linear infinite;filter:drop-shadow(0 4px 8px rgba(0,0,0,.2))}
+.f1{left:12%;animation-delay:0s}.f2{left:32%;animation-delay:6s;font-size:22px}.f3{left:55%;animation-delay:12s}.f4{left:76%;animation-delay:3s;font-size:26px}.f5{left:90%;animation-delay:16s;font-size:22px}
+@keyframes tagIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes cardIn{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0);opacity:0}12%{opacity:.7}85%{opacity:.55}100%{transform:translateY(-112vh) rotate(18deg);opacity:0}}
+@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(90px,70px)}}
+@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-100px,-60px)}}
+@keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(-70px,90px)}}
+@media(max-width:560px){.logintag{white-space:normal;max-width:92vw}}
+@media(prefers-reduced-motion:reduce){.logintag,.fl,.blob,.loginwrap .logincard{animation:none!important}.fl{display:none}}
 </style>
 </head>
 <body>
-<div class="loginscreen" id="loginScreen"><div class="logincard">
+<div class="loginscreen" id="loginScreen"><div class="lsbg" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><b class="fl f1">💸</b><b class="fl f2">📱</b><b class="fl f3">🧾</b><b class="fl f4">🛒</b><b class="fl f5">📞</b></div><div class="loginwrap"><h2 class="logintag">All in One Earning <span>Portal</span></h2><div class="logincard">
  <h1>Con-Nect <span>POS</span></h1><div class="muted" style="margin-bottom:18px">by Sio Creations · Sign in to your store</div>
  <form id="loginForm" class="loginform hidden">
   <div class="field"><label>Email</label><input id="loginEmail" type="email" autocomplete="username" required></div>
   <div class="field"><label>Password</label><input id="loginPass" type="password" autocomplete="current-password" required></div>
   <button type="submit" id="loginBtn">Sign in</button>
+  <label class="remember"><input type="checkbox" id="rememberLogin"> Save login details</label>
  </form>
  <div id="loginLoading" class="muted">Loading…</div>
  <div class="loginmsg" id="loginMsg"></div>
  <div class="logincontact"><b>Con-Nect POS</b><br>Sio Creations · <a href="https://wa.me/94755103772" target="_blank" rel="noopener">💬 WhatsApp 075 510 3772</a></div>
-</div></div>
+</div></div></div>
 <div class="app hidden" id="appRoot">
 <aside class="sidebar" id="sidebar">
   <div class="brand">Con-Nect <span>POS</span><div class="muted" style="font-size:11px;font-weight:600;letter-spacing:0">by Sio Creations<br>☎ 075 510 3772</div></div>
@@ -60,6 +83,7 @@
   <button class="nav" data-view="pos">▣ <span>Point of Sale</span></button>
   <button class="nav" data-view="inventory">▤ <span>Inventory & Products</span></button>
   <button class="nav" data-view="sales">↗ <span>Sales & Receipts</span></button>
+  <button class="nav" data-view="returns">↩ <span>Returns</span></button>
   <button class="nav" data-view="debts">🧾 <span>Due Payments</span></button>
   <button class="nav" data-view="customers">♙ <span>Customers</span></button>
   <button class="nav" data-view="expenses">↘ <span>Expenses</span></button>
@@ -76,7 +100,7 @@
  <div class="pagehead"><div><h1>Store overview</h1><div class="muted">Your communication shop at a glance.</div></div><button onclick="go('pos')">＋ New sale</button></div>
  <div class="grid stats">
   <div class="stat"><div class="label">TODAY'S SALES</div><div class="value" id="dashToday">Rs 0.00</div><div class="sub" id="dashOrders">0 transactions</div></div>
-  <div class="stat"><div class="label">TOTAL SALES</div><div class="value" id="dashTotal">Rs 0.00</div><div class="sub">All recorded transactions</div></div>
+  <div class="stat"><div class="label">TOTAL SALES</div><div class="value" id="dashTotal">Rs 0.00</div><div class="sub">All sales, after returns</div></div>
   <div class="stat"><div class="label">PRODUCTS IN STOCK</div><div class="value" id="dashStock">0</div><div class="sub" id="dashLow">0 low stock alerts</div></div>
   <div class="stat"><div class="label">EXPENSES THIS MONTH</div><div class="value" id="dashExpense">Rs 0.00</div><div class="sub">Recorded operating costs</div></div>
  </div>
@@ -103,6 +127,16 @@
  <div class="toolbar"><input id="salesSearch" placeholder="Search receipt or customer…"><input id="salesDate" type="date"><button class="secondary" onclick="document.getElementById('salesDate').value='';renderSales()">Reset date</button></div>
  <div class="card"><div class="tablewrap"><table><thead><tr><th>Receipt</th><th>Date/time</th><th>Customer</th><th>Payment</th><th>Items</th><th>Total</th><th>Actions</th></tr></thead><tbody id="salesRows"></tbody></table></div></div>
 </section>
+<section class="view" id="view-returns">
+ <div class="pagehead"><div><h1>Returns</h1><div class="muted">Enter the invoice number of the original sale, choose the items the customer brought back. Returned items go back to stock and the profit of that sale is reduced by the returned items only.</div></div></div>
+ <div class="grid stats" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div class="stat"><div class="label">TOTAL REFUNDED</div><div class="value" id="retTotalValue">Rs 0.00</div><div class="sub">Value of all returned goods</div></div><div class="stat"><div class="label">PROFIT REDUCED</div><div class="value" id="retTotalLoss">Rs 0.00</div><div class="sub">Taken off reports</div></div></div>
+ <div class="card"><h3>New return</h3>
+  <div class="toolbar"><input id="retInvoice" list="retInvoiceList" placeholder="Invoice number (e.g. CP-20261024…)" autocomplete="off"><datalist id="retInvoiceList"></datalist><button onclick="findReturnSale()">Find invoice</button></div>
+  <div id="retSaleBox"></div>
+ </div>
+ <div class="toolbar" style="margin-top:16px"><input id="retSearch" placeholder="Search returns by number, invoice or customer…"></div>
+ <div class="card"><h3>Returns history</h3><div class="tablewrap"><table><thead><tr><th>Date</th><th>Return no.</th><th>Invoice</th><th>Customer</th><th>Items returned</th><th>Refund</th><th>Profit reduced</th><th>Stock</th><th>Actions</th></tr></thead><tbody id="retRows"></tbody></table></div></div>
+</section>
 <section class="view" id="view-debts">
  <div class="pagehead"><div><h1>Due Payments</h1><div class="muted">Any unpaid balance from a sale is added here automatically. Record later payments to reduce the balance.</div></div><button class="secondary" onclick="exportDebts()">Export Naya CSV</button></div>
  <div class="grid stats" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div class="stat"><div class="label">TOTAL OUTSTANDING NAYA</div><div class="value" id="debtTotal">Rs 0.00</div><div class="sub">All unpaid balances</div></div><div class="stat"><div class="label">CUSTOMERS WITH DUES</div><div class="value" id="debtCount">0</div><div class="sub">Open due records</div></div></div>
@@ -123,7 +157,7 @@
 <section class="view" id="view-reports">
  <div class="pagehead"><div><h1>Reports</h1><div class="muted">Sales, product performance and estimated gross profit.</div></div><button class="secondary" onclick="exportSales()">Export sales CSV</button></div>
  <div class="grid stats"><div class="stat"><div class="label">GROSS SALES</div><div class="value" id="reportGross">Rs 0.00</div></div><div class="stat"><div class="label">DISCOUNTS</div><div class="value" id="reportDiscount">Rs 0.00</div></div><div class="stat"><div class="label">EST. GROSS PROFIT</div><div class="value" id="reportProfit">Rs 0.00</div></div><div class="stat"><div class="label">NET AFTER EXPENSES*</div><div class="value" id="reportNet">Rs 0.00</div></div></div>
- <div class="grid columns"><div class="card"><h3>Best-selling products</h3><div id="bestSellers"></div></div><div class="card"><h3>Sales by payment method</h3><div id="paymentBreakdown"></div><div class="notice" style="margin-top:16px;font-size:12px">*Estimates only, based on recorded sales, current product costs and entered expenses. This is not an accounting or tax report.</div></div></div>
+ <div class="grid columns"><div class="card"><h3>Best-selling products</h3><div id="bestSellers"></div></div><div class="card"><h3>Sales by payment method</h3><div id="paymentBreakdown"></div><div class="notice" style="margin-top:16px;font-size:12px">*Estimates only, based on recorded sales (returns already deducted from profit), current product costs and entered expenses. This is not an accounting or tax report.</div></div></div>
 </section>
 <section class="view" id="view-report30">
  <div class="pagehead"><div><h1>Last 30 Days Full Report</h1><div class="muted">Sales, expenses, due payments, profit estimates and current inventory snapshot.</div></div><div class="actions"><button onclick="downloadPeriodPdf(30)">⬇ Download A4 PDF</button><button class="secondary" onclick="downloadPeriodReport(30)">🖨 Print</button></div></div>
@@ -155,12 +189,12 @@ const today=()=>new Date().toISOString().slice(0,10);
 const dateTime=()=>new Date().toLocaleString();
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const defaults={store:{name:'My Communication Store',phone:'',address:'',footer:'Thank you! Come again.',lowStock:5,logo:'',receiptSize:'80',autoPrint:'yes',showLogo:'yes'},products:[],customers:[],sales:[],expenses:[],debts:[]};
+const defaults={store:{name:'My Communication Store',phone:'',address:'',footer:'Thank you! Come again.',lowStock:5,logo:'',receiptSize:'80',autoPrint:'yes',showLogo:'yes'},products:[],customers:[],sales:[],expenses:[],debts:[],returns:[]};
 let db=structuredClone(defaults),cart=[];
 
 /*CLOUD-START*/
 const firebaseConfig={apiKey:"AIzaSyCC0pRFxD8TJ7ofhEzfWoeJ8PEf5j7kCvE",authDomain:"jc-new-28cd7.firebaseapp.com",projectId:"jc-new-28cd7",storageBucket:"jc-new-28cd7.firebasestorage.app",messagingSenderId:"1085822884258",appId:"1:1085822884258:web:c94254b125ab797eaf7afb"};
-const COLS=['products','customers','sales','expenses','debts'];
+const COLS=['products','customers','sales','expenses','debts','returns'];
 let fsdb=null,auth=null,storeId='',userRole='',unsubs=[],remote={},settingsRemote=null,readyFlags={},loginMsg='';
 const stable=v=>JSON.stringify(v,(k,x)=>x&&typeof x==='object'&&!Array.isArray(x)?Object.keys(x).sort().reduce((o,key)=>(o[key]=x[key],o),{}):x);
 const cleanDoc=o=>JSON.parse(JSON.stringify(o));
@@ -236,7 +270,7 @@ function initAuth(){
  }catch(e){console.error(e);showLogin('Firebase setup error: '+e.message);return}
  $('loginForm').addEventListener('submit',async e=>{
   e.preventDefault();if(!auth)return;const btn=$('loginBtn');btn.disabled=true;$('loginMsg').textContent='';
-  try{await auth.signInWithEmailAndPassword($('loginEmail').value.trim(),$('loginPass').value)}
+  try{await auth.signInWithEmailAndPassword($('loginEmail').value.trim(),$('loginPass').value);try{if($('rememberLogin').checked)localStorage.setItem('cp_login_email',$('loginEmail').value.trim());else localStorage.removeItem('cp_login_email')}catch(x){}}
   catch(err){const c=err.code||'';$('loginMsg').textContent=['auth/invalid-credential','auth/wrong-password','auth/user-not-found','auth/invalid-email'].includes(c)?'Wrong email or password.':c==='auth/network-request-failed'?'No internet connection. The first login needs internet.':c==='auth/too-many-requests'?'Too many attempts. Wait a few minutes and try again.':'Login failed: '+(err.message||c)}
   btn.disabled=false;
  });
@@ -255,7 +289,7 @@ function importLocalData(){
 function save(){cloudSync();renderAll()}
 /*CLOUD-END*/
 function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2600)}
-function go(name){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('active',b.dataset.view===name));$('topTitle').textContent=({dashboard:'Dashboard',pos:'Point of Sale',inventory:'Inventory & Products',sales:'Sales & Receipts',customers:'Customers',expenses:'Expenses',reports:'Reports',report30:'Last 30 Days Report',reportyear:'Last 1 Year Report',settings:'Settings & Backup',debts:'Due Payments'})[name]||name;$('sidebar').classList.remove('open');if(name==='pos')renderPOS();if(name==='inventory')renderInventory();if(name==='sales')renderSales();if(name==='debts')renderDebts();if(name==='customers')renderCustomers();if(name==='expenses')renderExpenses();if(name==='reports')renderReports();if(name==='report30')renderPeriodReport(30);if(name==='reportyear')renderPeriodReport(365);if(name==='settings')fillSettings()}
+function go(name){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('active',b.dataset.view===name));$('topTitle').textContent=({dashboard:'Dashboard',pos:'Point of Sale',inventory:'Inventory & Products',sales:'Sales & Receipts',customers:'Customers',expenses:'Expenses',reports:'Reports',report30:'Last 30 Days Report',reportyear:'Last 1 Year Report',settings:'Settings & Backup',debts:'Due Payments',returns:'Returns'})[name]||name;$('sidebar').classList.remove('open');if(name==='pos')renderPOS();if(name==='inventory')renderInventory();if(name==='sales')renderSales();if(name==='debts')renderDebts();if(name==='returns')renderReturns();if(name==='customers')renderCustomers();if(name==='expenses')renderExpenses();if(name==='reports')renderReports();if(name==='report30')renderPeriodReport(30);if(name==='reportyear')renderPeriodReport(365);if(name==='settings')fillSettings()}
 document.querySelectorAll('.nav').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view)));
 $('menuBtn').onclick=()=>$('sidebar').classList.toggle('open');
 $('todayLabel').textContent=new Date().toLocaleDateString(undefined,{weekday:'short',year:'numeric',month:'short',day:'numeric'});
@@ -264,13 +298,13 @@ $('themeBtn').onclick=()=>{let t=document.documentElement.dataset.theme==='dark'
 function fmtDate(d){return d?new Date(d).toLocaleDateString():''}
 function monthMatch(d){return String(d||'').slice(0,7)===today().slice(0,7)}
 function totalSale(s){return Number(s.total)||0}
-function renderAll(){renderDashboard();renderPOS();renderInventory();renderSales();renderDebts();renderCustomers();renderExpenses();renderReports();renderPeriodReport(30);renderPeriodReport(365);fillCustomerOptions();fillCategoryOptions()}
+function renderAll(){renderDashboard();renderPOS();renderInventory();renderSales();renderReturns();renderDebts();renderCustomers();renderExpenses();renderReports();renderPeriodReport(30);renderPeriodReport(365);fillCustomerOptions();fillCategoryOptions()}
 function renderDashboard(){
- const ts=db.sales.filter(s=>s.date===today()), total=db.sales.reduce((a,s)=>a+totalSale(s),0), stock=db.products.reduce((a,p)=>a+Number(p.stock||0),0), ex=db.expenses.filter(e=>monthMatch(e.date)).reduce((a,e)=>a+Number(e.amount||0),0), low=db.products.filter(p=>Number(p.stock)<=Number(db.store.lowStock));
- $('dashToday').textContent=money(ts.reduce((a,s)=>a+totalSale(s),0));$('dashOrders').textContent=ts.length+' transactions';$('dashTotal').textContent=money(total);$('dashStock').textContent=stock;$('dashLow').textContent=low.length+' low stock alerts';$('dashExpense').textContent=money(ex);
+ const ts=db.sales.filter(s=>s.date===today()), total=db.sales.reduce((a,s)=>a+totalSale(s),0)-retList().reduce((a,r)=>a+retValue(r),0), stock=db.products.reduce((a,p)=>a+Number(p.stock||0),0), ex=db.expenses.filter(e=>monthMatch(e.date)).reduce((a,e)=>a+Number(e.amount||0),0), low=db.products.filter(p=>Number(p.stock)<=Number(db.store.lowStock));
+ $('dashToday').textContent=money(ts.reduce((a,s)=>a+totalSale(s),0)-retList().filter(r=>r.date===today()).reduce((a,r)=>a+retValue(r),0));$('dashOrders').textContent=ts.length+' transactions';$('dashTotal').textContent=money(total);$('dashStock').textContent=stock;$('dashLow').textContent=low.length+' low stock alerts';$('dashExpense').textContent=money(ex);
  $('recentSales').innerHTML=db.sales.slice().reverse().slice(0,6).map(s=>`<tr><td>${esc(s.id)}</td><td>${esc(s.date)}</td><td>${esc(s.customerName||'Walk-in')}</td><td><b>${money(s.total)}</b></td></tr>`).join('')||'<tr><td colspan="4" class="empty">No sales yet. Start at Point of Sale.</td></tr>';
  $('lowStockList').innerHTML=low.slice(0,7).map(p=>`<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)"><div><b>${esc(p.name)}</b><div class="muted" style="font-size:12px">${esc(p.sku||'No SKU')}</div></div><span class="pill ${p.stock===0?'bad':'warn'}">${p.stock} left</span></div>`).join('')||'<div class="empty">All stocked up. Nice!</div>';
- let days=[];for(let i=6;i>=0;i--){let d=new Date();d.setDate(d.getDate()-i);let key=d.toISOString().slice(0,10);days.push({key,label:d.toLocaleDateString(undefined,{weekday:'short'}),v:db.sales.filter(s=>s.date===key).reduce((a,s)=>a+totalSale(s),0)})}let max=Math.max(1,...days.map(x=>x.v));$('weekChart').innerHTML=days.map(d=>`<div style="margin:10px 0"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>${d.label}</span><b>${money(d.v)}</b></div><div class="chartbar"><span style="width:${d.v/max*100}%"></span></div></div>`).join('');
+ let days=[];for(let i=6;i>=0;i--){let d=new Date();d.setDate(d.getDate()-i);let key=d.toISOString().slice(0,10);days.push({key,label:d.toLocaleDateString(undefined,{weekday:'short'}),v:Math.max(0,db.sales.filter(s=>s.date===key).reduce((a,s)=>a+totalSale(s),0)-retList().filter(r=>r.date===key).reduce((a,r)=>a+retValue(r),0))})}let max=Math.max(1,...days.map(x=>x.v));$('weekChart').innerHTML=days.map(d=>`<div style="margin:10px 0"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>${d.label}</span><b>${money(d.v)}</b></div><div class="chartbar"><span style="width:${d.v/max*100}%"></span></div></div>`).join('');
 }
 function fillCategoryOptions(){let cats=[...new Set(db.products.map(p=>p.category).filter(Boolean))].sort();['posCategory','invCategory'].forEach(id=>{let el=$(id),old=el.value;el.innerHTML='<option value="">All categories</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join('');el.value=old})}
 function fillCustomerOptions(){let el=$('saleCustomer'),old=el.value;el.innerHTML='<option value="">Walk-in customer</option>'+db.customers.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}${c.phone?' — '+esc(c.phone):''}</option>`).join('');el.value=old}
@@ -371,7 +405,86 @@ function deleteProduct(id){let p=db.products.find(p=>p.id===id);if(p&&confirm('D
 function renderSales(){let q=($('salesSearch')?.value||'').toLowerCase(),d=$('salesDate')?.value||'';let ss=db.sales.slice().reverse().filter(s=>(!q||[s.id,s.customerName,s.customerPhone].join(' ').toLowerCase().includes(q))&&(!d||s.date===d));$('salesRows').innerHTML=ss.map(s=>`<tr><td><b>${esc(s.id)}</b></td><td>${esc(s.datetime||s.date)}</td><td>${esc(s.customerName||'Walk-in')}</td><td>${esc(s.payment)}</td><td>${s.items.reduce((a,x)=>a+x.qty,0)}</td><td><b>${money(s.total)}</b></td><td><div class="actions"><button class="secondary small" onclick="reprintSale('${s.id}')">Print</button><button class="secondary small" onclick="downloadReceipt('${s.id}')">Download</button><button class="danger small" onclick="voidSale('${s.id}')">Void</button></div></td></tr>`).join('')||'<tr><td colspan="7" class="empty">No sales found.</td></tr>'}
 $('salesSearch').addEventListener('input',renderSales);$('salesDate').addEventListener('change',renderSales);
 function reprintSale(id){let s=db.sales.find(x=>x.id===id);if(s)showReceipt(s,true)}
-function voidSale(id){let s=db.sales.find(x=>x.id===id);if(!s||!confirm('Void this sale and return sold quantities to stock? This cannot be undone.'))return;s.items.forEach(x=>{let p=db.products.find(p=>p.id===x.id);if(p)p.stock+=x.qty});db.sales=db.sales.filter(x=>x.id!==id);db.debts=(db.debts||[]).filter(d=>d.saleId!==id);save();toast('Sale voided; stock restored and related naya removed')}
+function voidSale(id){let s=db.sales.find(x=>x.id===id);if(!s||!confirm('Void this sale and return sold quantities to stock? This cannot be undone.'))return;s.items.forEach(x=>{let p=db.products.find(p=>p.id===x.id);if(p)p.stock+=x.qty-retQtyFor(id,x.id,true)});db.sales=db.sales.filter(x=>x.id!==id);db.debts=(db.debts||[]).filter(d=>d.saleId!==id);db.returns=retList().filter(r=>r.saleId!==id);save();toast('Sale voided; stock restored and related naya and returns removed')}
+/*RETURNS-START*/
+let retSaleId='';
+const r2=n=>Math.round((Number(n)||0)*100)/100;
+const retList=()=>Array.isArray(db.returns)?db.returns:[];
+const retValue=r=>Number(r.refund)||0,retLoss=r=>Number(r.profitLoss)||0;
+function retQtyFor(saleId,itemId,onlyStock){let n=0;retList().forEach(r=>{if(r.saleId!==saleId||(onlyStock&&!r.restock))return;(r.items||[]).forEach(i=>{if(i.id===itemId)n+=Number(i.qty)||0})});return n}
+function saleReturnValue(saleId){return retList().filter(r=>r.saleId===saleId).reduce((a,r)=>a+retValue(r),0)}
+// Refund for q units of a sale line = line price minus that line's share of the sale discount.
+function lineRefund(s,it,q){const sub=Number(s.subtotal)||(s.items||[]).reduce((a,x)=>a+Number(x.price)*Number(x.qty),0)||1,gross=Number(it.price)*q;return r2(gross-(Number(s.discount)||0)*gross/sub)}
+function findReturnSale(){
+ const q=$('retInvoice').value.trim().toLowerCase();
+ if(!q){retSaleId='';$('retSaleBox').innerHTML='';return}
+ let s=db.sales.find(x=>String(x.id).toLowerCase()===q);
+ if(!s){const m=db.sales.filter(x=>String(x.id).toLowerCase().includes(q));if(m.length===1)s=m[0];else if(m.length>1){retSaleId='';$('retSaleBox').innerHTML='<div class="notice" style="margin-top:12px">'+m.length+' invoices match. Type more of the number, or pick one from the list.</div>';return}}
+ if(!s){retSaleId='';$('retSaleBox').innerHTML='<div class="notice" style="margin-top:12px">No invoice found with that number.</div>';return}
+ retSaleId=s.id;$('retInvoice').value=s.id;renderReturnBox();
+}
+function renderReturnBox(){
+ const box=$('retSaleBox'),s=db.sales.find(x=>x.id===retSaleId);if(!s){box.innerHTML='';return}
+ const rows=(s.items||[]).map((it,i)=>{const done=retQtyFor(s.id,it.id),left=Math.max(0,it.qty-done);return `<tr><td><b>${esc(it.name)}</b></td><td>${it.qty}</td><td>${done}</td><td>${money(lineRefund(s,it,1))}</td><td><input class="retq" type="number" min="0" max="${left}" step="1" value="0" data-i="${i}" ${left?'':'disabled'} style="width:90px"></td><td id="retLine${i}">${money(0)}</td></tr>`}).join('');
+ box.innerHTML=`<div class="notice" style="margin:12px 0">Invoice <b>${esc(s.id)}</b> · ${esc(s.datetime||s.date)} · ${esc(s.customerName||'Walk-in')} · ${esc(s.payment)} · Total <b>${money(s.total)}</b></div><div class="tablewrap"><table><thead><tr><th>Product</th><th>Sold</th><th>Already returned</th><th>Refund per unit</th><th>Return qty</th><th>Refund</th></tr></thead><tbody>${rows}</tbody></table></div><div class="formgrid" style="margin-top:12px"><div class="field wide"><label>Reason (optional)</label><input id="retReason" placeholder="Faulty, wrong item, customer changed mind…"></div><div class="field wide"><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="retRestock" checked style="width:auto"> Put the returned items back into stock</label></div></div><div class="totalrow"><span>Total refund</span><strong id="retTotal">${money(0)}</strong></div><div class="totalrow"><span>Profit reduced by</span><strong id="retLossLbl">${money(0)}</strong></div><button style="margin-top:12px" onclick="processReturn()">Confirm return</button>`;
+ box.querySelectorAll('.retq').forEach(el=>el.addEventListener('input',updateReturnSummary));
+ $('retRestock').addEventListener('change',updateReturnSummary);
+}
+function readReturnLines(){
+ const s=db.sales.find(x=>x.id===retSaleId);if(!s||!$('retRestock'))return null;
+ const restock=$('retRestock').checked,lines=[];
+ document.querySelectorAll('#retSaleBox .retq').forEach(el=>{
+  const i=Number(el.dataset.i),it=s.items[i],left=Math.max(0,it.qty-retQtyFor(s.id,it.id));
+  let q=Math.floor(Number(el.value)||0);if(q>left)q=left;if(q<=0)return;
+  const cost=Number(it.cost)||0,refund=lineRefund(s,it,q);
+  lines.push({i,id:it.id,name:it.name,qty:q,price:Number(it.price),cost,refund,profitLoss:r2(refund-(restock?cost*q:0))});
+ });
+ return {s,lines,restock,refund:r2(lines.reduce((a,l)=>a+l.refund,0)),profitLoss:r2(lines.reduce((a,l)=>a+l.profitLoss,0))};
+}
+function updateReturnSummary(){
+ const r=readReturnLines();if(!r)return;
+ document.querySelectorAll('#retSaleBox .retq').forEach(el=>{const l=r.lines.find(x=>x.i===Number(el.dataset.i));$('retLine'+el.dataset.i).textContent=money(l?l.refund:0)});
+ $('retTotal').textContent=money(r.refund);$('retLossLbl').textContent=money(r.profitLoss);
+}
+function processReturn(){
+ const r=readReturnLines();if(!r)return toast('Find an invoice first');
+ if(!r.lines.length)return toast('Enter a return quantity for at least one item');
+ const s=r.s,d=(db.debts||[]).find(x=>x.saleId===s.id);
+ // If the customer still owes money on this sale, the refund first reduces that unpaid balance.
+ let toDue=0;if(d&&Number(d.balance)>0.005)toDue=r2(Math.min(Number(d.balance),r.refund));
+ const cash=r2(r.refund-toDue),qty=r.lines.reduce((a,l)=>a+l.qty,0);
+ if(!confirm('Confirm return of '+qty+' item(s)?\nRefund value: '+money(r.refund)+(toDue?'\nTaken off the customer\'s unpaid balance: '+money(toDue)+'\nCash to give back: '+money(cash):'')+'\n'+(r.restock?'Items will go back into stock.':'Items will NOT be added back to stock.')))return;
+ let missing=0;
+ if(r.restock)r.lines.forEach(l=>{const p=db.products.find(p=>p.id===l.id);if(p)p.stock=(Number(p.stock)||0)+l.qty;else missing++});
+ if(toDue){d.balance=r2(Number(d.balance)-toDue);d.returned=r2((Number(d.returned)||0)+toDue)}
+ if(!Array.isArray(db.returns))db.returns=[];
+ db.returns.push({id:'RT-'+new Date().toISOString().replace(/\D/g,'').slice(0,14)+'-'+Math.random().toString(36).slice(2,5).toUpperCase(),date:today(),datetime:dateTime(),saleId:s.id,customerId:s.customerId||'',customerName:s.customerName||'Walk-in',customerPhone:s.customerPhone||'',items:r.lines.map(l=>({id:l.id,name:l.name,qty:l.qty,price:l.price,cost:l.cost,refund:l.refund,profitLoss:l.profitLoss})),refund:r.refund,profitLoss:r.profitLoss,toDue,cashRefund:cash,restock:r.restock,reason:($('retReason').value||'').trim()});
+ save();renderReturnBox();
+ toast('Return saved'+(r.restock?'; stock updated':'')+(missing?' ('+missing+' product(s) no longer exist, not restocked)':''));
+}
+function cancelReturn(id){
+ const r=retList().find(x=>x.id===id);if(!r)return;
+ if(!confirm('Cancel return '+r.id+'? Stock and any unpaid balance will go back to how they were before this return.'))return;
+ if(r.restock){
+  for(const i of r.items){const p=db.products.find(p=>p.id===i.id);if(p&&(Number(p.stock)||0)<i.qty)return toast('Not enough stock of '+i.name+' to cancel this return')}
+  r.items.forEach(i=>{const p=db.products.find(p=>p.id===i.id);if(p)p.stock=(Number(p.stock)||0)-i.qty});
+ }
+ if(Number(r.toDue)>0){const d=(db.debts||[]).find(x=>x.saleId===r.saleId);if(d){d.balance=r2(Number(d.balance)+Number(r.toDue));d.returned=Math.max(0,r2((Number(d.returned)||0)-Number(r.toDue)))}}
+ db.returns=retList().filter(x=>x.id!==id);save();if(retSaleId===r.saleId)renderReturnBox();toast('Return cancelled');
+}
+function renderReturns(){
+ if(!$('retRows'))return;
+ const list=retList();
+ $('retTotalValue').textContent=money(list.reduce((a,r)=>a+retValue(r),0));$('retTotalLoss').textContent=money(list.reduce((a,r)=>a+retLoss(r),0));
+ $('retInvoiceList').innerHTML=db.sales.slice(-60).reverse().map(x=>`<option value="${esc(x.id)}">${esc((x.customerName||'Walk-in')+' · '+money(x.total))}</option>`).join('');
+ if(retSaleId&&!db.sales.find(x=>x.id===retSaleId)){retSaleId='';$('retSaleBox').innerHTML=''}
+ const q=($('retSearch')?.value||'').toLowerCase();
+ const rows=list.slice().reverse().filter(r=>!q||[r.id,r.saleId,r.customerName,r.customerPhone].join(' ').toLowerCase().includes(q));
+ $('retRows').innerHTML=rows.map(r=>`<tr><td>${esc(r.datetime||r.date)}</td><td><b>${esc(r.id)}</b></td><td>${esc(r.saleId)}</td><td>${esc(r.customerName||'Walk-in')}</td><td>${(r.items||[]).map(i=>esc(i.name)+' × '+i.qty).join('<br>')}${r.reason?`<div class="muted" style="font-size:11px">${esc(r.reason)}</div>`:''}</td><td><b>${money(r.refund)}</b>${Number(r.toDue)>0?`<div class="muted" style="font-size:11px">${money(r.toDue)} off unpaid balance</div>`:''}</td><td>${money(r.profitLoss)}</td><td>${r.restock?'<span class="pill good">Back in stock</span>':'<span class="pill warn">Not restocked</span>'}</td><td><button class="danger small" onclick="cancelReturn('${r.id}')">Cancel</button></td></tr>`).join('')||'<tr><td colspan="9" class="empty">No returns recorded.</td></tr>';
+}
+$('retSearch').addEventListener('input',renderReturns);
+$('retInvoice').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();findReturnSale()}});
+/*RETURNS-END*/
 function renderDebts(){
  if(!$('debtRows'))return;let q=($('debtSearch')?.value||'').toLowerCase(),filter=$('debtFilter')?.value||'open';let debts=Array.isArray(db.debts)?db.debts:[];let open=debts.filter(d=>Number(d.balance)>0.005);$('debtTotal').textContent=money(open.reduce((a,d)=>a+Number(d.balance||0),0));$('debtCount').textContent=open.length;
  let list=debts.slice().reverse().filter(d=>{let text=[d.customerName,d.customerPhone,d.saleId].join(' ').toLowerCase();return (!q||text.includes(q))&&(filter==='all'||(filter==='paid'?Number(d.balance)<=0.005:Number(d.balance)>0.005))});
@@ -386,7 +499,7 @@ $('customerSearch').addEventListener('input',renderCustomers);function editCusto
 function openExpenseModal(e={}){openModal(e.id?'Edit expense':'Add expense',`<form id="expenseForm" class="formgrid"><input type="hidden" name="id" value="${esc(e.id||'')}"><div class="field wide"><label>Description *</label><input name="description" required value="${esc(e.description||'')}"></div><div class="field"><label>Category</label><select name="category">${['Rent','Utilities','Transport','Stock purchase','Internet/Phone','Salary','Other'].map(x=>`<option ${e.category===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Amount (Rs) *</label><input name="amount" type="number" min="0" step=".01" required value="${e.amount??''}"></div><div class="field"><label>Date *</label><input name="date" type="date" required value="${esc(e.date||today())}"></div><div class="field wide"><button type="submit">Save expense</button></div></form>`);$('expenseForm').onsubmit=ev=>{ev.preventDefault();let v=Object.fromEntries(new FormData(ev.target).entries());v.id=v.id||uid();v.amount=Math.max(0,Number(v.amount)||0);let i=db.expenses.findIndex(x=>x.id===v.id);i>=0?db.expenses[i]=v:db.expenses.push(v);closeModal();save();toast('Expense saved')}}
 function renderExpenses(){let q=($('expenseSearch')?.value||'').toLowerCase(),es=db.expenses.filter(e=>[e.description,e.category,e.date].join(' ').toLowerCase().includes(q));$('expenseRows').innerHTML=es.slice().reverse().map(e=>`<tr><td>${esc(e.date)}</td><td><b>${esc(e.description)}</b></td><td>${esc(e.category)}</td><td>${money(e.amount)}</td><td><div class="actions"><button class="secondary small" onclick="editExpense('${e.id}')">Edit</button><button class="danger small" onclick="deleteExpense('${e.id}')">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="5" class="empty">No expenses recorded.</td></tr>';let all=db.expenses.reduce((a,e)=>a+e.amount,0),mo=db.expenses.filter(e=>monthMatch(e.date)).reduce((a,e)=>a+e.amount,0);$('expenseMonthTotal').textContent=money(mo);$('expenseAllTotal').textContent=money(all)}
 $('expenseSearch').addEventListener('input',renderExpenses);function editExpense(id){let e=db.expenses.find(x=>x.id===id);if(e)openExpenseModal(e)}function deleteExpense(id){if(confirm('Delete this expense?')){db.expenses=db.expenses.filter(x=>x.id!==id);save()}}
-function renderReports(){let gross=db.sales.reduce((a,s)=>a+s.subtotal,0),disc=db.sales.reduce((a,s)=>a+s.discount,0),profit=db.sales.reduce((a,s)=>a+(s.profit??s.items.reduce((n,x)=>n+(x.price-x.cost)*x.qty,0)-s.discount),0),ex=db.expenses.reduce((a,e)=>a+e.amount,0);$('reportGross').textContent=money(gross);$('reportDiscount').textContent=money(disc);$('reportProfit').textContent=money(profit);$('reportNet').textContent=money(profit-ex);
+function renderReports(){let gross=db.sales.reduce((a,s)=>a+s.subtotal,0),disc=db.sales.reduce((a,s)=>a+s.discount,0),profit=db.sales.reduce((a,s)=>a+(s.profit??s.items.reduce((n,x)=>n+(x.price-x.cost)*x.qty,0)-s.discount),0)-retList().reduce((a,r)=>a+retLoss(r),0),ex=db.expenses.reduce((a,e)=>a+e.amount,0);$('reportGross').textContent=money(gross);$('reportDiscount').textContent=money(disc);$('reportProfit').textContent=money(profit);$('reportNet').textContent=money(profit-ex);
  let counts={};db.sales.forEach(s=>s.items.forEach(i=>{counts[i.name]=(counts[i.name]||0)+i.qty}));let best=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,8);$('bestSellers').innerHTML=best.map(([n,v])=>`<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)"><span>${esc(n)}</span><b>${v} sold</b></div>`).join('')||'<div class="empty">No sales data yet.</div>';
  let pays={};db.sales.forEach(s=>pays[s.payment]=(pays[s.payment]||0)+s.total);let max=Math.max(1,...Object.values(pays));$('paymentBreakdown').innerHTML=Object.entries(pays).map(([n,v])=>`<div style="margin:10px 0"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>${esc(n)}</span><b>${money(v)}</b></div><div class="chartbar"><span style="width:${v/max*100}%"></span></div></div>`).join('')||'<div class="empty">No payment data yet.</div>'}
 
@@ -403,10 +516,11 @@ function inPeriod(date,start,end){const d=String(date||'').slice(0,10);return !!
 function saleProfitValue(s){return Number(s.profit??(s.items||[]).reduce((n,x)=>n+(Number(x.price||0)-Number(x.cost||0))*Number(x.qty||0),0)-Number(s.discount||0))}
 function yearlyReportHTML(){
  const store=db.store||{},now=new Date(),months=[];
- for(let i=11;i>=0;i--){const d=new Date(now.getFullYear(),now.getMonth()-i,1);months.push({key:`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`,label:d.toLocaleDateString('en-US',{month:'short',year:'numeric'}),sales:[],exp:[],debts:[]})}
+ for(let i=11;i>=0;i--){const d=new Date(now.getFullYear(),now.getMonth()-i,1);months.push({key:`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`,label:d.toLocaleDateString('en-US',{month:'short',year:'numeric'}),sales:[],exp:[],debts:[],ret:[]})}
  const byKey={};months.forEach(m=>byKey[m.key]=m);
  db.sales.forEach(s=>{const m=byKey[saleDateKey(s).slice(0,7)];if(m)m.sales.push(s)});
  db.expenses.forEach(e=>{const m=byKey[String(e.date||'').slice(0,7)];if(m)m.exp.push(e)});
+ retList().forEach(r=>{const m=byKey[String(r.date||'').slice(0,7)];if(m)m.ret.push(r)});
  (Array.isArray(db.debts)?db.debts:[]).forEach(d=>{const m=byKey[String(d.date||d.datetime||'').slice(0,7)];if(m)m.debts.push(d)});
  months.forEach(m=>{
   m.earn=m.sales.reduce((n,s)=>n+Number(s.total||0),0);
@@ -416,17 +530,20 @@ function yearlyReportHTML(){
   m.expense=m.exp.reduce((n,e)=>n+Number(e.amount||0),0);
   m.due=m.debts.reduce((n,d)=>n+Math.max(0,Number(d.total||0)-Number(d.received||0)),0);
   m.pay=m.debts.reduce((n,d)=>n+Math.max(0,Number(d.balance||0)),0);
-  m.profit=m.gp-m.expense;
+  m.retv=m.ret.reduce((n,r)=>n+retValue(r),0);
+  m.retp=m.ret.reduce((n,r)=>n+retLoss(r),0);
+  m.profit=m.gp-m.retp-m.expense;
  });
  const sum=k=>months.reduce((n,m)=>n+m[k],0);
- const T={earn:sum('earn'),gross:sum('gross'),disc:sum('disc'),gp:sum('gp'),expense:sum('expense'),due:sum('due'),pay:sum('pay'),profit:sum('profit'),sales:months.reduce((n,m)=>n+m.sales.length,0),exps:months.reduce((n,m)=>n+m.exp.length,0)};
+ const T={earn:sum('earn'),retv:sum('retv'),retp:sum('retp'),gross:sum('gross'),disc:sum('disc'),gp:sum('gp'),expense:sum('expense'),due:sum('due'),pay:sum('pay'),profit:sum('profit'),sales:months.reduce((n,m)=>n+m.sales.length,0),exps:months.reduce((n,m)=>n+m.exp.length,0)};
  const pct=m=>T.profit!==0?(m.profit/T.profit*100):0, fp=v=>v.toFixed(1)+'%';
  const best=months.slice().sort((a,b)=>b.profit-a.profit)[0];
- const rows=months.map(m=>`<tr><td><b>${esc(m.label)}</b></td><td>${m.sales.length||m.exp.length?`${m.sales.length} ${m.sales.length===1?'sale':'sales'}, ${m.exp.length} ${m.exp.length===1?'expense':'expenses'}`:'No activity'}</td><td class="rnum">${money(m.earn)}</td><td class="rnum">${money(m.expense)}</td><td class="rnum">${money(m.due)}</td><td class="rnum">${money(m.pay)}</td><td class="rnum">${money(m.profit)}</td><td class="rnum">${fp(pct(m))}</td></tr>`);
- rows.push(`<tr class="rtotal"><td>TOTAL</td><td>${T.sales} sales, ${T.exps} expenses</td><td class="rnum">${money(T.earn)}</td><td class="rnum">${money(T.expense)}</td><td class="rnum">${money(T.due)}</td><td class="rnum">${money(T.pay)}</td><td class="rnum">${money(T.profit)}</td><td class="rnum">${T.profit!==0?'100.0%':'0.0%'}</td></tr>`);
+ const rows=months.map(m=>`<tr><td><b>${esc(m.label)}</b></td><td>${m.sales.length||m.exp.length?`${m.sales.length} ${m.sales.length===1?'sale':'sales'}, ${m.exp.length} ${m.exp.length===1?'expense':'expenses'}`:'No activity'}</td><td class="rnum">${money(m.earn)}</td><td class="rnum">${money(m.retv)}</td><td class="rnum">${money(m.expense)}</td><td class="rnum">${money(m.due)}</td><td class="rnum">${money(m.pay)}</td><td class="rnum">${money(m.profit)}</td><td class="rnum">${fp(pct(m))}</td></tr>`);
+ rows.push(`<tr class="rtotal"><td>TOTAL</td><td>${T.sales} sales, ${T.exps} expenses</td><td class="rnum">${money(T.earn)}</td><td class="rnum">${money(T.retv)}</td><td class="rnum">${money(T.expense)}</td><td class="rnum">${money(T.due)}</td><td class="rnum">${money(T.pay)}</td><td class="rnum">${money(T.profit)}</td><td class="rnum">${T.profit!==0?'100.0%':'0.0%'}</td></tr>`);
  const table=(heads,rws,emptyText)=>`<table><thead><tr>${heads.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rws.length?rws.join(''):`<tr><td colspan="${heads.length}" class="empty">${emptyText}</td></tr>`}</tbody></table>`;
  const allSales=months.flatMap(m=>m.sales);
  const items={};allSales.forEach(s=>(s.items||[]).forEach(i=>{const k=i.name||'Item';if(!items[k])items[k]={qty:0,sales:0};items[k].qty+=Number(i.qty||0);items[k].sales+=Number(i.price||0)*Number(i.qty||0)}));
+ months.forEach(m=>m.ret.forEach(r=>(r.items||[]).forEach(i=>{const k=i.name||'Item';if(!items[k])items[k]={qty:0,sales:0};items[k].qty-=Number(i.qty||0);items[k].sales-=Number(i.price||0)*Number(i.qty||0)})));
  const productRows=Object.entries(items).sort((a,b)=>b[1].qty-a[1].qty).map(([name,v])=>`<tr><td>${esc(name)}</td><td>${v.qty}</td><td>${money(v.sales)}</td></tr>`);
  const pay={};allSales.forEach(s=>{const k=s.payment||'Unknown';pay[k]=(pay[k]||0)+Number(s.total||0)});
  const paymentRows=Object.entries(pay).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${money(v)}</td></tr>`);
@@ -437,17 +554,19 @@ function yearlyReportHTML(){
  <div><strong>Transactions</strong><b>${T.sales}</b></div>
  <div><strong>Gross sales</strong><b>${money(T.gross)}</b></div>
  <div><strong>Discounts</strong><b>${money(T.disc)}</b></div>
- <div><strong>Earnings (net sales)</strong><b>${money(T.earn)}</b></div>
- <div><strong>Estimated gross profit</strong><b>${money(T.gp)}</b></div>
+ <div><strong>Earnings (net sales, before returns)</strong><b>${money(T.earn)}</b></div>
+ <div><strong>Returns (refunded value)</strong><b>${money(T.retv)}</b></div>
+ <div><strong>Estimated gross profit (before returns)</strong><b>${money(T.gp)}</b></div>
+ <div><strong>Profit reduced by returns</strong><b>${money(T.retp)}</b></div>
  <div><strong>Expenses</strong><b>${money(T.expense)}</b></div>
  <div><strong>Profit (after expenses)</strong><b>${money(T.profit)}</b></div>
  <div><strong>Best month</strong><b>${T.sales||T.exps?esc(best.label)+' ('+money(best.profit)+')':'—'}</b></div>
  </div>
- <h3>Monthly Breakdown</h3><div class="rscroll">${table(['Month','Description (Sales, Expenses)','Earnings','Expenses','Due','Must to pay','Profit','Share of yearly profit (100%)'],rows,'No data.')}</div>
+ <h3>Monthly Breakdown</h3><div class="rscroll">${table(['Month','Description (Sales, Expenses)','Earnings','Returns','Expenses','Due','Must to pay','Profit','Share of yearly profit (100%)'],rows,'No data.')}</div>
  <h3>Products Sold (Year)</h3>${table(['Product','Quantity sold','Sales value'],productRows,'No products sold in this period.')}
  <h3>Sales by Payment Method (Year)</h3>${table(['Payment method','Sales total'],paymentRows,'No payment data in this period.')}
  <h3>Current Inventory Snapshot</h3>${table(['SKU','Product','Category','Stock now','Unit cost','Unit price','Stock cost value'],stockRows,'No products in inventory.')}
- <p class="report-note">Earnings = net sales total of the month (after discounts). Expenses = recorded expenses of the month. Due = unpaid amount left at the time of sale for sales made in that month. Must to pay = balance still outstanding today from those dues. Profit = estimated gross profit minus expenses. Share = month profit ÷ yearly profit × 100. Estimates only; not a certified accounting or tax report. Inventory is a current snapshot.</p>
+ <p class="report-note">Earnings = net sales total of the month (after discounts). Expenses = recorded expenses of the month. Due = unpaid amount left at the time of sale for sales made in that month. Must to pay = balance still outstanding today from those dues. Profit = estimated gross profit minus expenses. Share = month profit ÷ yearly profit × 100. Returns = value refunded to customers for goods returned in that month; the profit lost on them (refund minus the cost of items put back in stock) is deducted from Profit. Products Sold is net of returns. Estimates only; not a certified accounting or tax report. Inventory is a current snapshot.</p>
  </div>`;
 }
 function periodReportHTML(days){
@@ -458,18 +577,21 @@ function periodReportHTML(days){
  const gross=sales.reduce((n,s)=>n+Number(s.subtotal||0),0),discount=sales.reduce((n,s)=>n+Number(s.discount||0),0),salesTotal=sales.reduce((n,s)=>n+Number(s.total||0),0);
  const received=sales.reduce((n,s)=>n+Number(s.received??s.total??0)-Number(s.change||0),0);
  const profit=sales.reduce((n,s)=>n+saleProfitValue(s),0),expenseTotal=expenses.reduce((n,e)=>n+Number(e.amount||0),0);
+ const returns=retList().filter(r=>inPeriod(r.date,range.start,range.end)).slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))),retTotal=returns.reduce((n,r)=>n+retValue(r),0),retLossTotal=returns.reduce((n,r)=>n+retLoss(r),0);
  const dueAdded=debts.reduce((n,d)=>n+Number(d.total||0)-Number(d.received||0),0),paidLater=debts.reduce((n,d)=>n+Number(d.paidLater||0),0),dueBalance=debts.reduce((n,d)=>n+Number(d.balance||0),0);
  const items={};sales.forEach(s=>(s.items||[]).forEach(i=>{const k=i.name||'Item';if(!items[k])items[k]={qty:0,sales:0};items[k].qty+=Number(i.qty||0);items[k].sales+=Number(i.price||0)*Number(i.qty||0)}));
+ returns.forEach(r=>(r.items||[]).forEach(i=>{const k=i.name||'Item';if(!items[k])items[k]={qty:0,sales:0};items[k].qty-=Number(i.qty||0);items[k].sales-=Number(i.price||0)*Number(i.qty||0)}));
  const topItems=Object.entries(items).sort((a,b)=>b[1].qty-a[1].qty);
  const paymentTotals={};sales.forEach(s=>{const k=s.payment||'Unknown';paymentTotals[k]=(paymentTotals[k]||0)+Number(s.total||0)});
  const store=db.store||{};
  const table=(heads,rows,emptyText)=>`<table><thead><tr>${heads.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.length?rows.join(''):`<tr><td colspan="${heads.length}" class="empty">${emptyText}</td></tr>`}</tbody></table>`;
- const saleRows=sales.map(s=>`<tr><td>${esc(s.date||'')}</td><td>${esc(s.id||'')}</td><td>${esc(s.customerName||'Walk-in')}</td><td>${esc(s.payment||'')}</td><td>${(s.items||[]).reduce((n,i)=>n+Number(i.qty||0),0)}</td><td>${money(s.subtotal)}</td><td>${money(s.discount)}</td><td>${money(s.total)}</td><td>${money(s.received??s.total)}</td><td>${money(Math.max(0,Number(s.total||0)-Number(s.received??s.total??0)))}</td></tr>`);
+ const saleRows=sales.map(s=>`<tr><td>${esc(s.date||'')}</td><td>${esc(s.id||'')}</td><td>${esc(s.customerName||'Walk-in')}</td><td>${esc(s.payment||'')}</td><td>${(s.items||[]).reduce((n,i)=>n+Number(i.qty||0),0)}</td><td>${money(s.subtotal)}</td><td>${money(s.discount)}</td><td>${money(s.total)}</td><td>${money(saleReturnValue(s.id))}</td><td>${money(s.received??s.total)}</td><td>${money(Math.max(0,Number(s.total||0)-Number(s.received??s.total??0)))}</td></tr>`);
  const expenseRows=expenses.map(e=>`<tr><td>${esc(e.date||'')}</td><td>${esc(e.description||'')}</td><td>${esc(e.category||'')}</td><td>${money(e.amount)}</td></tr>`);
  const debtRows=debts.map(d=>`<tr><td>${esc(d.date||'')}</td><td>${esc(d.saleId||'')}</td><td>${esc(d.customerName||'Walk-in')}</td><td>${esc(d.customerPhone||'')}</td><td>${money(d.total)}</td><td>${money(d.received)}</td><td>${money(d.paidLater)}</td><td>${money(d.balance)}</td><td>${Number(d.balance||0)<=0.005?'Paid':'Due'}</td></tr>`);
  const productRows=topItems.map(([name,v])=>`<tr><td>${esc(name)}</td><td>${v.qty}</td><td>${money(v.sales)}</td></tr>`);
  const paymentRows=Object.entries(paymentTotals).map(([method,total])=>`<tr><td>${esc(method)}</td><td>${money(total)}</td></tr>`);
  const stockRows=(db.products||[]).map(p=>`<tr><td>${esc(p.sku||'')}</td><td>${esc(p.name||'')}</td><td>${esc(p.category||'')}</td><td>${Number(p.stock||0)}</td><td>${money(p.cost)}</td><td>${money(p.price)}</td><td>${money(Number(p.stock||0)*Number(p.cost||0))}</td></tr>`);
+ const returnRows=returns.map(r=>`<tr><td>${esc(r.date||'')}</td><td>${esc(r.id||'')}</td><td>${esc(r.saleId||'')}</td><td>${esc(r.customerName||'Walk-in')}</td><td>${(r.items||[]).map(i=>esc(i.name)+' × '+i.qty).join(', ')}</td><td>${money(r.refund)}</td><td>${money(r.profitLoss)}</td><td>${r.restock?'Back in stock':'Not restocked'}</td></tr>`);
  const dateLabel=`${range.start} to ${range.end}`;
  return `<div class="report-print">
  <header class="report-brand">${store.logo?`<img class="report-logo" src="${store.logo}" alt="Store logo">`:''}<div class="report-store"><h1>${esc(store.name||'ConnectPOS Store')}</h1><div>${esc(store.address||'')}</div><div>${esc(store.phone||'')}</div></div><h2>${days===365?'Last 1 Year':'Last 30 Days'} Full Report</h2><p>Period: ${dateLabel} · Generated: ${esc(new Date().toLocaleString())}</p></header>
@@ -477,21 +599,25 @@ function periodReportHTML(days){
  <div><strong>Transaction</strong><b>${sales.length}</b></div>
  <div><strong>Gross sales</strong><b>${money(gross)}</b></div>
  <div><strong>Discounts</strong><b>${money(discount)}</b></div>
- <div><strong>Net sales total</strong><b>${money(salesTotal)}</b></div>
+ <div><strong>Net sales total (before returns)</strong><b>${money(salesTotal)}</b></div>
+ <div><strong>Returns (refunded value)</strong><b>${money(retTotal)}</b></div>
+ <div><strong>Net sales after returns</strong><b>${money(salesTotal-retTotal)}</b></div>
  <div><strong>Received at sale (less change)</strong><b>${money(received)}</b></div>
- <div><strong>Estimated gross profit</strong><b>${money(profit)}</b></div>
+ <div><strong>Estimated gross profit (before returns)</strong><b>${money(profit)}</b></div>
+ <div><strong>Profit reduced by returns</strong><b>${money(retLossTotal)}</b></div>
  <div><strong>Recorded expenses</strong><b>${money(expenseTotal)}</b></div>
- <div><strong>Estimated profit after expenses</strong><b>${money(profit-expenseTotal)}</b></div>
+ <div><strong>Estimated profit after expenses</strong><b>${money(profit-retLossTotal-expenseTotal)}</b></div>
  <div><strong>Due balance from period</strong><b>${money(dueBalance)}</b></div>
  <div><strong>Later due payments recorded</strong><b>${money(paidLater)}</b></div>
  </div>
- <h3>Sales Transactions (${sales.length})</h3>${table(['Date','Receipt','Customer','Payment','Qty','Subtotal','Discount','Total','Received','Due at sale'],saleRows,'No sales recorded in this period.')}
+ <h3>Sales Transactions (${sales.length})</h3>${table(['Date','Receipt','Customer','Payment','Qty','Subtotal','Discount','Total','Returns','Received','Due at sale'],saleRows,'No sales recorded in this period.')}
+ <h3>Returns (${returns.length})</h3>${table(['Date','Return no.','Invoice','Customer','Items returned','Refund','Profit reduced','Stock'],returnRows,'No returns recorded in this period.')}
  <h3>Expenses (${expenses.length})</h3>${table(['Date','Description','Category','Amount'],expenseRows,'No expenses recorded in this period.')}
  <h3>Due Payments Created in Period (${debts.length})</h3>${table(['Date','Receipt','Customer','Phone','Bill total','Received at sale','Paid later','Balance due','Status'],debtRows,'No due payment records created in this period.')}
  <h3>Products Sold</h3>${table(['Product','Quantity sold','Sales value'],productRows,'No products sold in this period.')}
  <h3>Sales by Payment Method</h3>${table(['Payment method','Sales total'],paymentRows,'No payment data in this period.')}
  <h3>Current Inventory Snapshot</h3>${table(['SKU','Product','Category','Stock now','Unit cost','Unit price','Stock cost value'],stockRows,'No products in inventory.')}
- <p class="report-note">Note: This report uses the data currently stored in this browser. Estimated profit is calculated from the profit stored with sales or the saved item costs; it is not a certified accounting or tax report. Inventory is a current snapshot, not historical inventory for the selected period.</p>
+ <p class="report-note">Note: This report uses the data currently stored in this browser. Returns are deducted from profit (profit lost = refund minus the cost of the items put back in stock), and the Returns column in the sales table shows the value returned against that invoice. Products Sold is shown net of returns. Estimated profit is calculated from the profit stored with sales or the saved item costs; it is not a certified accounting or tax report. Inventory is a current snapshot, not historical inventory for the selected period.</p>
  </div>`;
 }
 function renderPeriodReport(days){
@@ -581,9 +707,10 @@ function exportSales(){download('connectpos-sales.csv',csv([['Receipt','Date','C
 function exportCustomers(){download('connectpos-customers.csv',csv([['Name','Phone','Email','Notes'],...db.customers.map(c=>[c.name,c.phone,c.email,c.notes])]),'text/csv')}
 function exportExpenses(){download('connectpos-expenses.csv',csv([['Date','Description','Category','Amount'],...db.expenses.map(e=>[e.date,e.description,e.category,e.amount])]),'text/csv')}
 function backupData(){download('connectpos-backup-'+today()+'.json',JSON.stringify(db,null,2),'application/json')}
-function restoreData(){let f=$('restoreFile').files[0];if(!f)return toast('Choose a backup JSON file first');let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!d.products||!d.sales||!d.customers||!d.expenses||!d.store)throw Error('Invalid format');if(!Array.isArray(d.debts))d.debts=[];if(!confirm('Replace current data with this backup?'))return;db=d;save();fillSettings();toast('Backup restored')}catch(e){toast('Could not restore: invalid backup file')}};r.readAsText(f)}
+function restoreData(){let f=$('restoreFile').files[0];if(!f)return toast('Choose a backup JSON file first');let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!d.products||!d.sales||!d.customers||!d.expenses||!d.store)throw Error('Invalid format');if(!Array.isArray(d.debts))d.debts=[];if(!Array.isArray(d.returns))d.returns=[];if(!confirm('Replace current data with this backup?'))return;db=d;save();fillSettings();toast('Backup restored')}catch(e){toast('Could not restore: invalid backup file')}};r.readAsText(f)}
 function resetAllData(){if(confirm('Delete ALL products, customers, sales, expenses and settings? Export a backup first if needed.')){db=structuredClone(defaults);cart=[];save();fillSettings();toast('All data cleared')}}
 function loadDemoData(){if(!confirm('Add sample products and customers to your current data?'))return;db.products.push(...[{id:uid(),sku:'SIM-001',name:'Prepaid SIM Card',category:'SIM cards',cost:100,price:150,stock:30,reorder:5,emoji:'📱'},{id:uid(),sku:'CAB-001',name:'USB-C Cable',category:'Accessories',cost:250,price:450,stock:18,reorder:5,emoji:'🔌'},{id:uid(),sku:'CHG-001',name:'Fast Charger 20W',category:'Accessories',cost:900,price:1400,stock:8,reorder:3,emoji:'🔋'},{id:uid(),sku:'EAR-001',name:'Wired Earphones',category:'Accessories',cost:400,price:750,stock:12,reorder:4,emoji:'🎧'},{id:uid(),sku:'SCR-001',name:'Screen Protector',category:'Accessories',cost:150,price:350,stock:25,reorder:6,emoji:'📲'}]);db.customers.push({id:uid(),name:'Sample Customer',phone:'0771234567',email:'',notes:'Demo record'});save();toast('Sample data added')}
+try{const se=localStorage.getItem('cp_login_email');if(se){$('loginEmail').value=se;$('rememberLogin').checked=true}}catch(e){}
 renderAll();
 initAuth();
 </script>
