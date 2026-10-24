@@ -301,7 +301,7 @@ function initAuth(){
  }catch(e){console.error(e);showLogin('Firebase setup error: '+e.message);return}
  $('loginForm').addEventListener('submit',async e=>{
   e.preventDefault();if(!auth)return;const btn=$('loginBtn');btn.disabled=true;$('loginMsg').textContent='';
-  try{await auth.signInWithEmailAndPassword($('loginEmail').value.trim(),$('loginPass').value);try{if($('rememberLogin').checked)localStorage.setItem('cp_login_email',$('loginEmail').value.trim());else localStorage.removeItem('cp_login_email')}catch(x){}}
+  try{const P=firebase.auth.Auth.Persistence;try{await auth.setPersistence($('rememberLogin').checked?P.LOCAL:P.SESSION)}catch(x){console.warn('persistence',x)}await auth.signInWithEmailAndPassword($('loginEmail').value.trim(),$('loginPass').value);try{if($('rememberLogin').checked)localStorage.setItem('cp_login_email',$('loginEmail').value.trim());else localStorage.removeItem('cp_login_email')}catch(x){}}
   catch(err){const c=err.code||'';$('loginMsg').textContent=['auth/invalid-credential','auth/wrong-password','auth/user-not-found','auth/invalid-email'].includes(c)?'Wrong email or password.':c==='auth/network-request-failed'?'No internet connection. The first login needs internet.':c==='auth/too-many-requests'?'Too many attempts. Wait a few minutes and try again.':'Login failed: '+(err.message||c)}
   btn.disabled=false;
  });
@@ -743,6 +743,8 @@ function restoreData(){let f=$('restoreFile').files[0];if(!f)return toast('Choos
 function resetAllData(){if(confirm('Delete ALL products, customers, sales, expenses and settings? Export a backup first if needed.')){db=structuredClone(defaults);cart=[];save();fillSettings();toast('All data cleared')}}
 function loadDemoData(){if(!confirm('Add sample products and customers to your current data?'))return;db.products.push(...[{id:uid(),sku:'SIM-001',name:'Prepaid SIM Card',category:'SIM cards',cost:100,price:150,stock:30,reorder:5,emoji:'📱'},{id:uid(),sku:'CAB-001',name:'USB-C Cable',category:'Accessories',cost:250,price:450,stock:18,reorder:5,emoji:'🔌'},{id:uid(),sku:'CHG-001',name:'Fast Charger 20W',category:'Accessories',cost:900,price:1400,stock:8,reorder:3,emoji:'🔋'},{id:uid(),sku:'EAR-001',name:'Wired Earphones',category:'Accessories',cost:400,price:750,stock:12,reorder:4,emoji:'🎧'},{id:uid(),sku:'SCR-001',name:'Screen Protector',category:'Accessories',cost:150,price:350,stock:25,reorder:6,emoji:'📲'}]);db.customers.push({id:uid(),name:'Sample Customer',phone:'0771234567',email:'',notes:'Demo record'});save();toast('Sample data added')}
 try{const se=localStorage.getItem('cp_login_email');if(se){$('loginEmail').value=se;$('rememberLogin').checked=true}}catch(e){}
+function loginHints(){const on=$('rememberLogin').checked;$('loginEmail').setAttribute('autocomplete',on?'username':'off');$('loginPass').setAttribute('autocomplete',on?'current-password':'new-password')}
+$('rememberLogin').addEventListener('change',loginHints);loginHints();
 renderAll();
 initAuth();
 </script>
