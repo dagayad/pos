@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Con-Nect POS by Sio Creations — v3.0 Cloud</title>
+<title>Con-Nect POS by Sio Creations — v4.0 Cloud</title>
 <style>
 :root{--bg:#f4f7fb;--panel:#fff;--panel2:#f8fafc;--text:#172033;--muted:#667085;--line:#e4e9f1;--primary:#4f46e5;--primary2:#4338ca;--good:#12805c;--bad:#c0392b;--warn:#b7791f;--shadow:0 8px 28px rgba(25,40,70,.07)}
 [data-theme="dark"]{--bg:#101521;--panel:#171f2e;--panel2:#202a3b;--text:#edf2fb;--muted:#a6b2c5;--line:#2d394d;--primary:#8b83ff;--primary2:#756bf0;--good:#46d5a1;--bad:#ff7f87;--warn:#f6c76c;--shadow:0 8px 28px rgba(0,0,0,.2)}
@@ -98,6 +98,21 @@
 .suppbox{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px;border:1px dashed var(--line);border-radius:12px;background:var(--panel2)}
 .suppbox .wide{grid-column:1/-1}
 @media(max-width:560px){.suppbox{grid-template-columns:1fr}}
+body.role-cashier .ownonly{display:none!important}
+/* v4 compact chrome */
+.topbar{min-height:54px!important;padding:8px 18px!important}
+.tb-store{font-size:clamp(16px,1.4vw,20px)!important;font-weight:700!important;letter-spacing:0!important;text-align:left!important}
+.top-title{display:none!important}
+.tb-page{flex:none}
+.toplogo{height:36px!important;max-width:104px!important}
+#todayLabel{font-size:12px!important;line-height:1.25!important;color:var(--muted)}
+.top-actions button{padding:7px 11px!important;font-size:13px!important;min-height:0!important}
+.nav{font-size:13.5px!important;padding:9px 12px!important;gap:10px!important}
+.nav .ico{width:18px!important;height:18px!important}
+.pagehead h1{font-size:22px!important}
+.stat .value{font-size:22px}
+@media(max-width:700px){.topbar{padding:8px 12px!important}.tb-store{font-size:15px!important}.toplogo{height:30px!important}.pagehead h1{font-size:19px!important}}
+@media(pointer:coarse){.nav{min-height:40px!important}}
 </style>
 </head>
 <body>
@@ -129,24 +144,14 @@
   <button class="nav" data-view="report30"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg><span>Last 30 Days Report</span></button>
   <button class="nav" data-view="reportyear"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg><span>Last 1 Year Report</span></button>
   <button class="nav" data-view="settings"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg><span>Settings & Backup</span></button>
-  <div class="sidefoot"><span id="storeLabel">Cloud synced</span><br>v3.0 Cloud • Sri Lankan Rupees (LKR)</div>
+  <div class="sidefoot"><span id="storeLabel">Cloud synced</span><br>v4.0 Cloud • Sri Lankan Rupees (LKR)</div>
 </aside>
 <main class="main">
 <header class="topbar"><div class="tb-left"><button class="secondary mobilemenu" id="menuBtn">☰</button><img id="topLogo" class="toplogo hidden" alt="Store logo"></div><div class="tb-store" id="topStoreName"></div><div class="tb-break"></div><div class="tb-page"><div class="top-title" id="topTitle">Dashboard</div><div class="muted" style="font-size:11px;line-height:1.3" id="todayLabel"></div></div><div class="top-actions"><span class="pill good" id="syncPill">● Connecting…</span><span class="muted" id="userLabel" style="font-size:12px"></span><button class="secondary" id="logoutBtn">Log out</button><button class="secondary" id="themeBtn">☾ Dark mode</button></div></header>
 <div class="content">
 <section class="view active" id="view-dashboard">
- <div class="pagehead"><div><h1>Store overview</h1><div class="muted">Your communication shop at a glance.</div></div><button onclick="go('pos')">＋ New sale</button></div>
- <div class="grid stats">
-  <div class="stat"><div class="label">TODAY'S SALES</div><div class="value" id="dashToday">Rs 0.00</div><div class="sub" id="dashOrders">0 transactions</div></div>
-  <div class="stat"><div class="label">TOTAL SALES</div><div class="value" id="dashTotal">Rs 0.00</div><div class="sub">All sales, after returns</div></div>
-  <div class="stat"><div class="label">PRODUCTS IN STOCK</div><div class="value" id="dashStock">0</div><div class="sub" id="dashLow">0 low stock alerts</div></div>
-  <div class="stat"><div class="label">EXPENSES THIS MONTH</div><div class="value" id="dashExpense">Rs 0.00</div><div class="sub">Recorded operating costs</div></div>
- </div>
- <div class="grid columns">
-  <div class="card"><h3>Recent sales</h3><div class="tablewrap"><table><thead><tr><th>Receipt</th><th>Date</th><th>Customer</th><th>Total</th></tr></thead><tbody id="recentSales"></tbody></table></div></div>
-  <div class="card"><h3>Low stock alerts</h3><div id="lowStockList"></div></div>
- </div>
- <div class="grid columns" style="margin-top:16px"><div class="card"><h3>Sales this week</h3><div id="weekChart"></div></div><div class="card"><h3>Quick actions</h3><div class="grid" style="grid-template-columns:repeat(2,1fr)"><button onclick="go('pos')">＋ New sale</button><button class="secondary" onclick="openProductModal()">＋ Add product</button><button class="secondary" onclick="go('customers')">♙ Add customer</button><button class="secondary" onclick="go('reports')">▥ View reports</button></div></div></div>
+ <div class="pagehead"><div><h1>Store overview</h1><div class="muted" id="dashSub">Your communication shop at a glance.</div></div><div class="dctl"><select id="dashRange" aria-label="Period"></select><button onclick="go('pos')">＋ New sale</button><button class="secondary" onclick="go('returns')">↩ Returns</button></div></div>
+ <div class="viz" id="dashBody"></div>
 </section>
 <section class="view" id="view-pos">
  <div class="pagehead"><div><h1>Point of Sale</h1><div class="muted">Select products, collect payment and print a receipt.</div></div><button class="secondary" onclick="clearCart()">Clear cart</button></div>
@@ -156,12 +161,12 @@
  </div>
 </section>
 <section class="view" id="view-inventory">
- <div class="pagehead"><div><h1>Inventory & Products</h1><div class="muted">Manage phones, SIMs, reloads, accessories and services.</div></div><button onclick="openProductModal()">＋ Add product</button></div>
- <div class="toolbar"><input id="invSearch" placeholder="Search products…"><select id="invCategory"><option value="">All categories</option></select><select id="stockFilter"><option value="">All stock levels</option><option value="low">Low stock</option><option value="out">Out of stock</option></select><button class="secondary" onclick="exportProducts()">Export CSV</button></div>
+ <div class="pagehead"><div><h1>Inventory & Products</h1><div class="muted">Manage phones, SIMs, reloads, accessories and services.</div></div><button class="ownonly" onclick="openProductModal()">＋ Add product</button></div>
+ <div class="toolbar"><input id="invSearch" placeholder="Search products…"><select id="invCategory"><option value="">All categories</option></select><select id="stockFilter"><option value="">All stock levels</option><option value="low">Low stock</option><option value="out">Out of stock</option></select><button class="secondary ownonly" onclick="exportProducts()">Export CSV</button></div>
  <div class="card"><div class="tablewrap"><table><thead><tr><th>SKU</th><th>Product</th><th>Category</th><th>Cost</th><th>Price</th><th>Stock</th><th>Reorder at</th><th>Actions</th></tr></thead><tbody id="inventoryRows"></tbody></table></div></div>
 </section>
 <section class="view" id="view-sales">
- <div class="pagehead"><div><h1>Sales & Receipts</h1><div class="muted">Search past sales and reprint receipts.</div></div><button class="secondary" onclick="exportSales()">Export CSV</button></div>
+ <div class="pagehead"><div><h1>Sales & Receipts</h1><div class="muted">Search past sales and reprint receipts.</div></div><button class="secondary ownonly" onclick="exportSales()">Export CSV</button></div>
  <div class="toolbar"><input id="salesSearch" placeholder="Search receipt or customer…"><input id="salesDate" type="date"><button class="secondary" onclick="document.getElementById('salesDate').value='';renderSales()">Reset date</button></div>
  <div class="card"><div class="tablewrap"><table><thead><tr><th>Receipt</th><th>Date/time</th><th>Customer</th><th>Payment</th><th>Items</th><th>Total</th><th>Actions</th></tr></thead><tbody id="salesRows"></tbody></table></div></div>
 </section>
@@ -183,7 +188,7 @@
  <div class="card"><h3>Returns history</h3><div class="tablewrap"><table><thead><tr><th>Date</th><th>Return no.</th><th>Invoice</th><th>Customer</th><th>Items returned</th><th>Refund</th><th>Profit reduced</th><th>Stock</th><th>Actions</th></tr></thead><tbody id="retRows"></tbody></table></div></div>
 </section>
 <section class="view" id="view-debts">
- <div class="pagehead"><div><h1>Due Payments</h1><div class="muted">Any unpaid balance from a sale is added here automatically. Record later payments to reduce the balance.</div></div><button class="secondary" onclick="exportDebts()">Export Naya CSV</button></div>
+ <div class="pagehead"><div><h1>Due Payments</h1><div class="muted">Any unpaid balance from a sale is added here automatically. Record later payments to reduce the balance.</div></div><button class="secondary" onclick="exportDebts()">Export CSV</button></div>
  <div class="grid stats" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div class="stat"><div class="label">TOTAL OUTSTANDING</div><div class="value" id="debtTotal">Rs 0.00</div><div class="sub">All unpaid balances</div></div><div class="stat"><div class="label">CUSTOMERS WITH DUES</div><div class="value" id="debtCount">0</div><div class="sub">Open due records</div></div></div>
  <div class="card" style="margin-bottom:16px"><h3>Balance by customer</h3><div class="muted" style="margin-bottom:10px;font-size:13px">All unpaid invoices of the same customer added together. Receive a payment against the whole balance (oldest invoice is cleared first) or print the balance for the customer.</div><div class="tablewrap"><table><thead><tr><th>Customer</th><th>Phone</th><th>Open invoices</th><th>Oldest due</th><th>Total balance</th><th>Actions</th></tr></thead><tbody id="debtGroupRows"></tbody></table></div></div>
  <div class="toolbar"><input id="debtSearch" placeholder="Search customer, phone or receipt…"><select id="debtFilter"><option value="open">Outstanding only</option><option value="all">All dues</option><option value="paid">Fully paid</option></select></div>
@@ -201,23 +206,23 @@
  <div class="card"><div class="tablewrap"><table><thead><tr><th>Date</th><th>Description</th><th>Category</th><th>Amount</th><th>Actions</th></tr></thead><tbody id="expenseRows"></tbody></table></div></div>
 </section>
 <section class="view" id="view-reports">
- <div class="pagehead"><div><h1>Reports</h1><div class="muted">Sales, product performance and estimated gross profit.</div></div><button class="secondary" onclick="exportSales()">Export sales CSV</button></div>
- <div class="grid stats"><div class="stat"><div class="label">GROSS SALES</div><div class="value" id="reportGross">Rs 0.00</div></div><div class="stat"><div class="label">DISCOUNTS</div><div class="value" id="reportDiscount">Rs 0.00</div></div><div class="stat"><div class="label">EST. GROSS PROFIT</div><div class="value" id="reportProfit">Rs 0.00</div></div><div class="stat"><div class="label">NET AFTER EXPENSES*</div><div class="value" id="reportNet">Rs 0.00</div></div></div>
- <div class="grid columns"><div class="card"><h3>Best-selling products</h3><div id="bestSellers"></div></div><div class="card"><h3>Sales by payment method</h3><div id="paymentBreakdown"></div><div class="notice" style="margin-top:16px;font-size:12px">*Estimates only, based on recorded sales (returns already deducted from profit), current product costs and entered expenses. This is not an accounting or tax report.</div></div></div>
+ <div class="pagehead"><div><h1>Reports</h1><div class="muted">Profit or loss, cash movement and key balances in accounting format, with charts.</div></div><div class="actions"><button onclick="downloadPeriodPdf('rep')">⬇ Download A4 PDF</button><button class="secondary" onclick="downloadPeriodReport('rep')">🖨 Print</button><button class="secondary ownonly" onclick="exportSales()">Export sales CSV</button></div></div>
+ <div class="card repctl"><label for="repKey"><b>Period</b></label><select id="repKey"></select><span id="repCustom" class="dctl hidden"><input type="date" id="repFrom" aria-label="From"><span class="muted">to</span><input type="date" id="repTo" aria-label="To"></span><span class="muted" style="font-size:12px">Financial year runs 1 April to 31 March.</span></div>
+ <div id="reportsBody" class="card"><div class="empty">Preparing report…</div></div>
 </section>
 <section class="view" id="view-report30">
- <div class="pagehead"><div><h1>Last 30 Days Full Report</h1><div class="muted">Sales, expenses, due payments, profit estimates and current inventory snapshot.</div></div><div class="actions"><button onclick="downloadPeriodPdf(30)">⬇ Download A4 PDF</button><button class="secondary" onclick="downloadPeriodReport(30)">🖨 Print</button></div></div>
+ <div class="pagehead"><div><h1>Last 30 Days Full Report</h1><div class="muted">Profit or loss, cash movement, charts, dues and stock for the last 30 days.</div></div><div class="actions"><button onclick="downloadPeriodPdf(30)">⬇ Download A4 PDF</button><button class="secondary" onclick="downloadPeriodReport(30)">🖨 Print</button></div></div>
  <div class="notice">The report covers today and the previous 29 days. Click <b>Download A4 PDF</b> to save the report as a PDF file directly. (<b>Print</b> opens the print dialog instead.)</div>
  <div id="report30Content" class="card"><div class="empty">Preparing report…</div></div>
 </section>
 <section class="view" id="view-reportyear">
- <div class="pagehead"><div><h1>Last 1 Year Full Report</h1><div class="muted">Month-by-month earnings, expenses, dues and profit share for the year, plus current inventory snapshot.</div></div><div class="actions"><button onclick="downloadPeriodPdf(365)">⬇ Download A4 PDF</button><button class="secondary" onclick="downloadPeriodReport(365)">🖨 Print</button></div></div>
- <div class="notice">The report covers the last 12 calendar months (current month up to today), calculated month by month. Click <b>Download A4 PDF</b> to save the report as a PDF file directly. (<b>Print</b> opens the print dialog instead.)</div>
+ <div class="pagehead"><div><h1>Last 12 Months Full Report</h1><div class="muted">Month-by-month sales, profit and expenses with charts, plus cash movement and key balances.</div></div><div class="actions"><button onclick="downloadPeriodPdf(365)">⬇ Download A4 PDF</button><button class="secondary" onclick="downloadPeriodReport(365)">🖨 Print</button></div></div>
+ <div class="notice">The report covers the last 12 calendar months (this month up to today), month by month. Click <b>Download A4 PDF</b> to save the report as a PDF file directly. (<b>Print</b> opens the print dialog instead.)</div>
  <div id="reportYearContent" class="card"><div class="empty">Preparing report…</div></div>
 </section>
 <section class="view" id="view-settings">
  <div class="pagehead"><div><h1>Settings & Backup</h1><div class="muted">Store details, currency display, data backup and restore.</div></div></div>
- <div class="grid columns"><div class="card"><h3>Store information</h3><div class="formgrid"><div class="field wide"><label>Store name</label><input id="setStoreName" placeholder="My Communication Store"></div><div class="field"><label>Phone</label><input id="setPhone" placeholder="07X XXX XXXX"></div><div class="field"><label>Address</label><input id="setAddress" placeholder="Street, town"></div><div class="field"><label>Receipt footer</label><input id="setFooter" placeholder="Thank you! Come again."></div><div class="field wide"><label>Store logo (PNG, JPG, WEBP, SVG)</label><input id="setLogo" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml"><div class="muted" style="font-size:12px">Logo is saved to the cloud (auto-resized) and shown on receipts. Max file size: 2 MB.</div><div id="logoPreview" style="display:flex;align-items:center;gap:10px"></div><button type="button" class="secondary" onclick="removeStoreLogo()">Remove logo</button></div><div class="field"><label>Receipt paper size</label><select id="setReceiptSize"><option value="80">80 mm thermal roll (72 mm printable) — standard</option><option value="58">58 mm thermal roll (48 mm printable) — compact</option><option value="A4">A4 paper</option></select></div><div class="field"><label>Low-stock alert threshold</label><input type="number" min="0" id="setLowStock" value="5"></div><div class="field hidden"><label>Auto-print receipt after each sale</label><select id="setAutoPrint"><option value="yes">Yes</option><option value="no">No (print from Sales &amp; Receipts)</option></select></div><div class="field"><label>Show store logo on receipt</label><select id="setShowLogo"><option value="yes">Yes</option><option value="no">No</option></select></div><div class="field wide muted" style="font-size:12px">Receipts print and download as the receipt only, sized to the paper above. In the print dialog choose your receipt printer, set <b>Margins: None</b>, <b>Scale: 100%</b> and turn off <b>Headers and footers</b>.</div><div class="field wide"><button onclick="saveSettings()">Save settings</button></div></div></div>
+ <div class="grid columns"><div class="card"><h3>Store information</h3><div class="formgrid"><div class="field wide"><label>Store name</label><input id="setStoreName" placeholder="My Communication Store"></div><div class="field"><label>Phone</label><input id="setPhone" placeholder="07X XXX XXXX"></div><div class="field"><label>Address</label><input id="setAddress" placeholder="Street, town"></div><div class="field"><label>Business registration no. (BR)</label><input id="setRegNo" placeholder="Optional"></div><div class="field"><label>TIN (tax identification no.)</label><input id="setTin" placeholder="Optional"></div><div class="field"><label>VAT registered?</label><select id="setVatOn"><option value="no">No</option><option value="yes">Yes: print TAX INVOICE</option></select></div><div class="field"><label>VAT registration no.</label><input id="setVatNo" placeholder="If VAT registered"></div><div class="field"><label>VAT rate (%)</label><input id="setVatRate" type="number" min="0" max="100" step="0.01" value="18"></div><div class="field wide"><label>Return / exchange policy (printed on receipts)</label><input id="setReturnPolicy" placeholder="e.g. Goods can be exchanged within 7 days with this receipt"></div><div class="field wide muted" style="font-size:12px">Selling prices are treated as VAT-inclusive. When VAT is on, receipts show the VAT included in the total and reports show an estimated output VAT figure. This is a convenience, not tax advice; confirm with your accountant.</div><div class="field"><label>Receipt footer</label><input id="setFooter" placeholder="Thank you! Come again."></div><div class="field wide"><label>Store logo (PNG, JPG, WEBP, SVG)</label><input id="setLogo" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml"><div class="muted" style="font-size:12px">Logo is saved to the cloud (auto-resized) and shown on receipts. Max file size: 2 MB.</div><div id="logoPreview" style="display:flex;align-items:center;gap:10px"></div><button type="button" class="secondary" onclick="removeStoreLogo()">Remove logo</button></div><div class="field"><label>Receipt paper size</label><select id="setReceiptSize"><option value="80">80 mm thermal roll (72 mm printable) — standard</option><option value="58">58 mm thermal roll (48 mm printable) — compact</option><option value="A4">A4 paper</option></select></div><div class="field"><label>Low-stock alert threshold</label><input type="number" min="0" id="setLowStock" value="5"></div><div class="field hidden"><label>Auto-print receipt after each sale</label><select id="setAutoPrint"><option value="yes">Yes</option><option value="no">No (print from Sales &amp; Receipts)</option></select></div><div class="field"><label>Show store logo on receipt</label><select id="setShowLogo"><option value="yes">Yes</option><option value="no">No</option></select></div><div class="field wide muted" style="font-size:12px">Receipts print and download as the receipt only, sized to the paper above. In the print dialog choose your receipt printer, set <b>Margins: None</b>, <b>Scale: 100%</b> and turn off <b>Headers and footers</b>.</div><div class="field wide"><button onclick="saveSettings()">Save settings</button></div></div></div>
  <div class="card"><h3>Backup & restore</h3><p class="muted">Export all products, customers, sales, expenses and settings as a JSON backup. Keep a copy somewhere safe.</p><div class="grid"><button onclick="backupData()">Download full backup (JSON)</button><label class="field"><span>Restore from backup file</span><input id="restoreFile" type="file" accept=".json,application/json"></label><button class="secondary" onclick="restoreData()">Restore backup</button><button class="secondary" onclick="loadDemoData()">Load sample data</button><button class="secondary" onclick="importLocalData()">Upload old browser data to cloud</button><button class="danger" onclick="resetAllData()">Delete all store data</button></div><div class="notice" style="margin-top:14px">Data is saved to the cloud (Firebase) for this store and syncs live to every PC that logs in with this store's accounts. If the internet drops, sales are kept on this PC and uploaded when it reconnects. Still download a JSON backup regularly.</div></div></div>
  <div class="card" style="margin-top:16px"><h3>How to use</h3><ol class="muted"><li>Add your products and opening stock in Inventory.</li><li>Use Point of Sale to add items and complete sales.</li><li>Use Customers and Expenses to maintain records.</li><li>Export CSV for spreadsheets or download a full JSON backup.</li><li>Switch Light/Dark mode using the button in the top bar.</li></ol></div>
 </section>
@@ -231,11 +236,13 @@
 <script>
 const $=id=>document.getElementById(id);
 const money=n=>'Rs '+Number(n||0).toLocaleString('en-LK',{minimumFractionDigits:2,maximumFractionDigits:2});
-const today=()=>new Date().toISOString().slice(0,10);
+const localISO=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const today=()=>localISO(new Date());
+const r2=n=>Math.round((Number(n)||0)*100)/100;
 const dateTime=()=>new Date().toLocaleString();
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const defaults={store:{name:'My Communication Store',phone:'',address:'',footer:'Thank you! Come again.',lowStock:5,logo:'',receiptSize:'80',autoPrint:'yes',showLogo:'yes'},products:[],customers:[],sales:[],expenses:[],debts:[],returns:[],purchases:[]};
+const defaults={store:{name:'My Communication Store',phone:'',address:'',footer:'Thank you! Come again.',lowStock:5,logo:'',receiptSize:'80',autoPrint:'yes',showLogo:'yes',regNo:'',tin:'',vatNo:'',vatOn:'no',vatRate:18,returnPolicy:''},products:[],customers:[],sales:[],expenses:[],debts:[],returns:[],purchases:[]};
 let db=structuredClone(defaults),cart=[];
 
 /*CLOUD-START*/
@@ -249,7 +256,7 @@ function sortCol(c,arr){const byId=(a,b)=>String(a.id).localeCompare(String(b.id
 function showLogin(msg,loading){$('appRoot').classList.add('hidden');$('loginScreen').classList.remove('hidden');$('loginForm').classList.toggle('hidden',!!loading);$('loginLoading').classList.toggle('hidden',!loading);$('loginMsg').textContent=msg||''}
 function hideLogin(){$('loginScreen').classList.add('hidden');$('appRoot').classList.remove('hidden')}
 function setSync(){const p=$('syncPill');if(!p)return;const on=navigator.onLine;p.textContent=on?'● Cloud synced':'● Offline — saved on this PC, will sync later';p.className='pill '+(on?'good':'warn')}
-function applyRole(){const hide=userRole==='cashier'?['reports','report30','reportyear','expenses','settings']:[];document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('hidden',hide.includes(b.dataset.view)));go('dashboard')}
+function applyRole(){document.body.classList.toggle('role-cashier',userRole==='cashier');const hide=userRole==='cashier'?['reports','report30','reportyear','expenses','settings','payables']:[];document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('hidden',hide.includes(b.dataset.view)));go('dashboard')}
 function stopListeners(){unsubs.forEach(u=>{try{u()}catch(e){}});unsubs=[];storeId='';userRole='';remote={};settingsRemote=null;readyFlags={};db=structuredClone(defaults);cart=[];renderAll()}
 function onSnapErr(err){console.error(err);loginMsg='Could not load store data ('+(err.code||'error')+'). Check the security rules and the storeId of this user.';if(auth)auth.signOut()}
 function startListeners(){
@@ -335,7 +342,7 @@ function importLocalData(){
 function save(){cloudSync();renderAll()}
 /*CLOUD-END*/
 function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2600)}
-function go(name){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('active',b.dataset.view===name));$('topTitle').textContent=({dashboard:'Dashboard',pos:'Point of Sale',inventory:'Inventory & Products',sales:'Sales & Receipts',customers:'Customers',expenses:'Expenses',reports:'Reports',report30:'Last 30 Days Report',reportyear:'Last 1 Year Report',settings:'Settings & Backup',debts:'Due Payments',returns:'Returns',payables:'Supplier Dues'})[name]||name;$('sidebar').classList.remove('open');if(name==='pos')renderPOS();if(name==='inventory')renderInventory();if(name==='sales')renderSales();if(name==='debts')renderDebts();if(name==='returns')renderReturns();if(name==='payables')renderPayables();if(name==='customers')renderCustomers();if(name==='expenses')renderExpenses();if(name==='reports')renderReports();if(name==='report30')renderPeriodReport(30);if(name==='reportyear')renderPeriodReport(365);if(name==='settings')fillSettings()}
+function go(name){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('active',b.dataset.view===name));$('topTitle').textContent=({dashboard:'Dashboard',pos:'Point of Sale',inventory:'Inventory & Products',sales:'Sales & Receipts',customers:'Customers',expenses:'Expenses',reports:'Reports',report30:'Last 30 Days Report',reportyear:'Last 1 Year Report',settings:'Settings & Backup',debts:'Due Payments',returns:'Returns',payables:'Supplier Dues'})[name]||name;$('sidebar').classList.remove('open');if(name==='dashboard')renderDashboard();if(name==='pos')renderPOS();if(name==='inventory')renderInventory();if(name==='sales')renderSales();if(name==='debts')renderDebts();if(name==='returns')renderReturns();if(name==='payables')renderPayables();if(name==='customers')renderCustomers();if(name==='expenses')renderExpenses();if(name==='reports')renderReports();if(name==='report30')renderPeriodReport(30);if(name==='reportyear')renderPeriodReport(365);if(name==='settings')fillSettings()}
 document.querySelectorAll('.nav').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view)));
 $('menuBtn').onclick=()=>$('sidebar').classList.toggle('open');
 $('todayLabel').innerHTML=esc(new Date().toLocaleDateString())+'<br>Have A Nice Day!';
@@ -344,32 +351,32 @@ $('themeBtn').onclick=()=>{let t=document.documentElement.dataset.theme==='dark'
 function fmtDate(d){return d?new Date(d).toLocaleDateString():''}
 function monthMatch(d){return String(d||'').slice(0,7)===today().slice(0,7)}
 function totalSale(s){return Number(s.total)||0}
-function renderTopbar(){const st=db.store||{},img=$('topLogo');$('topStoreName').textContent=st.name||'';const has=!!st.logo;img.classList.toggle('hidden',!has);if(has&&img.getAttribute('src')!==st.logo)img.src=st.logo}
-function renderAll(){renderTopbar();renderDashboard();renderPOS();renderInventory();renderSales();renderReturns();renderDebts();renderPayables();renderCustomers();renderExpenses();renderReports();renderPeriodReport(30);renderPeriodReport(365);fillCustomerOptions();fillCategoryOptions()}
-function renderDashboard(){
- const ts=db.sales.filter(s=>s.date===today()), total=db.sales.reduce((a,s)=>a+totalSale(s),0)-retList().reduce((a,r)=>a+retValue(r),0), stock=db.products.reduce((a,p)=>a+Number(p.stock||0),0), ex=db.expenses.filter(e=>monthMatch(e.date)).reduce((a,e)=>a+Number(e.amount||0),0), low=db.products.filter(p=>Number(p.stock)<=Number(db.store.lowStock));
- $('dashToday').textContent=money(ts.reduce((a,s)=>a+totalSale(s),0)-retList().filter(r=>r.date===today()).reduce((a,r)=>a+retValue(r),0));$('dashOrders').textContent=ts.length+' transactions'+(retList().filter(r=>r.date===today()).reduce((a,r)=>a+retValue(r),0)>0?' · '+money(retList().filter(r=>r.date===today()).reduce((a,r)=>a+retValue(r),0))+' returned':'');$('dashTotal').textContent=money(total);$('dashStock').textContent=stock;$('dashLow').textContent=low.length+' low stock alerts';$('dashExpense').textContent=money(ex);
- $('recentSales').innerHTML=db.sales.slice().reverse().slice(0,6).map(s=>`<tr><td>${esc(s.id)}</td><td>${esc(s.date)}</td><td>${esc(s.customerName||'Walk-in')}</td><td><b>${money(s.total)}</b></td></tr>`).join('')||'<tr><td colspan="4" class="empty">No sales yet. Start at Point of Sale.</td></tr>';
- $('lowStockList').innerHTML=low.slice(0,7).map(p=>`<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)"><div><b>${esc(p.name)}</b><div class="muted" style="font-size:12px">${esc(p.sku||'No SKU')}</div></div><span class="pill ${p.stock===0?'bad':'warn'}">${p.stock} left</span></div>`).join('')||'<div class="empty">All stocked up. Nice!</div>';
- let days=[];for(let i=6;i>=0;i--){let d=new Date();d.setDate(d.getDate()-i);let key=d.toISOString().slice(0,10);days.push({key,label:d.toLocaleDateString(undefined,{weekday:'short'}),v:Math.max(0,db.sales.filter(s=>s.date===key).reduce((a,s)=>a+totalSale(s),0)-retList().filter(r=>r.date===key).reduce((a,r)=>a+retValue(r),0))})}let max=Math.max(1,...days.map(x=>x.v));$('weekChart').innerHTML=days.map(d=>`<div style="margin:10px 0"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>${d.label}</span><b>${money(d.v)}</b></div><div class="chartbar"><span style="width:${d.v/max*100}%"></span></div></div>`).join('');
+function renderTopbar(){const st=db.store||{},img=$('topLogo');$('todayLabel').innerHTML=esc(new Date().toLocaleDateString())+'<br>Have A Nice Day!';$('topStoreName').textContent=st.name||'';const has=!!st.logo;img.classList.toggle('hidden',!has);if(has&&img.getAttribute('src')!==st.logo)img.src=st.logo}
+function renderActiveView(){
+ const a=document.querySelector('.view.active'),n=a?a.id.slice(5):'dashboard';
+ const map={dashboard:renderDashboard,pos:renderPOS,inventory:renderInventory,sales:renderSales,returns:renderReturns,debts:renderDebts,payables:renderPayables,customers:renderCustomers,expenses:renderExpenses,reports:renderReports,report30:()=>renderPeriodReport(30),reportyear:()=>renderPeriodReport(365)};
+ if(map[n])map[n]();
 }
+function renderAll(){renderTopbar();fillCustomerOptions();fillCategoryOptions();renderActiveView()}
 function fillCategoryOptions(){let cats=[...new Set(db.products.map(p=>p.category).filter(Boolean))].sort();['posCategory','invCategory'].forEach(id=>{let el=$(id),old=el.value;el.innerHTML='<option value="">All categories</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join('');el.value=old})}
 function fillCustomerOptions(){let el=$('saleCustomer'),old=el.value;el.innerHTML='<option value="">Walk-in customer</option>'+db.customers.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}${c.phone?' — '+esc(c.phone):''}</option>`).join('');el.value=old}
 function renderPOS(){let q=($('posSearch')?.value||'').toLowerCase(),cat=$('posCategory')?.value||'';let ps=db.products.filter(p=>(!q||[p.name,p.sku,p.category].join(' ').toLowerCase().includes(q))&&(!cat||p.category===cat));$('posProducts').innerHTML=ps.map(p=>`<div class="product"><div class="emoji">${esc(p.emoji||'📦')}</div><div class="pname">${esc(p.name)}</div><div class="muted" style="font-size:12px">${esc(p.category||'Uncategorized')} · ${esc(p.sku||'No SKU')}</div><div class="price">${money(p.price)}</div><div class="muted" style="font-size:12px">Stock: ${p.stock}</div><button ${p.stock<=0?'disabled':''} onclick="addToCart('${p.id}')">${p.stock<=0?'Out of stock':'＋ Add'}</button></div>`).join('')||'<div class="empty" style="grid-column:1/-1">No products found. Add products in Inventory.</div>';renderCart()}
-function addToCart(id){let p=db.products.find(x=>x.id===id);if(!p||p.stock<=0)return toast('Product is out of stock');let item=cart.find(x=>x.id===id);if(item){if(item.qty>=p.stock)return toast('Not enough stock');item.qty++}else cart.push({id:p.id,name:p.name,price:Number(p.price),cost:Number(p.cost),qty:1});renderCart()}
-function changeQty(id,d){let it=cart.find(x=>x.id===id),p=db.products.find(x=>x.id===id);if(!it)return;it.qty+=d;if(it.qty<=0)cart=cart.filter(x=>x.id!==id);else if(it.qty>p.stock){it.qty=p.stock;toast('Not enough stock')}renderCart()}
+function addToCart(id){let p=db.products.find(x=>x.id===id);if(!p||p.stock<=0)return toast('Product is out of stock');let item=cart.find(x=>x.id===id);if(item){if(item.qty>=p.stock)return toast('Not enough stock');item.qty++}else cart.push({id:p.id,name:p.name,price:Number(p.price)||0,cost:Number(p.cost)||0,qty:1});renderCart()}
+function changeQty(id,d){let it=cart.find(x=>x.id===id),p=db.products.find(x=>x.id===id);if(!it)return;if(!p){cart=cart.filter(x=>x.id!==id);return renderCart()}it.qty+=d;if(it.qty<=0)cart=cart.filter(x=>x.id!==id);else if(it.qty>p.stock){it.qty=p.stock;toast('Not enough stock')}renderCart()}
 function clearCart(){cart=[];renderCart()}
-function cartTotals(){let sub=cart.reduce((a,x)=>a+x.price*x.qty,0),discount=Math.min(sub,Math.max(0,Number($('discount').value)||0));return {sub,discount,total:Math.max(0,sub-discount)}}
+function cartTotals(){let sub=cart.reduce((a,x)=>a+x.price*x.qty,0),discount=Math.min(sub,Math.max(0,Number($('discount').value)||0));return {sub:r2(sub),discount:r2(discount),total:r2(Math.max(0,sub-discount))}}
 function renderCart(){if(!$('cartLines'))return;let {sub,discount,total}=cartTotals();$('cartLines').innerHTML=cart.map(x=>`<div class="cartline"><div><b>${esc(x.name)}</b><div class="muted">${money(x.price)} × ${x.qty}</div></div><div class="qty"><button class="secondary" onclick="changeQty('${x.id}',-1)">−</button><b>${x.qty}</b><button class="secondary" onclick="changeQty('${x.id}',1)">+</button></div></div>`).join('')||'<div class="empty">Your cart is empty</div>';$('cartCount').textContent=cart.reduce((a,x)=>a+x.qty,0)+' items';$('cartSubtotal').textContent=money(sub);$('cartDiscount').textContent=money(discount);$('cartTotal').textContent=money(total);let method=$('paymentMethod').value,received=$('amountReceived').value===''?(method==='Credit'?0:total):Math.max(0,Number($('amountReceived').value)||0);$('cartChange').textContent=money(Math.max(0,received-total));if($('cartDue'))$('cartDue').textContent=money(Math.max(0,total-received))}
-$('posSearch').addEventListener('input',renderPOS);$('posCategory').addEventListener('change',renderPOS);$('discount').addEventListener('input',renderCart);$('amountReceived').addEventListener('input',renderCart);$('paymentMethod').addEventListener('change',renderCart);
+$('posSearch').addEventListener('input',renderPOS);
+$('posSearch').addEventListener('keydown',e=>{if(e.key!=='Enter')return;e.preventDefault();const q=e.target.value.trim().toLowerCase();if(!q)return;let m=db.products.filter(p=>String(p.sku||'').toLowerCase()===q);if(!m.length)m=db.products.filter(p=>[p.name,p.sku,p.category].join(' ').toLowerCase().includes(q));if(m.length===1){addToCart(m[0].id);e.target.value='';renderPOS()}else toast(m.length?m.length+' items match, pick one below':'No product found')});$('posCategory').addEventListener('change',renderPOS);$('discount').addEventListener('input',renderCart);$('amountReceived').addEventListener('input',renderCart);$('paymentMethod').addEventListener('change',renderCart);
 function doCompleteSale(printAfter){
  if(!cart.length)return toast('Add at least one product');
  for(let it of cart){let p=db.products.find(p=>p.id===it.id);if(!p||p.stock<it.qty)return toast('Stock changed for '+it.name+'. Review the cart.')}
  let {sub,discount,total}=cartTotals(),customer=db.customers.find(c=>c.id===$('saleCustomer').value),method=$('paymentMethod').value,received=$('amountReceived').value===''?(method==='Credit'?0:total):Math.max(0,Number($('amountReceived').value)||0);
+ if(total-received>0.005&&!customer){$('saleCustomer').focus();return toast('Choose a customer for a credit / part-payment sale, so the balance can be collected later')}
  // Partial payments are allowed: the unpaid balance is automatically recorded under Due Payments.
- let sale={id:'CP-'+new Date().toISOString().replace(/\D/g,'').slice(0,14)+'-'+Math.random().toString(36).slice(2,5).toUpperCase(),date:today(),datetime:dateTime(),customerId:customer?.id||'',customerName:customer?.name||'Walk-in',customerPhone:customer?.phone||'',items:cart.map(x=>({...x})),subtotal:sub,discount,total,received:Math.min(received,total),change:Math.max(0,received-total),payment:method};
- sale.profit=sale.items.reduce((a,x)=>a+(x.price-x.cost)*x.qty,0)-discount;
- sale.items.forEach(x=>{let p=db.products.find(p=>p.id===x.id);p.stock-=x.qty});db.sales.push(sale);let due=Math.max(0,total-received);if(due>0){if(!Array.isArray(db.debts))db.debts=[];db.debts.push({id:uid(),saleId:sale.id,date:today(),datetime:sale.datetime,customerId:sale.customerId,customerName:sale.customerName,customerPhone:sale.customerPhone,total:total,received:Math.min(received,total),paidLater:0,balance:due,payments:[]});}save();cart=[];$('discount').value=0;$('amountReceived').value='';$('paymentMethod').value='Cash';$('saleCustomer').value='';renderCart();showReceipt(sale,printAfter);toast(due>0?'Sale completed; unpaid balance added to Naya':'Sale completed successfully')
+ let sale={id:'CP-'+new Date().toISOString().replace(/\D/g,'').slice(0,14)+'-'+Math.random().toString(36).slice(2,5).toUpperCase(),date:today(),datetime:dateTime(),customerId:customer?.id||'',customerName:customer?.name||'Walk-in',customerPhone:customer?.phone||'',items:cart.map(x=>({...x})),subtotal:sub,discount,total,received:Math.min(received,total),change:Math.max(0,received-total),payment:method,ts:Date.now(),served:(auth&&auth.currentUser&&auth.currentUser.email)||''};
+ sale.profit=r2(sale.items.reduce((a,x)=>a+(x.price-x.cost)*x.qty,0)-discount);
+ sale.items.forEach(x=>{let p=db.products.find(p=>p.id===x.id);if(p)p.stock-=x.qty});db.sales.push(sale);let due=Math.max(0,total-received);if(due>0){if(!Array.isArray(db.debts))db.debts=[];db.debts.push({id:uid(),saleId:sale.id,date:today(),datetime:sale.datetime,customerId:sale.customerId,customerName:sale.customerName,customerPhone:sale.customerPhone,total:total,received:Math.min(received,total),paidLater:0,balance:due,payments:[]});}save();cart=[];$('discount').value=0;$('amountReceived').value='';$('paymentMethod').value='Cash';$('saleCustomer').value='';renderCart();showReceipt(sale,printAfter);toast(due>0?'Sale completed; unpaid balance added to Due Payments':'Sale completed successfully')
 }
 $('completeSale').onclick=()=>doCompleteSale(false);$('completeSalePrint').onclick=()=>doCompleteSale(true);
 const RECEIPT_SPECS={'80':{w:80,pad:4,font:11.5,logo:46},'58':{w:58,pad:4.5,font:9.5,logo:34}};
@@ -381,7 +388,8 @@ function receiptCSS(size){
  return `.rc{box-sizing:border-box;width:${width};${A4?'margin:0 auto;':'margin:0;'}padding:${A4?'6mm':'3mm '+pad+' 5mm'};font:${fs}px/1.4 Arial,Helvetica,sans-serif;color:#000;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;page-break-inside:avoid}.rc *{box-sizing:border-box}.rc .c{text-align:center}.rc .b{font-weight:700}.rc .name{font-size:1.35em;font-weight:800;text-align:center;margin:2px 0}.rc .logo{text-align:center;margin-bottom:4px}.rc .logo img{max-width:${logo}mm;max-height:20mm;object-fit:contain;filter:grayscale(1)}.rc hr{border:0;border-top:1px dashed #000;margin:5px 0}.rc hr.thin{border-top:1px solid #000}.rc .row{display:flex;justify-content:space-between;gap:6px}.rc .row span:last-child{text-align:right;white-space:nowrap}.rc .it{font-weight:600;overflow-wrap:anywhere;margin-top:3px}.rc .tot{font-size:1.25em;font-weight:800;border-top:1px solid #000;border-bottom:1px solid #000;padding:3px 0;margin:4px 0}.rc .small{font-size:.88em}.rc .id{word-break:break-all}.rc .tiny{font-size:.68em;line-height:1.3;margin-top:4px;letter-spacing:.1px}`;
 }
 const rcLine=(a,b,cls='')=>`<div class="row ${cls}"><span>${a}</span><span>${b}</span></div>`;
-function rcHead(st,title){const logo=(st.logo&&st.showLogo!=='no')?`<div class="logo"><img src="${st.logo}" alt=""></div>`:'';return `${logo}<div class="name">${esc(st.name||'Store')}</div>${st.address?`<div class="c">${esc(st.address)}</div>`:''}${st.phone?`<div class="c">Tel: ${esc(st.phone)}</div>`:''}<hr><div class="c b">${title}</div>`}
+const rcIds=st=>[st.regNo&&'BR No: '+esc(st.regNo),st.tin&&'TIN: '+esc(st.tin),st.vatOn==='yes'&&st.vatNo&&'VAT Reg No: '+esc(st.vatNo)].filter(Boolean).map(x=>`<div class="c small">${x}</div>`).join('');
+function rcHead(st,title){const logo=(st.logo&&st.showLogo!=='no')?`<div class="logo"><img src="${st.logo}" alt=""></div>`:'';return `${logo}<div class="name">${esc(st.name||'Store')}</div>${st.address?`<div class="c">${esc(st.address)}</div>`:''}${st.phone?`<div class="c">Tel: ${esc(st.phone)}</div>`:''}${rcIds(st)}<hr><div class="c b">${title}</div>`}
 const rcFoot=st=>`<hr><div class="c" style="white-space:pre-wrap">${esc(st.footer||'Thank you!')}</div><div class="c tiny">Con-Nect POS by Sio Creations<br>Tel: 075 510 3772</div>`;
 function statementBodyHTML(s){
  const st=db.store||{};
@@ -396,7 +404,8 @@ function receiptBodyHTML(s){
  const st=db.store||{},items=s.items||[],tot=Number(s.total||0),rec=s.received!=null?Number(s.received):tot,due=Math.max(0,tot-rec),qty=items.reduce((a,x)=>a+Number(x.qty||0),0);
  const logo=(st.logo&&st.showLogo!=='no')?`<div class="logo"><img src="${st.logo}" alt=""></div>`:'';
  const line=(a,b,cls='')=>`<div class="row ${cls}"><span>${a}</span><span>${b}</span></div>`;
- return `<div class="rc">${logo}<div class="name">${esc(st.name||'Store')}</div>${st.address?`<div class="c">${esc(st.address)}</div>`:''}${st.phone?`<div class="c">Tel: ${esc(st.phone)}</div>`:''}<hr><div class="c b">SALES RECEIPT</div><div class="id">Receipt: ${esc(s.id)}</div><div>Date: ${esc(s.datetime||s.date)}</div><div>Customer: ${esc(s.customerName||'Walk-in')}</div>${s.customerPhone?`<div>Phone: ${esc(s.customerPhone)}</div>`:''}<hr><div class="row b small"><span>ITEM</span><span>AMOUNT (LKR)</span></div><hr class="thin">${items.map(x=>`<div class="it">${esc(x.name)}</div>${line(`${x.qty} x ${rcNum(x.price)}`,rcNum(x.price*x.qty),'small')}`).join('')}<hr>${line('Items',qty)}${line('Subtotal',money(s.subtotal))}${Number(s.discount)>0?line('Discount','- '+money(s.discount)):''}<div class="row tot"><span>TOTAL</span><span>${money(tot)}</span></div>${line('Payment',esc(s.payment||''))}${line('Paid',money(Math.min(rec,tot)))}${Number(s.change)>0?line('Change',money(s.change)):''}${due>0.005?line('<b>Balance due</b>','<b>'+money(due)+'</b>'):''}<hr><div class="c" style="white-space:pre-wrap">${esc(st.footer||'Thank you!')}</div><div class="c small" style="margin-top:3px">Please keep this receipt for your records.</div><div class="c tiny">Con-Nect POS by Sio Creations<br>Tel: 075 510 3772</div></div>`;
+ const vatOn=st.vatOn==='yes',vr=Number(st.vatRate)||0,vat=vatOn?Math.round(tot*vr/(100+vr)*100)/100:0,rets=(Array.isArray(db.returns)?db.returns:[]).filter(r=>r.saleId===s.id),retAmt=rets.reduce((a,r)=>a+(Number(r.refund)||0),0);
+ return `<div class="rc">${rcHead(st,vatOn?'TAX INVOICE':'SALES RECEIPT')}<div class="id">${vatOn?'Invoice':'Receipt'}: ${esc(s.id)}</div><div>Date: ${esc(s.datetime||s.date)}</div>${s.served?`<div>Served by: ${esc(String(s.served).split('@')[0])}</div>`:''}<div>Customer: ${esc(s.customerName||'Walk-in')}</div>${s.customerPhone?`<div>Phone: ${esc(s.customerPhone)}</div>`:''}<hr><div class="row b small"><span>ITEM (QTY × UNIT PRICE)</span><span>AMOUNT (LKR)</span></div><hr class="thin">${items.map(x=>`<div class="it">${esc(x.name)}</div>${line(`${x.qty} x ${rcNum(x.price)}`,rcNum(x.price*x.qty),'small')}`).join('')}<hr>${line('Items',qty)}${line('Subtotal',money(s.subtotal))}${Number(s.discount)>0?line('Discount','- '+money(s.discount)):''}<div class="row tot"><span>TOTAL</span><span>${money(tot)}</span></div>${vatOn?line('VAT included ('+vr+'%)',money(vat),'small'):''}${retAmt>0?line('Returned / refunded','- '+money(retAmt),'small'):''}${line('Payment',esc(s.payment||''))}${line('Paid',money(Math.min(rec,tot)))}${Number(s.change)>0?line('Change',money(s.change)):''}${due>0.005?line('<b>Balance due</b>','<b>'+money(due)+'</b>'):''}<hr><div class="c" style="white-space:pre-wrap">${esc(st.footer||'Thank you!')}</div>${st.returnPolicy?`<div class="c small" style="margin-top:3px;white-space:pre-wrap">${esc(st.returnPolicy)}</div>`:''}<div class="c small" style="margin-top:3px">Please keep this receipt for your records.</div><div class="c tiny">Con-Nect POS by Sio Creations<br>Tel: 075 510 3772</div></div>`;
 }
 function receiptDocHTML(s,extraCss=''){
  const size=db.store.receiptSize||'80';
@@ -455,20 +464,21 @@ async function downloadReceipt(id){
  }
 }
 function removeStoreLogo(){db.store.logo='';save();fillSettings();toast('Store logo removed')}
-function renderInventory(){let q=($('invSearch')?.value||'').toLowerCase(),cat=$('invCategory')?.value||'',sf=$('stockFilter')?.value||'';let ps=db.products.filter(p=>(!q||[p.name,p.sku,p.category].join(' ').toLowerCase().includes(q))&&(!cat||p.category===cat)&&(!sf||(sf==='low'&&p.stock>0&&p.stock<=db.store.lowStock)||(sf==='out'&&p.stock<=0)));$('inventoryRows').innerHTML=ps.map(p=>`<tr><td>${esc(p.sku||'—')}</td><td><b>${esc(p.name)}</b></td><td>${esc(p.category||'—')}</td><td>${money(p.cost)}</td><td>${money(p.price)}</td><td><span class="pill ${p.stock<=0?'bad':p.stock<=db.store.lowStock?'warn':'good'}">${p.stock}</span></td><td>${p.reorder||db.store.lowStock}</td><td><div class="actions"><button class="small" onclick="openRestock('${p.id}')">Restock</button><button class="secondary small" onclick="editProduct('${p.id}')">Edit</button><button class="danger small" onclick="deleteProduct('${p.id}')">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="8" class="empty">No products found.</td></tr>'}
+const lowLevel=p=>(Number(p.reorder)>0?Number(p.reorder):Number(db.store.lowStock)||0);
+const isLow=p=>Number(p.stock)<=lowLevel(p);
+function renderInventory(){let q=($('invSearch')?.value||'').toLowerCase(),cat=$('invCategory')?.value||'',sf=$('stockFilter')?.value||'';let ps=db.products.filter(p=>(!q||[p.name,p.sku,p.category].join(' ').toLowerCase().includes(q))&&(!cat||p.category===cat)&&(!sf||(sf==='low'&&p.stock>0&&isLow(p))||(sf==='out'&&p.stock<=0)));$('inventoryRows').innerHTML=ps.map(p=>`<tr><td>${esc(p.sku||'—')}</td><td><b>${esc(p.name)}</b></td><td>${esc(p.category||'—')}</td><td>${userRole==='cashier'?'—':money(p.cost)}</td><td>${money(p.price)}</td><td><span class="pill ${p.stock<=0?'bad':isLow(p)?'warn':'good'}">${p.stock}</span></td><td>${lowLevel(p)}</td><td><div class="actions ownonly"><button class="small" onclick="openRestock('${p.id}')">Restock</button><button class="secondary small" onclick="editProduct('${p.id}')">Edit</button><button class="danger small" onclick="deleteProduct('${p.id}')">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="8" class="empty">No products found.</td></tr>'}
 $('invSearch').addEventListener('input',renderInventory);$('invCategory').addEventListener('change',renderInventory);$('stockFilter').addEventListener('change',renderInventory);
 function openModal(title,html){$('modalTitle').textContent=title;$('modalBody').innerHTML=html;$('modalBack').classList.add('show')}
 function closeModal(){$('modalBack').classList.remove('show')}
 function openProductModal(p={}){openModal(p.id?'Edit product':'Add product',`<form id="productForm" class="formgrid"><input type="hidden" name="id" value="${esc(p.id||'')}"><div class="field wide"><label>Product name *</label><input name="name" required value="${esc(p.name||'')}"></div><div class="field"><label>SKU / Barcode</label><input name="sku" value="${esc(p.sku||'')}"></div><div class="field"><label>Category</label><input name="category" list="catList" value="${esc(p.category||'Accessories')}" placeholder="SIM, Reload, Phone…"><datalist id="catList"><option>Phones</option><option>SIM cards</option><option>Reloads</option><option>Accessories</option><option>Repairs</option><option>Printing</option><option>Services</option></datalist></div><div class="field"><label>Cost price (Rs)</label><input name="cost" type="number" min="0" step=".01" required value="${p.cost??0}"></div><div class="field"><label>Selling price (Rs) *</label><input name="price" type="number" min="0" step=".01" required value="${p.price??0}"></div><div class="field"><label>Stock quantity *</label><input name="stock" type="number" min="0" step="1" required value="${p.stock??0}"></div><div class="field"><label>Reorder level</label><input name="reorder" type="number" min="0" value="${p.reorder??db.store.lowStock}"></div><div class="field"><label>Tile emoji</label><input name="emoji" value="${esc(p.emoji||'📦')}"></div>${p.id?'':`<div class="field wide"><label style="display:flex;gap:8px;align-items:center;font-weight:700"><input type="checkbox" id="spOn" style="width:auto"> Bought from a supplier? Add supplier details (optional)</label></div><div id="spBox" class="suppbox hidden">${supplierFieldsHTML()}</div>`}<div class="field wide"><button type="submit">Save product</button></div></form>`);if(!p.id)bindSupplierCalc(()=>Number($('productForm').stock.value)||0,()=>Number($('productForm').cost.value)||0,['stock','cost']);$('productForm').onsubmit=e=>{e.preventDefault();let f=new FormData(e.target),v=Object.fromEntries(f.entries());v.id=v.id||uid();['cost','price','stock','reorder'].forEach(k=>v[k]=Math.max(0,Number(v[k])||0));let isNew=!db.products.some(x=>x.id===v.id),sup=null;if(isNew&&$('spOn')&&$('spOn').checked){sup=readSupplierFields(v.stock,v.cost);if(sup.err)return toast(sup.err)}let ix=db.products.findIndex(x=>x.id===v.id);if(ix>=0)db.products[ix]=v;else db.products.push(v);if(sup)addPurchase(v,v.stock,v.cost,sup);closeModal();save();toast(sup?'Product saved; purchase recorded'+(sup.balance>0.005?' ('+money(sup.balance)+' to pay)':''):'Product saved')}}
 function editProduct(id){let p=db.products.find(p=>p.id===id);if(p)openProductModal(p)}
-function deleteProduct(id){let p=db.products.find(p=>p.id===id);if(p&&confirm('Delete '+p.name+'?')){db.products=db.products.filter(x=>x.id!==id);save();toast('Product deleted')}}
-function renderSales(){let q=($('salesSearch')?.value||'').toLowerCase(),d=$('salesDate')?.value||'';let ss=db.sales.slice().reverse().filter(s=>(!q||[s.id,s.customerName,s.customerPhone].join(' ').toLowerCase().includes(q))&&(!d||s.date===d));$('salesRows').innerHTML=ss.map(s=>`<tr><td><b>${esc(s.id)}</b></td><td>${esc(s.datetime||s.date)}</td><td>${esc(s.customerName||'Walk-in')}</td><td>${esc(s.payment)}</td><td>${s.items.reduce((a,x)=>a+x.qty,0)}</td><td><b>${money(s.total)}</b></td><td><div class="actions"><button class="secondary small" onclick="reprintSale('${s.id}')">Print</button><button class="secondary small" onclick="downloadReceipt('${s.id}')">Download</button><button class="danger small" onclick="voidSale('${s.id}')">Void</button></div></td></tr>`).join('')||'<tr><td colspan="7" class="empty">No sales found.</td></tr>'}
+function deleteProduct(id){if(userRole==='cashier')return toast('Only the owner can delete products');let p=db.products.find(p=>p.id===id);if(p&&confirm('Delete '+p.name+'?')){db.products=db.products.filter(x=>x.id!==id);save();toast('Product deleted')}}
+function renderSales(){let q=($('salesSearch')?.value||'').toLowerCase(),d=$('salesDate')?.value||'';let ss=db.sales.slice().reverse().filter(s=>(!q||[s.id,s.customerName,s.customerPhone].join(' ').toLowerCase().includes(q))&&(!d||s.date===d));$('salesRows').innerHTML=ss.map(s=>`<tr><td><b>${esc(s.id)}</b></td><td>${esc(s.datetime||s.date)}</td><td>${esc(s.customerName||'Walk-in')}</td><td>${esc(s.payment)}</td><td>${s.items.reduce((a,x)=>a+x.qty,0)}</td><td><b>${money(s.total)}</b></td><td><div class="actions"><button class="secondary small" onclick="reprintSale('${s.id}')">Print</button><button class="secondary small" onclick="downloadReceipt('${s.id}')">Download</button><button class="danger small ownonly" onclick="voidSale('${s.id}')">Void</button></div></td></tr>`).join('')||'<tr><td colspan="7" class="empty">No sales found.</td></tr>'}
 $('salesSearch').addEventListener('input',renderSales);$('salesDate').addEventListener('change',renderSales);
 function reprintSale(id){let s=db.sales.find(x=>x.id===id);if(s)showReceipt(s,true)}
-function voidSale(id){let s=db.sales.find(x=>x.id===id);if(!s||!confirm('Void this sale and return sold quantities to stock? This cannot be undone.'))return;s.items.forEach(x=>{let p=db.products.find(p=>p.id===x.id);if(p)p.stock+=x.qty-retQtyFor(id,x.id,true)});db.sales=db.sales.filter(x=>x.id!==id);db.debts=(db.debts||[]).filter(d=>d.saleId!==id);db.returns=retList().filter(r=>r.saleId!==id);save();toast('Sale voided; stock restored and related naya and returns removed')}
+function voidSale(id){if(userRole==='cashier')return toast('Only the owner can void a sale');let s=db.sales.find(x=>x.id===id);if(!s)return;const dd=(db.debts||[]).find(d=>d.saleId===id),later=dd?Number(dd.paidLater)||0:0;if(!confirm('Void this sale and return sold quantities to stock?'+(later>0?'\n\nNOTE: '+money(later)+' that was received later against this sale will also disappear from the reports.':'')+'\n\nThis cannot be undone.'))return;s.items.forEach(x=>{let p=db.products.find(p=>p.id===x.id);if(p)p.stock+=x.qty-retQtyFor(id,x.id,true)});db.sales=db.sales.filter(x=>x.id!==id);db.debts=(db.debts||[]).filter(d=>d.saleId!==id);db.returns=retList().filter(r=>r.saleId!==id);save();toast('Sale voided; stock restored and related dues and returns removed')}
 /*RETURNS-START*/
 let retSaleId='';
-const r2=n=>Math.round((Number(n)||0)*100)/100;
 const retList=()=>Array.isArray(db.returns)?db.returns:[];
 const retValue=r=>Number(r.refund)||0,retLoss=r=>Number(r.profitLoss)||0;
 function retQtyFor(saleId,itemId,onlyStock){let n=0;retList().forEach(r=>{if(r.saleId!==saleId||(onlyStock&&!r.restock))return;(r.items||[]).forEach(i=>{if(i.id===itemId)n+=Number(i.qty)||0})});return n}
@@ -522,7 +532,7 @@ function processReturn(){
  save();renderReturnBox();
  toast('Return saved'+(r.restock?'; stock updated':'')+(missing?' ('+missing+' product(s) no longer exist, not restocked)':''));
 }
-function cancelReturn(id){
+function cancelReturn(id){if(userRole==='cashier')return toast('Only the owner can cancel a return');
  const r=retList().find(x=>x.id===id);if(!r)return;
  if(!confirm('Cancel return '+r.id+'? Stock and any unpaid balance will go back to how they were before this return.'))return;
  if(r.restock){
@@ -540,7 +550,7 @@ function renderReturns(){
  if(retSaleId&&!db.sales.find(x=>x.id===retSaleId)){retSaleId='';$('retSaleBox').innerHTML=''}
  const q=($('retSearch')?.value||'').toLowerCase();
  const rows=list.slice().reverse().filter(r=>!q||[r.id,r.saleId,r.customerName,r.customerPhone].join(' ').toLowerCase().includes(q));
- $('retRows').innerHTML=rows.map(r=>`<tr><td>${esc(r.datetime||r.date)}</td><td><b>${esc(r.id)}</b></td><td>${esc(r.saleId)}</td><td>${esc(r.customerName||'Walk-in')}</td><td>${(r.items||[]).map(i=>esc(i.name)+' × '+i.qty).join('<br>')}${r.reason?`<div class="muted" style="font-size:11px">${esc(r.reason)}</div>`:''}</td><td><b>${money(r.refund)}</b>${Number(r.toDue)>0?`<div class="muted" style="font-size:11px">${money(r.toDue)} off unpaid balance</div>`:''}</td><td>${money(r.profitLoss)}</td><td>${r.restock?'<span class="pill good">Back in stock</span>':'<span class="pill warn">Not restocked</span>'}</td><td><button class="danger small" onclick="cancelReturn('${r.id}')">Cancel</button></td></tr>`).join('')||'<tr><td colspan="9" class="empty">No returns recorded.</td></tr>';
+ $('retRows').innerHTML=rows.map(r=>`<tr><td>${esc(r.datetime||r.date)}</td><td><b>${esc(r.id)}</b></td><td>${esc(r.saleId)}</td><td>${esc(r.customerName||'Walk-in')}</td><td>${(r.items||[]).map(i=>esc(i.name)+' × '+i.qty).join('<br>')}${r.reason?`<div class="muted" style="font-size:11px">${esc(r.reason)}</div>`:''}</td><td><b>${money(r.refund)}</b>${Number(r.toDue)>0?`<div class="muted" style="font-size:11px">${money(r.toDue)} off unpaid balance</div>`:''}</td><td>${money(r.profitLoss)}</td><td>${r.restock?'<span class="pill good">Back in stock</span>':'<span class="pill warn">Not restocked</span>'}</td><td><button class="danger small ownonly" onclick="cancelReturn('${r.id}')">Cancel</button></td></tr>`).join('')||'<tr><td colspan="9" class="empty">No returns recorded.</td></tr>';
 }
 $('retSearch').addEventListener('input',renderReturns);
 $('retInvoice').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();findReturnSale()}});
@@ -686,7 +696,7 @@ function openPaySupplier(k,onlyId){
   closeModal();save();toast(left<=0.005?'Paid in full':'Payment recorded; still owe '+money(left));
  };
 }
-function deletePurchase(id){
+function deletePurchase(id){if(userRole==='cashier')return toast('Only the owner can do this');
  const x=purList().find(y=>y.id===id);if(!x)return;
  if(!confirm('Delete this purchase record from '+x.supplierName+'? This removes the amount owed from the reports. It does NOT change your stock.'))return;
  db.purchases=purList().filter(y=>y.id!==id);save();toast('Purchase record deleted');
@@ -704,21 +714,17 @@ function supplierSummaryRows(list){
 function renderDebts(){
  if(!$('debtRows'))return;renderDebtGroups();let q=($('debtSearch')?.value||'').toLowerCase(),filter=$('debtFilter')?.value||'open';let debts=Array.isArray(db.debts)?db.debts:[];let open=debts.filter(d=>Number(d.balance)>0.005);$('debtTotal').textContent=money(open.reduce((a,d)=>a+Number(d.balance||0),0));$('debtCount').textContent=open.length;
  let list=debts.slice().reverse().filter(d=>{let text=[d.customerName,d.customerPhone,d.saleId].join(' ').toLowerCase();return (!q||text.includes(q))&&(filter==='all'||(filter==='paid'?Number(d.balance)<=0.005:Number(d.balance)>0.005))});
- $('debtRows').innerHTML=list.map(d=>{let paid=Number(d.paidLater||0),bal=Math.max(0,Number(d.balance)||0),status=bal<=0.005?'<span class="pill good">Paid</span>':'<span class="pill warn">Due</span>';return `<tr><td>${esc(d.date||'')}</td><td><b>${esc(d.saleId||'')}</b></td><td>${esc(d.customerName||'Walk-in')}<div class="muted" style="font-size:11px">${esc(d.customerPhone||'No phone')}</div></td><td>${money(d.total)}</td><td>${money(d.received)}</td><td>${money(paid)}</td><td><b>${money(bal)}</b></td><td><div class="actions">${status}${bal>0.005?`<button class="small" onclick="recordDebtPayment('${d.id}')">Receive payment</button>`:''}</div></td></tr>`}).join('')||'<tr><td colspan="8" class="empty">No naya records match this filter.</td></tr>';
+ $('debtRows').innerHTML=list.map(d=>{let paid=Number(d.paidLater||0),bal=Math.max(0,Number(d.balance)||0),status=bal<=0.005?'<span class="pill good">Paid</span>':'<span class="pill warn">Due</span>';return `<tr><td>${esc(d.date||'')}</td><td><b>${esc(d.saleId||'')}</b></td><td>${esc(d.customerName||'Walk-in')}<div class="muted" style="font-size:11px">${esc(d.customerPhone||'No phone')}</div></td><td>${money(d.total)}</td><td>${money(d.received)}</td><td>${money(paid)}</td><td><b>${money(bal)}</b></td><td><div class="actions">${status}${bal>0.005?`<button class="small" onclick="recordDebtPayment('${d.id}')">Receive payment</button>`:''}</div></td></tr>`}).join('')||'<tr><td colspan="8" class="empty">No due records match this filter.</td></tr>';
 }
 function recordDebtPayment(id){openReceivePayment('',id)}
 $('debtSearch').addEventListener('input',renderDebts);$('debtFilter').addEventListener('change',renderDebts);
-function exportDebts(){let ds=Array.isArray(db.debts)?db.debts:[];download('connectpos-naya.csv',csv([['Date','Receipt','Customer','Phone','Bill total','Received at sale','Paid later','Balance due','Status'],...ds.map(d=>[d.date,d.saleId,d.customerName,d.customerPhone,d.total,d.received,d.paidLater,d.balance,Number(d.balance)<=0.005?'Paid':'Due'])]),'text/csv')}
+function exportDebts(){let ds=Array.isArray(db.debts)?db.debts:[];download('connectpos-customer-dues.csv',csv([['Date','Receipt','Customer','Phone','Bill total','Received at sale','Paid later','Balance due','Status'],...ds.map(d=>[d.date,d.saleId,d.customerName,d.customerPhone,d.total,d.received,d.paidLater,d.balance,Number(d.balance)<=0.005?'Paid':'Due'])]),'text/csv')}
 function openCustomerModal(c={}){openModal(c.id?'Edit customer':'Add customer',`<form id="customerForm" class="formgrid"><input type="hidden" name="id" value="${esc(c.id||'')}"><div class="field wide"><label>Full name *</label><input name="name" required value="${esc(c.name||'')}"></div><div class="field"><label>Phone</label><input name="phone" value="${esc(c.phone||'')}"></div><div class="field"><label>Email</label><input name="email" type="email" value="${esc(c.email||'')}"></div><div class="field wide"><label>Notes</label><textarea name="notes" rows="2">${esc(c.notes||'')}</textarea></div><div class="field wide"><button type="submit">Save customer</button></div></form>`);$('customerForm').onsubmit=e=>{e.preventDefault();let v=Object.fromEntries(new FormData(e.target).entries());v.id=v.id||uid();let i=db.customers.findIndex(x=>x.id===v.id);i>=0?db.customers[i]=v:db.customers.push(v);closeModal();save();toast('Customer saved')}}
 function renderCustomers(){let q=($('customerSearch')?.value||'').toLowerCase(),cs=db.customers.filter(c=>[c.name,c.phone,c.email,c.notes].join(' ').toLowerCase().includes(q));$('customerRows').innerHTML=cs.map(c=>`<tr><td><b>${esc(c.name)}</b></td><td>${esc(c.phone||'—')}</td><td>${esc(c.email||'—')}</td><td>${esc(c.notes||'—')}</td><td><div class="actions"><button class="secondary small" onclick="editCustomer('${c.id}')">Edit</button><button class="danger small" onclick="deleteCustomer('${c.id}')">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="5" class="empty">No customers yet.</td></tr>'}
 $('customerSearch').addEventListener('input',renderCustomers);function editCustomer(id){let c=db.customers.find(x=>x.id===id);if(c)openCustomerModal(c)}function deleteCustomer(id){if(confirm('Delete this customer?')){db.customers=db.customers.filter(c=>c.id!==id);save()}}
-function openExpenseModal(e={}){openModal(e.id?'Edit expense':'Add expense',`<form id="expenseForm" class="formgrid"><input type="hidden" name="id" value="${esc(e.id||'')}"><div class="field wide"><label>Description *</label><input name="description" required value="${esc(e.description||'')}"></div><div class="field"><label>Category</label><select name="category">${['Rent','Utilities','Transport','Stock purchase','Internet/Phone','Salary','Other'].map(x=>`<option ${e.category===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Amount (Rs) *</label><input name="amount" type="number" min="0" step=".01" required value="${e.amount??''}"></div><div class="field"><label>Date *</label><input name="date" type="date" required value="${esc(e.date||today())}"></div><div class="field wide"><button type="submit">Save expense</button></div></form>`);$('expenseForm').onsubmit=ev=>{ev.preventDefault();let v=Object.fromEntries(new FormData(ev.target).entries());v.id=v.id||uid();v.amount=Math.max(0,Number(v.amount)||0);let i=db.expenses.findIndex(x=>x.id===v.id);i>=0?db.expenses[i]=v:db.expenses.push(v);closeModal();save();toast('Expense saved')}}
+function openExpenseModal(e={}){openModal(e.id?'Edit expense':'Add expense',`<form id="expenseForm" class="formgrid"><input type="hidden" name="id" value="${esc(e.id||'')}"><div class="field wide"><label>Description *</label><input name="description" required value="${esc(e.description||'')}"></div><div class="field"><label>Category</label><select name="category">${['Rent','Utilities','Transport','Stock purchase','Internet/Phone','Salary','Other'].map(x=>`<option ${e.category===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Amount (Rs) *</label><input name="amount" type="number" min="0" step=".01" required value="${e.amount??''}"></div><div class="field"><label>Date *</label><input name="date" type="date" required value="${esc(e.date||today())}"></div><div class="field wide muted" style="font-size:12px">Do not enter stock you buy for resale here. Record it in Inventory (Add product / Restock) so it is not counted twice. Expenses in the "Stock purchase" category are listed in reports but are not deducted from profit again, because the cost of goods sold already covers them.</div><div class="field wide"><button type="submit">Save expense</button></div></form>`);$('expenseForm').onsubmit=ev=>{ev.preventDefault();let v=Object.fromEntries(new FormData(ev.target).entries());v.id=v.id||uid();v.amount=Math.max(0,Number(v.amount)||0);let i=db.expenses.findIndex(x=>x.id===v.id);i>=0?db.expenses[i]=v:db.expenses.push(v);closeModal();save();toast('Expense saved')}}
 function renderExpenses(){let q=($('expenseSearch')?.value||'').toLowerCase(),es=db.expenses.filter(e=>[e.description,e.category,e.date].join(' ').toLowerCase().includes(q));$('expenseRows').innerHTML=es.slice().reverse().map(e=>`<tr><td>${esc(e.date)}</td><td><b>${esc(e.description)}</b></td><td>${esc(e.category)}</td><td>${money(e.amount)}</td><td><div class="actions"><button class="secondary small" onclick="editExpense('${e.id}')">Edit</button><button class="danger small" onclick="deleteExpense('${e.id}')">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="5" class="empty">No expenses recorded.</td></tr>';let all=db.expenses.reduce((a,e)=>a+e.amount,0),mo=db.expenses.filter(e=>monthMatch(e.date)).reduce((a,e)=>a+e.amount,0);$('expenseMonthTotal').textContent=money(mo);$('expenseAllTotal').textContent=money(all)}
 $('expenseSearch').addEventListener('input',renderExpenses);function editExpense(id){let e=db.expenses.find(x=>x.id===id);if(e)openExpenseModal(e)}function deleteExpense(id){if(confirm('Delete this expense?')){db.expenses=db.expenses.filter(x=>x.id!==id);save()}}
-function renderReports(){let gross=db.sales.reduce((a,s)=>a+s.subtotal,0),disc=db.sales.reduce((a,s)=>a+s.discount,0),profit=db.sales.reduce((a,s)=>a+(s.profit??s.items.reduce((n,x)=>n+(x.price-x.cost)*x.qty,0)-s.discount),0)-retList().reduce((a,r)=>a+retLoss(r),0),ex=db.expenses.reduce((a,e)=>a+e.amount,0);$('reportGross').textContent=money(gross);$('reportDiscount').textContent=money(disc);$('reportProfit').textContent=money(profit);$('reportNet').textContent=money(profit-ex);
- let counts={};db.sales.forEach(s=>s.items.forEach(i=>{counts[i.name]=(counts[i.name]||0)+i.qty}));let best=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,8);$('bestSellers').innerHTML=best.map(([n,v])=>`<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)"><span>${esc(n)}</span><b>${v} sold</b></div>`).join('')||'<div class="empty">No sales data yet.</div>';
- let pays={};db.sales.forEach(s=>pays[s.payment]=(pays[s.payment]||0)+s.total);let max=Math.max(1,...Object.values(pays));$('paymentBreakdown').innerHTML=Object.entries(pays).map(([n,v])=>`<div style="margin:10px 0"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>${esc(n)}</span><b>${money(v)}</b></div><div class="chartbar"><span style="width:${v/max*100}%"></span></div></div>`).join('')||'<div class="empty">No payment data yet.</div>'}
-
 function periodDateRange(days){
  const end=new Date();end.setHours(0,0,0,0);
  const start=new Date(end);
@@ -730,130 +736,6 @@ function periodDateRange(days){
 function saleDateKey(s){return String(s.date||s.datetime||'').slice(0,10)}
 function inPeriod(date,start,end){const d=String(date||'').slice(0,10);return !!d&&d>=start&&d<=end}
 function saleProfitValue(s){return Number(s.profit??(s.items||[]).reduce((n,x)=>n+(Number(x.price||0)-Number(x.cost||0))*Number(x.qty||0),0)-Number(s.discount||0))}
-function yearlyReportHTML(){
- const store=db.store||{},now=new Date(),months=[];
- for(let i=11;i>=0;i--){const d=new Date(now.getFullYear(),now.getMonth()-i,1);months.push({key:`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`,label:d.toLocaleDateString('en-US',{month:'short',year:'numeric'}),sales:[],exp:[],debts:[],ret:[],pur:[]})}
- const byKey={};months.forEach(m=>byKey[m.key]=m);
- db.sales.forEach(s=>{const m=byKey[saleDateKey(s).slice(0,7)];if(m)m.sales.push(s)});
- db.expenses.forEach(e=>{const m=byKey[String(e.date||'').slice(0,7)];if(m)m.exp.push(e)});
- retList().forEach(r=>{const m=byKey[String(r.date||'').slice(0,7)];if(m)m.ret.push(r)});
- purList().forEach(x=>{const m=byKey[String(x.date||'').slice(0,7)];if(m)m.pur.push(x)});
- (Array.isArray(db.debts)?db.debts:[]).forEach(d=>{const m=byKey[String(d.date||d.datetime||'').slice(0,7)];if(m)m.debts.push(d)});
- months.forEach(m=>{
-  m.earn=m.sales.reduce((n,s)=>n+Number(s.total||0),0);
-  m.gross=m.sales.reduce((n,s)=>n+Number(s.subtotal||0),0);
-  m.disc=m.sales.reduce((n,s)=>n+Number(s.discount||0),0);
-  m.gp=m.sales.reduce((n,s)=>n+saleProfitValue(s),0);
-  m.expense=m.exp.reduce((n,e)=>n+Number(e.amount||0),0);
-  m.due=m.debts.reduce((n,d)=>n+Math.max(0,Number(d.total||0)-Number(d.received||0)),0);
-  m.pay=m.debts.reduce((n,d)=>n+Math.max(0,Number(d.balance||0)),0);
-  m.retv=m.ret.reduce((n,r)=>n+retValue(r),0);
-  m.retp=m.ret.reduce((n,r)=>n+retLoss(r),0);
-  m.purv=m.pur.reduce((n,x)=>n+(Number(x.total)||0),0);
-  m.puro=m.pur.reduce((n,x)=>n+(Number(x.balance)||0),0);
-  m.profit=m.gp-m.retp-m.expense;
- });
- const sum=k=>months.reduce((n,m)=>n+m[k],0);
- const T={earn:sum('earn'),retv:sum('retv'),retp:sum('retp'),purv:sum('purv'),puro:sum('puro'),gross:sum('gross'),disc:sum('disc'),gp:sum('gp'),expense:sum('expense'),due:sum('due'),pay:sum('pay'),profit:sum('profit'),sales:months.reduce((n,m)=>n+m.sales.length,0),exps:months.reduce((n,m)=>n+m.exp.length,0)};
- const pct=m=>T.profit!==0?(m.profit/T.profit*100):0, fp=v=>v.toFixed(1)+'%';
- const best=months.slice().sort((a,b)=>b.profit-a.profit)[0];
- const rows=months.map(m=>`<tr><td><b>${esc(m.label)}</b></td><td>${m.sales.length||m.exp.length?`${m.sales.length} ${m.sales.length===1?'sale':'sales'}, ${m.exp.length} ${m.exp.length===1?'expense':'expenses'}`:'No activity'}</td><td class="rnum">${money(m.earn)}</td><td class="rnum">${money(m.retv)}</td><td class="rnum">${money(m.expense)}</td><td class="rnum">${money(m.due)}</td><td class="rnum">${money(m.pay)}</td><td class="rnum">${money(m.purv)}</td><td class="rnum">${money(m.puro)}</td><td class="rnum">${money(m.profit)}</td><td class="rnum">${fp(pct(m))}</td></tr>`);
- rows.push(`<tr class="rtotal"><td>TOTAL</td><td>${T.sales} sales, ${T.exps} expenses</td><td class="rnum">${money(T.earn)}</td><td class="rnum">${money(T.retv)}</td><td class="rnum">${money(T.expense)}</td><td class="rnum">${money(T.due)}</td><td class="rnum">${money(T.pay)}</td><td class="rnum">${money(T.purv)}</td><td class="rnum">${money(T.puro)}</td><td class="rnum">${money(T.profit)}</td><td class="rnum">${T.profit!==0?'100.0%':'0.0%'}</td></tr>`);
- const table=(heads,rws,emptyText)=>`<table><thead><tr>${heads.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rws.length?rws.join(''):`<tr><td colspan="${heads.length}" class="empty">${emptyText}</td></tr>`}</tbody></table>`;
- const allSales=months.flatMap(m=>m.sales);
- const items={};allSales.forEach(s=>(s.items||[]).forEach(i=>{const k=i.name||'Item';if(!items[k])items[k]={qty:0,sales:0};items[k].qty+=Number(i.qty||0);items[k].sales+=Number(i.price||0)*Number(i.qty||0)}));
- months.forEach(m=>m.ret.forEach(r=>(r.items||[]).forEach(i=>{const k=i.name||'Item';if(!items[k])items[k]={qty:0,sales:0};items[k].qty-=Number(i.qty||0);items[k].sales-=Number(i.price||0)*Number(i.qty||0)})));
- const productRows=Object.entries(items).sort((a,b)=>b[1].qty-a[1].qty).map(([name,v])=>`<tr><td>${esc(name)}</td><td>${v.qty}</td><td>${money(v.sales)}</td></tr>`);
- const pay={};allSales.forEach(s=>{const k=s.payment||'Unknown';pay[k]=(pay[k]||0)+Number(s.total||0)});
- const paymentRows=Object.entries(pay).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${money(v)}</td></tr>`);
- const stockRows=(db.products||[]).map(p=>`<tr><td>${esc(p.sku||'')}</td><td>${esc(p.name||'')}</td><td>${esc(p.category||'')}</td><td>${Number(p.stock||0)}</td><td>${money(p.cost)}</td><td>${money(p.price)}</td><td>${money(Number(p.stock||0)*Number(p.cost||0))}</td></tr>`);
- return `<div class="report-print">
- <header class="report-brand">${store.logo?`<img class="report-logo" src="${store.logo}" alt="Store logo">`:''}<div class="report-store"><h1>${esc(store.name||'ConnectPOS Store')}</h1><div>${esc(store.address||'')}</div><div>${esc(store.phone||'')}</div></div><h2>Last 1 Year Report — Monthly</h2><p>Period: ${esc(months[0].label)} – ${esc(months[11].label)}</p></header>
- <h3>Yearly Summary</h3><div class="report-summary-list">
- <div><strong>Transactions</strong><b>${T.sales}</b></div>
- <div><strong>Gross sales</strong><b>${money(T.gross)}</b></div>
- <div><strong>Discounts</strong><b>${money(T.disc)}</b></div>
- <div><strong>Earnings (net sales, before returns)</strong><b>${money(T.earn)}</b></div>
- <div><strong>Returns (refunded value)</strong><b>${money(T.retv)}</b></div>
- <div><strong>Estimated gross profit (before returns)</strong><b>${money(T.gp)}</b></div>
- <div><strong>Profit reduced by returns</strong><b>${money(T.retp)}</b></div>
- <div><strong>Stock bought from suppliers</strong><b>${money(T.purv)}</b></div>
- <div><strong>Still to pay suppliers (this year's purchases)</strong><b>${money(T.puro)}</b></div>
- <div><strong>Total owed to suppliers today</strong><b>${money(purOwedAll())}</b></div>
- <div><strong>Expenses</strong><b>${money(T.expense)}</b></div>
- <div><strong>Profit (after expenses)</strong><b>${money(T.profit)}</b></div>
- <div><strong>Best month</strong><b>${T.sales||T.exps?esc(best.label)+' ('+money(best.profit)+')':'—'}</b></div>
- </div>
- <h3>Monthly Breakdown</h3><div class="rscroll">${table(['Month','Description (Sales, Expenses)','Earnings','Returns','Expenses','Due','Must to pay','Stock bought','Supplier to pay','Profit','Share of yearly profit (100%)'],rows,'No data.')}</div>
- <h3>Suppliers Summary (Year)</h3>${table(['Supplier','Purchases','Total bought','Paid so far','To pay'],supplierSummaryRows(months.flatMap(m=>m.pur)),'No supplier purchases in this period.')}
- <h3>Products Sold (Year)</h3>${table(['Product','Quantity sold','Sales value'],productRows,'No products sold in this period.')}
- <h3>Sales by Payment Method (Year)</h3>${table(['Payment method','Sales total'],paymentRows,'No payment data in this period.')}
- <h3>Current Inventory Snapshot</h3>${table(['SKU','Product','Category','Stock now','Unit cost','Unit price','Stock cost value'],stockRows,'No products in inventory.')}
- <p class="report-note">Earnings = net sales total of the month (after discounts). Expenses = recorded expenses of the month. Due = unpaid amount left at the time of sale for sales made in that month. Must to pay = balance still outstanding today from those dues. Profit = estimated gross profit minus expenses. Share = month profit ÷ yearly profit × 100. Returns = value refunded to customers for goods returned in that month; the profit lost on them (refund minus the cost of items put back in stock) is deducted from Profit. Stock bought = purchases from suppliers recorded that month; Supplier to pay = what is still unpaid on them (not deducted from profit again, since profit uses the cost of goods sold). Products Sold is net of returns. Estimates only; not a certified accounting or tax report. Inventory is a current snapshot.</p>
- </div>`;
-}
-function periodReportHTML(days){
- if(days===365)return yearlyReportHTML();
- const range=periodDateRange(days),sales=db.sales.filter(s=>inPeriod(saleDateKey(s),range.start,range.end)).slice().sort((a,b)=>saleDateKey(a).localeCompare(saleDateKey(b))||(a.datetime||'').localeCompare(b.datetime||''));
- const expenses=db.expenses.filter(e=>inPeriod(e.date,range.start,range.end)).slice().sort((a,b)=>String(a.date).localeCompare(String(b.date)));
- const debts=(Array.isArray(db.debts)?db.debts:[]).filter(d=>inPeriod(d.date||d.datetime,range.start,range.end)).slice().sort((a,b)=>String(a.date).localeCompare(String(b.date)));
- const gross=sales.reduce((n,s)=>n+Number(s.subtotal||0),0),discount=sales.reduce((n,s)=>n+Number(s.discount||0),0),salesTotal=sales.reduce((n,s)=>n+Number(s.total||0),0);
- const received=sales.reduce((n,s)=>n+Number(s.received??s.total??0)-Number(s.change||0),0);
- const profit=sales.reduce((n,s)=>n+saleProfitValue(s),0),expenseTotal=expenses.reduce((n,e)=>n+Number(e.amount||0),0);
- const returns=retList().filter(r=>inPeriod(r.date,range.start,range.end)).slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))),retTotal=returns.reduce((n,r)=>n+retValue(r),0),retLossTotal=returns.reduce((n,r)=>n+retLoss(r),0);
- const purs=purList().filter(x=>inPeriod(x.date,range.start,range.end)).slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))),purTotal=purs.reduce((n,x)=>n+(Number(x.total)||0),0),purOwedPeriod=purs.reduce((n,x)=>n+(Number(x.balance)||0),0),purPaid=purPaidIn(range.start,range.end);
- const dueAdded=debts.reduce((n,d)=>n+Number(d.total||0)-Number(d.received||0),0),paidLater=debts.reduce((n,d)=>n+Number(d.paidLater||0),0),dueBalance=debts.reduce((n,d)=>n+Number(d.balance||0),0);
- const items={};sales.forEach(s=>(s.items||[]).forEach(i=>{const k=i.name||'Item';if(!items[k])items[k]={qty:0,sales:0};items[k].qty+=Number(i.qty||0);items[k].sales+=Number(i.price||0)*Number(i.qty||0)}));
- returns.forEach(r=>(r.items||[]).forEach(i=>{const k=i.name||'Item';if(!items[k])items[k]={qty:0,sales:0};items[k].qty-=Number(i.qty||0);items[k].sales-=Number(i.price||0)*Number(i.qty||0)}));
- const topItems=Object.entries(items).sort((a,b)=>b[1].qty-a[1].qty);
- const paymentTotals={};sales.forEach(s=>{const k=s.payment||'Unknown';paymentTotals[k]=(paymentTotals[k]||0)+Number(s.total||0)});
- const store=db.store||{};
- const table=(heads,rows,emptyText)=>`<table><thead><tr>${heads.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.length?rows.join(''):`<tr><td colspan="${heads.length}" class="empty">${emptyText}</td></tr>`}</tbody></table>`;
- const saleRows=sales.map(s=>`<tr><td>${esc(s.date||'')}</td><td>${esc(s.id||'')}</td><td>${esc(s.customerName||'Walk-in')}</td><td>${esc(s.payment||'')}</td><td>${(s.items||[]).reduce((n,i)=>n+Number(i.qty||0),0)}</td><td>${money(s.subtotal)}</td><td>${money(s.discount)}</td><td>${money(s.total)}</td><td>${money(saleReturnValue(s.id))}</td><td>${money(s.received??s.total)}</td><td>${money(Math.max(0,Number(s.total||0)-Number(s.received??s.total??0)))}</td></tr>`);
- const expenseRows=expenses.map(e=>`<tr><td>${esc(e.date||'')}</td><td>${esc(e.description||'')}</td><td>${esc(e.category||'')}</td><td>${money(e.amount)}</td></tr>`);
- const debtRows=debts.map(d=>`<tr><td>${esc(d.date||'')}</td><td>${esc(d.saleId||'')}</td><td>${esc(d.customerName||'Walk-in')}</td><td>${esc(d.customerPhone||'')}</td><td>${money(d.total)}</td><td>${money(d.received)}</td><td>${money(d.paidLater)}</td><td>${money(d.balance)}</td><td>${Number(d.balance||0)<=0.005?'Paid':'Due'}</td></tr>`);
- const productRows=topItems.map(([name,v])=>`<tr><td>${esc(name)}</td><td>${v.qty}</td><td>${money(v.sales)}</td></tr>`);
- const paymentRows=Object.entries(paymentTotals).map(([method,total])=>`<tr><td>${esc(method)}</td><td>${money(total)}</td></tr>`);
- const stockRows=(db.products||[]).map(p=>`<tr><td>${esc(p.sku||'')}</td><td>${esc(p.name||'')}</td><td>${esc(p.category||'')}</td><td>${Number(p.stock||0)}</td><td>${money(p.cost)}</td><td>${money(p.price)}</td><td>${money(Number(p.stock||0)*Number(p.cost||0))}</td></tr>`);
- const returnRows=returns.map(r=>`<tr><td>${esc(r.date||'')}</td><td>${esc(r.id||'')}</td><td>${esc(r.saleId||'')}</td><td>${esc(r.customerName||'Walk-in')}</td><td>${(r.items||[]).map(i=>esc(i.name)+' × '+i.qty).join(', ')}</td><td>${money(r.refund)}</td><td>${money(r.profitLoss)}</td><td>${r.restock?'Back in stock':'Not restocked'}</td></tr>`);
- const dateLabel=`${range.start} to ${range.end}`;
- return `<div class="report-print">
- <header class="report-brand">${store.logo?`<img class="report-logo" src="${store.logo}" alt="Store logo">`:''}<div class="report-store"><h1>${esc(store.name||'ConnectPOS Store')}</h1><div>${esc(store.address||'')}</div><div>${esc(store.phone||'')}</div></div><h2>${days===365?'Last 1 Year':'Last 30 Days'} Full Report</h2><p>Period: ${dateLabel} · Generated: ${esc(new Date().toLocaleString())}</p></header>
- <h3>Financial Summary</h3><div class="report-summary-list">
- <div><strong>Transaction</strong><b>${sales.length}</b></div>
- <div><strong>Gross sales</strong><b>${money(gross)}</b></div>
- <div><strong>Discounts</strong><b>${money(discount)}</b></div>
- <div><strong>Net sales total (before returns)</strong><b>${money(salesTotal)}</b></div>
- <div><strong>Returns (refunded value)</strong><b>${money(retTotal)}</b></div>
- <div><strong>Net sales after returns</strong><b>${money(salesTotal-retTotal)}</b></div>
- <div><strong>Received at sale (less change)</strong><b>${money(received)}</b></div>
- <div><strong>Estimated gross profit (before returns)</strong><b>${money(profit)}</b></div>
- <div><strong>Profit reduced by returns</strong><b>${money(retLossTotal)}</b></div>
- <div><strong>Recorded expenses</strong><b>${money(expenseTotal)}</b></div>
- <div><strong>Estimated profit after expenses</strong><b>${money(profit-retLossTotal-expenseTotal)}</b></div>
- <div><strong>Due balance from period</strong><b>${money(dueBalance)}</b></div>
- <div><strong>Later due payments recorded</strong><b>${money(paidLater)}</b></div>
- <div><strong>Stock bought from suppliers</strong><b>${money(purTotal)}</b></div>
- <div><strong>Paid to suppliers in period</strong><b>${money(purPaid)}</b></div>
- <div><strong>Still to pay suppliers (this period's purchases)</strong><b>${money(purOwedPeriod)}</b></div>
- <div><strong>Total owed to suppliers today</strong><b>${money(purOwedAll())}</b></div>
- </div>
- <h3>Sales Transactions (${sales.length})</h3>${table(['Date','Receipt','Customer','Payment','Qty','Subtotal','Discount','Total','Returns','Received','Due at sale'],saleRows,'No sales recorded in this period.')}
- <h3>Returns (${returns.length})</h3>${table(['Date','Return no.','Invoice','Customer','Items returned','Refund','Profit reduced','Stock'],returnRows,'No returns recorded in this period.')}
- <h3>Expenses (${expenses.length})</h3>${table(['Date','Description','Category','Amount'],expenseRows,'No expenses recorded in this period.')}
- <h3>Due Payments Created in Period (${debts.length})</h3>${table(['Date','Receipt','Customer','Phone','Bill total','Received at sale','Paid later','Balance due','Status'],debtRows,'No due payment records created in this period.')}
- <h3>Supplier Purchases (${purs.length})</h3>${table(['Date','Supplier','Product','Qty','Unit cost','Total','Paid so far','To pay'],purs.map(x=>`<tr><td>${esc(x.date||'')}</td><td>${esc(x.supplierName||'')}</td><td>${esc(x.productName||'')}</td><td>${x.qty}</td><td>${money(x.unitCost)}</td><td>${money(x.total)}</td><td>${money((Number(x.total)||0)-(Number(x.balance)||0))}</td><td>${money(x.balance)}</td></tr>`),'No supplier purchases recorded in this period.')}
- <h3>Suppliers Summary</h3>${table(['Supplier','Purchases','Total bought','Paid so far','To pay'],supplierSummaryRows(purs),'No supplier purchases in this period.')}
- <h3>Products Sold</h3>${table(['Product','Quantity sold','Sales value'],productRows,'No products sold in this period.')}
- <h3>Sales by Payment Method</h3>${table(['Payment method','Sales total'],paymentRows,'No payment data in this period.')}
- <h3>Current Inventory Snapshot</h3>${table(['SKU','Product','Category','Stock now','Unit cost','Unit price','Stock cost value'],stockRows,'No products in inventory.')}
- <p class="report-note">Note: This report uses the data currently stored in this browser. Returns are deducted from profit (profit lost = refund minus the cost of the items put back in stock), and the Returns column in the sales table shows the value returned against that invoice. Products Sold is shown net of returns. Supplier purchases are stock you bought; they are not deducted from profit again (profit already uses the cost of goods sold). Estimated profit is calculated from the profit stored with sales or the saved item costs; it is not a certified accounting or tax report. Inventory is a current snapshot, not historical inventory for the selected period.</p>
- </div>`;
-}
-function renderPeriodReport(days){
- const target=$(days===365?'reportYearContent':'report30Content');if(target)target.innerHTML=periodReportHTML(days);
-}
-
 function buildPdfBlob(pages){
  const enc=new TextEncoder(),chunks=[],offsets=[];let len=0;
  const push=x=>{const b=typeof x==='string'?enc.encode(x):x;chunks.push(b);len+=b.length};
@@ -873,13 +755,453 @@ function buildPdfBlob(pages){
  push(x);push(`trailer\n<< /Size ${total} /Root 1 0 R >>\nstartxref\n${xrefPos}\n%%EOF`);
  return new Blob(chunks,{type:'application/pdf'});
 }
+/*ANALYTICS-START*/
+// ---------- periods ----------
+const addDays=(iso,n)=>{const d=new Date(iso+'T00:00:00');d.setDate(d.getDate()+n);return localISO(d)};
+const daysBetween=(a,b)=>Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/864e5)+1;
+const isoYMD=(y,m,d)=>localISO(new Date(y,m,d));
+const RANGE_OPTS=[['today','Today'],['7','Last 7 days'],['30','Last 30 days'],['month','This month'],['lastmonth','Last month'],['last12','Last 12 months'],['year','This calendar year'],['fy','This financial year (Apr–Mar)'],['lastfy','Last financial year'],['custom','Custom dates…']];
+function rangeFor(key,cs,ce){
+ const t=today(),d=new Date(t+'T00:00:00'),y=d.getFullYear(),m=d.getMonth(),fy=m>=3?y:y-1;
+ let a=t,b=t,label='Today';
+ if(key==='7'){a=addDays(t,-6);label='Last 7 days'}
+ else if(key==='30'){a=addDays(t,-29);label='Last 30 days'}
+ else if(key==='month'){a=isoYMD(y,m,1);label='This month'}
+ else if(key==='lastmonth'){a=isoYMD(y,m-1,1);b=isoYMD(y,m,0);label='Last month'}
+ else if(key==='last12'){a=isoYMD(y,m-11,1);label='Last 12 months'}
+ else if(key==='year'){a=isoYMD(y,0,1);label='Calendar year '+y}
+ else if(key==='fy'){a=isoYMD(fy,3,1);label='Financial year '+fy+'/'+String(fy+1).slice(2)}
+ else if(key==='lastfy'){a=isoYMD(fy-1,3,1);b=isoYMD(fy,2,31);label='Financial year '+(fy-1)+'/'+String(fy).slice(2)}
+ else if(key==='custom'){a=cs||t;b=ce||t;if(a>b){const x=a;a=b;b=x}label='Custom period'}
+ return {key,start:a,end:b,label,days:daysBetween(a,b)};
+}
+const prevRange=r=>({start:addDays(r.start,-r.days),end:addDays(r.start,-1),days:r.days});
+const optsHTML=(list,sel)=>list.map(([k,l])=>`<option value="${k}"${k===sel?' selected':''}>${esc(l)}</option>`).join('');
+
+// ---------- the numbers (one place, used by Dashboard and every report) ----------
+function statsFor(start,end){
+ const inR=d=>inPeriod(d,start,end);
+ const sales=db.sales.filter(s=>inR(saleDateKey(s))),rets=retList().filter(r=>inR(r.date)),exps=db.expenses.filter(e=>inR(e.date)),debts=Array.isArray(db.debts)?db.debts:[];
+ const sum=(a,f)=>r2(a.reduce((n,x)=>n+(Number(f(x))||0),0));
+ const o={start,end,sales,rets,exps};
+ o.count=sales.length;
+ o.gross=sum(sales,s=>s.subtotal);o.discounts=sum(sales,s=>s.discount);o.netBefore=sum(sales,s=>s.total);
+ o.returns=sum(rets,retValue);o.netSales=r2(o.netBefore-o.returns);
+ const costSold=r2(o.netBefore-sum(sales,saleProfitValue));
+ const costBack=sum(rets.filter(r=>r.restock),r=>(r.items||[]).reduce((n,i)=>n+(Number(i.cost)||0)*(Number(i.qty)||0),0));
+ o.cogs=r2(costSold-costBack);o.grossProfit=r2(o.netSales-o.cogs);
+ o.opexList=exps.filter(e=>e.category!=='Stock purchase');
+ o.opex=sum(o.opexList,e=>e.amount);o.expAll=sum(exps,e=>e.amount);o.stockExp=r2(o.expAll-o.opex);
+ o.netProfit=r2(o.grossProfit-o.opex);
+ o.margin=o.netSales>0?o.grossProfit/o.netSales*100:0;o.netMargin=o.netSales>0?o.netProfit/o.netSales*100:0;
+ o.avgBill=o.count?r2(o.netBefore/o.count):0;
+ o.items=sales.reduce((n,s)=>n+(s.items||[]).reduce((m,i)=>m+(Number(i.qty)||0),0),0)-rets.reduce((n,r)=>n+(r.items||[]).reduce((m,i)=>m+(Number(i.qty)||0),0),0);
+ o.byPay={};sales.forEach(s=>{const k=s.payment||'Other';o.byPay[k]=r2((o.byPay[k]||0)+(Number(s.total)||0))});
+ o.cashSale=sum(sales,s=>Math.min(Number(s.total)||0,Number(s.received??s.total)||0));
+ o.cashDues=r2(debts.reduce((n,d)=>n+(d.payments||[]).reduce((m,p)=>m+(inR(p.date)?Number(p.amount)||0:0),0),0));
+ o.cashRefund=sum(rets,r=>r.cashRefund);o.paidSup=purPaidIn(start,end);
+ o.cashIn=r2(o.cashSale+o.cashDues);o.cashOut=r2(o.cashRefund+o.paidSup+o.expAll);o.cashNet=r2(o.cashIn-o.cashOut);
+ o.dueCreated=r2(debts.filter(d=>inR(d.date||d.datetime)).reduce((n,d)=>n+(Number(d.total)||0)-(Number(d.received)||0),0));
+ o.purchased=sum(purList().filter(x=>inR(x.date)),x=>x.total);
+ const P={};
+ sales.forEach(s=>(s.items||[]).forEach(i=>{const k=i.name||'Item',q=Number(i.qty)||0,p=P[k]||(P[k]={name:k,qty:0,rev:0,cost:0});p.qty+=q;p.rev+=(Number(i.price)||0)*q;p.cost+=(Number(i.cost)||0)*q}));
+ rets.forEach(r=>(r.items||[]).forEach(i=>{const k=i.name||'Item',q=Number(i.qty)||0,p=P[k]||(P[k]={name:k,qty:0,rev:0,cost:0});p.qty-=q;p.rev-=(Number(i.price)||0)*q;if(r.restock)p.cost-=(Number(i.cost)||0)*q}));
+ o.products=Object.values(P).map(p=>({name:p.name,qty:p.qty,rev:r2(p.rev),profit:r2(p.rev-p.cost)})).sort((a,b)=>b.rev-a.rev);
+ const C={};exps.forEach(e=>{const k=e.category||'Other';C[k]=r2((C[k]||0)+(Number(e.amount)||0))});
+ o.expCat=Object.entries(C).sort((a,b)=>b[1]-a[1]);
+ return o;
+}
+function bucketSeries(start,end){
+ const monthly=daysBetween(start,end)>62,keyOf=d=>monthly?String(d).slice(0,7):String(d).slice(0,10),labels=[],idx={};
+ if(monthly){let y=+start.slice(0,4),m=+start.slice(5,7)-1;const ey=+end.slice(0,4),em=+end.slice(5,7)-1;while(y<ey||(y===ey&&m<=em)){const k=y+'-'+String(m+1).padStart(2,'0');idx[k]=labels.length;labels.push(k);m++;if(m>11){m=0;y++}}}
+ else{for(let d=start;d<=end;d=addDays(d,1)){idx[d]=labels.length;labels.push(d)}}
+ const z=()=>labels.map(()=>0),B={labels,monthly,net:z(),cogs:z(),gp:z(),opex:z(),np:z(),count:z()};
+ db.sales.forEach(s=>{const d=saleDateKey(s);if(!inPeriod(d,start,end))return;const i=idx[keyOf(d)];if(i==null)return;const t=Number(s.total)||0;B.net[i]+=t;B.cogs[i]+=t-saleProfitValue(s);B.count[i]++});
+ retList().forEach(r=>{if(!inPeriod(r.date,start,end))return;const i=idx[keyOf(r.date)];if(i==null)return;B.net[i]-=retValue(r);if(r.restock)B.cogs[i]-=(r.items||[]).reduce((n,x)=>n+(Number(x.cost)||0)*(Number(x.qty)||0),0)});
+ db.expenses.forEach(e=>{if(e.category==='Stock purchase'||!inPeriod(e.date,start,end))return;const i=idx[keyOf(e.date)];if(i!=null)B.opex[i]+=Number(e.amount)||0});
+ for(let i=0;i<labels.length;i++){B.net[i]=r2(B.net[i]);B.cogs[i]=r2(B.cogs[i]);B.opex[i]=r2(B.opex[i]);B.gp[i]=r2(B.net[i]-B.cogs[i]);B.np[i]=r2(B.gp[i]-B.opex[i])}
+ return B;
+}
+const bLabel=(k,monthly)=>monthly?new Date(k+'-01T00:00:00').toLocaleDateString(undefined,{month:'short',year:'2-digit'}):new Date(k+'T00:00:00').toLocaleDateString(undefined,{day:'numeric',month:'short'});
+const stockValueCost=()=>r2(db.products.reduce((n,p)=>n+(Number(p.stock)||0)*(Number(p.cost)||0),0));
+const receivablesAll=()=>r2((Array.isArray(db.debts)?db.debts:[]).reduce((n,d)=>n+(Number(d.balance)||0),0));
+
+// ---------- chart toolkit (inline SVG, no libraries) ----------
+const kfmt=n=>{const a=Math.abs(n),s=n<0?'-':'';return a>=1e6?s+(a/1e6).toFixed(a>=1e7?0:1).replace(/\.0$/,'')+'M':a>=1e3?s+(a/1e3).toFixed(a>=1e4?0:1).replace(/\.0$/,'')+'K':String(Math.round(n))};
+const rsShort=n=>(n<0?'-':'')+'Rs '+Math.round(Math.abs(n)).toLocaleString('en-LK');
+const num2=n=>Number(n||0).toLocaleString('en-LK',{minimumFractionDigits:2,maximumFractionDigits:2});
+const acc=n=>n<-0.004?'('+num2(-n)+')':num2(n);
+function niceScale(min,max,n=4){
+ if(max<=min)max=min+1;
+ const raw=(max-min)/n,p=Math.pow(10,Math.floor(Math.log10(raw))),f=raw/p,step=(f<=1?1:f<=2?2:f<=5?5:10)*p,lo=Math.floor(min/step+1e-9)*step,hi=Math.ceil(max/step-1e-9)*step,t=[];
+ for(let v=lo;v<=hi+step/2;v+=step)t.push(Math.round(v*100)/100);
+ return {lo,hi:t[t.length-1],ticks:t};
+}
+const tipAttr=(title,rows)=>`data-tip="${esc(JSON.stringify({t:title,r:rows}))}"`;
+const tv=(heads,rows)=>`<details class="tv"><summary>View as table</summary><div class="tablewrap"><table><thead><tr>${heads.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((c,i)=>`<td${i?' class="rnum"':''}>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div></details>`;
+const lgItem=(c,t,line)=>`<span class="lgi"><i class="${line?'ln':'sw'} v${c}"></i>${esc(t)}</span>`;
+const noData=t=>`<div class="empty">${esc(t)}</div>`;
+function barPath(x,w,y0,y1,r){
+ const up=y1<y0,top=Math.min(y0,y1),bot=Math.max(y0,y1),h=bot-top;
+ if(h<0.4)return '';
+ r=Math.min(r,h,w/2);
+ return up?`M${x} ${bot}V${top+r}Q${x} ${top} ${x+r} ${top}H${x+w-r}Q${x+w} ${top} ${x+w} ${top+r}V${bot}Z`:`M${x} ${top}V${bot-r}Q${x} ${bot} ${x+r} ${bot}H${x+w-r}Q${x+w} ${bot} ${x+w} ${bot-r}V${top}Z`;
+}
+// Trend: line for up to ~2 months of days, grouped columns for months
+function vTrend(B,title,own){
+ own=own!==false;
+ const n=B.labels.length;
+ if(!B.net.some(v=>v!==0)&&!B.gp.some(v=>v!==0))return noData('No sales in this period yet.');
+ const W=640,H=250,L=48,R=14,T=16,BT=30,w=W-L-R,h=H-T-BT;
+ const lab=B.labels.map(k=>bLabel(k,B.monthly));
+ const S=(B.monthly?[{name:'Net sales',v:B.net,c:1},{name:'Gross profit',v:B.gp,c:3},{name:'Operating expenses',v:B.opex,c:2}]:[{name:'Net sales',v:B.net,c:1},{name:'Gross profit',v:B.gp,c:3}]).filter((x,i)=>own||i===0);
+ const all=S.flatMap(s=>s.v),sc=niceScale(Math.min(0,...all),Math.max(...all,1));
+ const Y=v=>T+h-(v-sc.lo)/(sc.hi-sc.lo)*h,y0=Y(Math.max(0,sc.lo));
+ let g='';
+ sc.ticks.forEach(t=>{g+=`<line class="gl" x1="${L}" x2="${W-R}" y1="${Y(t).toFixed(1)}" y2="${Y(t).toFixed(1)}"/><text x="${L-6}" y="${(Y(t)+4).toFixed(1)}" text-anchor="end">${kfmt(t)}</text>`});
+ g+=`<line class="ax" x1="${L}" x2="${W-R}" y1="${Y(0).toFixed(1)}" y2="${Y(0).toFixed(1)}"/>`;
+ const step=Math.max(1,Math.ceil(n/7));
+ const rows=lab.map((l,i)=>[l,...S.map(x=>money(x.v[i]))]);
+ if(B.monthly){
+  const gw=w/n,bw=Math.max(4,Math.min(24,(gw-8)/3-2)),tot=S.length*bw+(S.length-1)*2;
+  S.forEach((s,k)=>{B.labels.forEach((_,i)=>{const x=L+i*gw+(gw-tot)/2+k*(bw+2);g+=`<path class="f${s.c}" d="${barPath(+x.toFixed(1),bw,+Y(0).toFixed(1),+Y(s.v[i]).toFixed(1),4)}"/>`})});
+  lab.forEach((l,i)=>{if(i%step===0)g+=`<text x="${(L+i*gw+gw/2).toFixed(1)}" y="${H-10}" text-anchor="middle">${esc(l)}</text>`});
+  B.labels.forEach((_,i)=>{g+=`<rect class="hit band" tabindex="0" x="${(L+i*gw).toFixed(1)}" y="${T}" width="${gw.toFixed(1)}" height="${h}" ${tipAttr(lab[i],S.map(s=>[s.name,money(s.v[i]),'v'+s.c]))}/>`});
+ }else{
+  const X=i=>L+(n<=1?w/2:i*w/(n-1));
+  lab.forEach((l,i)=>{if(i%step===0)g+=`<text x="${X(i).toFixed(1)}" y="${H-10}" text-anchor="middle">${esc(l)}</text>`});
+  const first=S[0];
+  if(n>1)g+=`<path class="area v${first.c}" d="M${X(0).toFixed(1)} ${y0.toFixed(1)}${first.v.map((v,i)=>`L${X(i).toFixed(1)} ${Y(v).toFixed(1)}`).join('')}L${X(n-1).toFixed(1)} ${y0.toFixed(1)}Z"/>`;
+  S.forEach(s=>{
+   if(n>1)g+=`<path class="ln v${s.c}" d="${s.v.map((v,i)=>`${i?'L':'M'}${X(i).toFixed(1)} ${Y(v).toFixed(1)}`).join('')}"/>`;
+   if(n<=8)s.v.forEach((v,i)=>{g+=`<circle class="dt v${s.c}" cx="${X(i).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="4.5"/>`});
+   else g+=`<circle class="dt v${s.c}" cx="${X(n-1).toFixed(1)}" cy="${Y(s.v[n-1]).toFixed(1)}" r="4.5"/>`;
+  });
+  const peak=first.v.indexOf(Math.max(...first.v));
+  if(first.v[peak]>0&&n>1)g+=`<text class="dl" x="${Math.min(W-R-30,Math.max(L+30,X(peak))).toFixed(1)}" y="${(Y(first.v[peak])-10).toFixed(1)}" text-anchor="middle">${rsShort(first.v[peak])}</text>`;
+  g+=`<line class="xh" x1="0" x2="0" y1="${T}" y2="${T+h}" style="visibility:hidden"/>`;
+  const hw=w/Math.max(n-1,1);
+  B.labels.forEach((_,i)=>{g+=`<rect class="hit" tabindex="0" data-x="${X(i).toFixed(1)}" x="${Math.max(L,X(i)-hw/2).toFixed(1)}" y="${T}" width="${(n<=1?w:hw).toFixed(1)}" height="${h}" ${tipAttr(lab[i],S.map(s=>[s.name,money(s.v[i]),'v'+s.c]))}/>`});
+ }
+ return `<div class="chart"><div class="lg">${S.map(s=>lgItem(s.c,s.name,!B.monthly)).join('')}</div><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(title)}">${g}</svg>${tv(['Period',...S.map(x=>x.name)],rows)}</div>`;
+}
+// Waterfall: net sales -> cost of goods -> gross profit -> expenses -> net profit
+function vWater(c){
+ if(!c.netSales&&!c.cogs&&!c.opex)return noData('No figures in this period yet.');
+ const W=640,H=270,L=20,R=20,T=34,BT=52,w=W-L-R,h=H-T-BT;
+ const st=[{l:'Net sales',a:0,b:c.netSales,k:1,v:c.netSales},{l:'Cost of goods sold',a:c.netSales,b:r2(c.netSales-c.cogs),k:2,v:-c.cogs},{l:'Gross profit',a:0,b:c.grossProfit,k:3,v:c.grossProfit},{l:'Operating expenses',a:c.grossProfit,b:r2(c.grossProfit-c.opex),k:2,v:-c.opex},{l:'Net profit',a:0,b:c.netProfit,k:3,v:c.netProfit}];
+ const vals=st.flatMap(s=>[s.a,s.b]),mn=Math.min(0,...vals),mx=Math.max(1,...vals),pad=(mx-mn)*0.04;
+ const Y=v=>T+h-(v-(mn-pad))/((mx+pad)-(mn-pad))*h,sw=w/st.length,bw=24;
+ let g=`<line class="ax" x1="${L}" x2="${W-R}" y1="${Y(0).toFixed(1)}" y2="${Y(0).toFixed(1)}"/>`;
+ st.forEach((s,i)=>{
+  const cx=L+i*sw+sw/2,x=cx-bw/2,y0=Y(s.a),y1=Y(s.b);
+  g+=`<path class="f${s.k}" d="${barPath(+x.toFixed(1),bw,+y0.toFixed(1),+y1.toFixed(1),4)}"/>`;
+  if(i<st.length-1){const nx=L+(i+1)*sw+sw/2-bw/2,ly=(i===0||i===2?y1:y1);g+=`<line class="gl" x1="${(x+bw).toFixed(1)}" x2="${nx.toFixed(1)}" y1="${ly.toFixed(1)}" y2="${ly.toFixed(1)}"/>`}
+  const top=Math.min(y0,y1),bot=Math.max(y0,y1),neg=s.b<s.a&&s.a===0;
+  g+=`<text class="dl" x="${cx.toFixed(1)}" y="${(neg?bot+14:top-7).toFixed(1)}" text-anchor="middle">${s.v<0&&i%2===1?'-':''}${rsShort(Math.abs(s.v)).replace('-','')}${s.v<0&&i%2===0?'':''}</text>`;
+  const words=s.l.split(' '),mid=Math.ceil(words.length/2),l1=words.slice(0,mid).join(' '),l2=words.slice(mid).join(' ');
+  g+=`<text x="${cx.toFixed(1)}" y="${H-30}" text-anchor="middle">${esc(l1)}</text>${l2?`<text x="${cx.toFixed(1)}" y="${H-16}" text-anchor="middle">${esc(l2)}</text>`:''}`;
+  g+=`<rect class="hit band" tabindex="0" x="${(L+i*sw).toFixed(1)}" y="${T}" width="${sw.toFixed(1)}" height="${h}" ${tipAttr(s.l,[[c.netSales>0?(s.v/c.netSales*100).toFixed(1)+'% of net sales':'Amount',money(s.v),'v'+s.k]])}/>`;
+ });
+ const rows=st.map(s=>[s.l,money(s.v),c.netSales>0?(s.v/c.netSales*100).toFixed(1)+'%':'—']);
+ return `<div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="From net sales to net profit">${g}</svg>${tv(['Step','Amount','% of net sales'],rows)}</div>`;
+}
+function hBars(items,o={}){
+ const k=o.k||1,fmt=o.fmt||money;
+ if(!items.length)return noData(o.empty||'Nothing to show yet.');
+ const mx=Math.max(...items.map(i=>Math.abs(i.v)),1);
+ return `<div class="hbs">${items.map(i=>`<div class="hb" tabindex="0" ${tipAttr(i.l,[[i.sub||o.sub||'Amount',fmt(i.v),'v'+k]])}><span class="hbl" title="${esc(i.l)}">${esc(i.l)}</span><span class="hbt"><i class="f${k}" style="width:${Math.max(1.5,Math.abs(i.v)/mx*100).toFixed(1)}%"></i></span><b>${esc(fmt(i.v))}</b></div>`).join('')}</div>${tv([o.head||'Item','Amount'],items.map(i=>[i.l,fmt(i.v)]))}`;
+}
+function vDonut(items,title){
+ const tot=items.reduce((n,i)=>n+Math.max(0,i.v),0);
+ if(tot<=0)return noData('No money movement recorded in this period yet.');
+ const cx=100,cy=100,R=88,r0=54,gap=2;
+ const pt=(a,rad)=>[cx+rad*Math.sin(a),cy-rad*Math.cos(a)];
+ let a0=0,g='';const live=items.filter(i=>i.v>0);
+ live.forEach(i=>{
+  const frac=i.v/tot,tip=tipAttr(i.l,[[(frac*100).toFixed(1)+'% of the total',money(i.v),'v'+i.k]]);
+  if(live.length===1){g+=`<path class="f${i.k}" fill-rule="evenodd" tabindex="0" d="M${cx} ${cy-R}A${R} ${R} 0 1 1 ${cx} ${cy+R}A${R} ${R} 0 1 1 ${cx} ${cy-R}ZM${cx} ${cy-r0}A${r0} ${r0} 0 1 0 ${cx} ${cy+r0}A${r0} ${r0} 0 1 0 ${cx} ${cy-r0}Z" ${tip}/>`;return}
+  const a1=a0+frac*2*Math.PI,ga=gap/R,ia=gap/r0,s=a0+ga/2,e=a1-ga/2,s2=a0+ia/2,e2=a1-ia/2;
+  if(e>s){const big=(e-s)>Math.PI?1:0,big2=(e2-s2)>Math.PI?1:0,[x1,y1]=pt(s,R),[x2,y2]=pt(e,R),[x3,y3]=pt(e2,r0),[x4,y4]=pt(s2,r0);
+   g+=`<path class="f${i.k}" tabindex="0" d="M${x1.toFixed(2)} ${y1.toFixed(2)}A${R} ${R} 0 ${big} 1 ${x2.toFixed(2)} ${y2.toFixed(2)}L${x3.toFixed(2)} ${y3.toFixed(2)}A${r0} ${r0} 0 ${big2} 0 ${x4.toFixed(2)} ${y4.toFixed(2)}Z" ${tip}/>`}
+  a0=a1;
+ });
+ const list=items.map(i=>`<div class="dli" tabindex="0" ${tipAttr(i.l,[[tot>0?(Math.max(0,i.v)/tot*100).toFixed(1)+'% of the total':'',money(i.v),'v'+i.k]])}><i class="v${i.k}"></i><span>${esc(i.l)}</span><b>${esc(money(i.v))}</b><small>${esc(i.note||'')}${tot>0?' · '+(Math.max(0,i.v)/tot*100).toFixed(1)+'%':''}</small></div>`).join('');
+ return `<div class="chart"><div class="donut"><svg viewBox="0 0 200 200" role="img" aria-label="${esc(title)}">${g}<text x="100" y="97" text-anchor="middle" style="font-size:11px">Total</text><text class="dl" x="100" y="114" text-anchor="middle" style="font-size:12px">${esc(rsShort(tot))}</text></svg><div class="dlist">${list}</div></div>${tv(['Item','Amount','Share'],items.map(i=>[i.l,money(i.v),tot>0?(Math.max(0,i.v)/tot*100).toFixed(1)+'%':'—']))}</div>`;
+}
+function deltaHTML(cur,prev,lab,goodUp=true){
+ if(!prev&&!cur)return `<span class="d">No change vs ${esc(lab)}</span>`;
+ if(!prev)return `<span class="d">New vs ${esc(lab)}</span>`;
+ const c=(cur-prev)/Math.abs(prev)*100,up=c>=0,good=goodUp?up:!up;
+ return `<span class="d ${Math.abs(c)<0.05?'':good?'up':'dn'}">${up?'▲':'▼'} ${Math.abs(c).toFixed(1)}% vs ${esc(lab)}</span>`;
+}
+const moneyItems=c=>[{l:'Cash collected',v:Math.max(0,c.cashIn),k:1,note:'Received this period'},{l:'Customer dues',v:receivablesAll(),k:4,note:'Still to collect (today)'},{l:'Expenses',v:c.expAll,k:3,note:'Paid this period'},{l:'Must pay (suppliers)',v:purOwedAll(),k:2,note:'Owed to suppliers (today)'}];
+const kpi=(k,v,d,s)=>`<div class="kpi"><div class="k">${esc(k)}</div><div class="v">${v}</div>${d||''}${s?`<div class="s">${s}</div>`:''}</div>`;
+
+// hover / focus tooltips for every chart (event delegation; text only, never innerHTML)
+(function(){
+ let tip;
+ const ensure=()=>{if(!tip){tip=document.createElement('div');tip.id='vizTip';tip.className='viztip';document.body.appendChild(tip)}return tip};
+ function show(el,e){
+  let d;try{d=JSON.parse(el.getAttribute('data-tip'))}catch(x){return}
+  const t=ensure();t.textContent='';
+  const h=document.createElement('div');h.className='tt';h.textContent=d.t;t.appendChild(h);
+  (d.r||[]).forEach(([n,v,c])=>{const row=document.createElement('div'),k=document.createElement('i'),val=document.createElement('b'),nm=document.createElement('span');row.className='tr';k.className='k '+(c||'');val.textContent=v;nm.textContent=n;row.append(k,val,nm);t.appendChild(row)});
+  t.style.display='block';
+  const r=el.getBoundingClientRect(),usePtr=e&&e.type!=='focusin'&&e.clientX!=null,px=usePtr?e.clientX:r.left+r.width/2,py=usePtr?e.clientY:r.top,tw=t.offsetWidth,th=t.offsetHeight;
+  let x=px+14,y=py-th-12;if(x+tw>innerWidth-8)x=px-tw-14;if(x<8)x=8;if(y<8)y=py+18;
+  t.style.left=x+'px';t.style.top=y+'px';
+  const svg=el.closest('svg'),xh=svg&&svg.querySelector('.xh');
+  if(xh&&el.getAttribute('data-x')){xh.setAttribute('x1',el.getAttribute('data-x'));xh.setAttribute('x2',el.getAttribute('data-x'));xh.style.visibility='visible'}
+ }
+ function hide(){if(tip)tip.style.display='none';document.querySelectorAll('.xh').forEach(x=>x.style.visibility='hidden')}
+ const find=e=>e.target&&e.target.closest?e.target.closest('[data-tip]'):null;
+ document.addEventListener('pointermove',e=>{const el=find(e);if(el)show(el,e);else hide()});
+ document.addEventListener('pointerdown',e=>{const el=find(e);if(el)show(el,e)});
+ document.addEventListener('focusin',e=>{const el=find(e);if(el)show(el,e)});
+ document.addEventListener('focusout',hide);
+ document.addEventListener('scroll',hide,true);
+})();
+
+// ---------- styles shared by the app, the print window and the PDF ----------
+const VIZ_COMMON_CSS=`
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}
+.kpi{border:1px solid var(--grid);border-radius:12px;padding:11px 13px;background:var(--surf);min-width:0}
+.kpi .k{font-size:11px;color:var(--ink2);font-weight:600}
+.kpi .v{font-size:22px;line-height:1.2;font-weight:700;color:var(--ink);margin:3px 0;overflow-wrap:anywhere}
+.kpi .d{display:block;font-size:11px;color:var(--ink2)}.kpi .d.up{color:var(--up)}.kpi .d.dn{color:var(--dn)}
+.kpi .s{font-size:11px;color:var(--ink2);margin-top:2px}
+.rcard{border:1px solid var(--grid);border-radius:12px;padding:12px 14px;margin:10px 0;background:var(--surf);min-width:0}
+.rcard h4{margin:0;font-size:13px;color:var(--ink)}.rcard .cap{font-size:11px;color:var(--ink2);margin:2px 0 8px}
+.rgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px}
+.plain{margin:6px 0 4px;padding:10px 14px 10px 30px;border:1px solid var(--grid);border-radius:12px;background:var(--surf);color:var(--ink);font-size:12px;line-height:1.6}
+.plain li{margin:2px 0}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart svg text{fill:var(--ink2);font-size:11px;font-family:inherit}.chart svg text.dl{fill:var(--ink);font-weight:600}
+.chart .gl{stroke:var(--grid);stroke-width:1}.chart .ax{stroke:var(--axis);stroke-width:1}.chart .xh{stroke:var(--axis);stroke-width:1}
+.chart .ln{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}.chart .ln.v1{stroke:var(--s1)}.chart .ln.v2{stroke:var(--s2)}.chart .ln.v3{stroke:var(--s3)}
+.chart .area{stroke:none;opacity:.1}.chart .area.v1{fill:var(--s1)}.chart .area.v3{fill:var(--s3)}
+.chart .dt{stroke:var(--surf);stroke-width:2}.chart .dt.v1{fill:var(--s1)}.chart .dt.v2{fill:var(--s2)}.chart .dt.v3{fill:var(--s3)}
+.chart .f4{fill:var(--s4)}.chart .f1,.hb .f1{fill:var(--s1);background:var(--s1)}.chart .f2,.hb .f2{fill:var(--s2);background:var(--s2)}.chart .f3,.hb .f3{fill:var(--s3);background:var(--s3)}
+.chart .hit{fill:transparent;outline:none}.chart .hit.band:hover,.chart .hit.band:focus{fill:var(--grid);fill-opacity:.45}
+.lg{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0 0 6px;font-size:11px;color:var(--ink2)}
+.lgi{display:inline-flex;align-items:center;gap:6px}.lgi i{display:inline-block}
+.lgi .sw{width:10px;height:10px;border-radius:3px}.lgi .ln{width:16px;height:2px;border-radius:2px}
+.lgi .v4{background:var(--s4)}.lgi .v1{background:var(--s1)}.lgi .v2{background:var(--s2)}.lgi .v3{background:var(--s3)}
+.donut{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;justify-content:center}.donut svg{width:200px;max-width:100%;flex:0 0 auto}
+.dlist{flex:1 1 220px;min-width:0;display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--ink)}
+.dli{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:4px 8px;align-items:center;padding:4px 6px;border-radius:6px;outline:none}.dli:hover,.dli:focus{background:var(--grid)}
+.dli i{width:12px;height:12px;border-radius:3px;display:block}.dli i.v1{background:var(--s1)}.dli i.v2{background:var(--s2)}.dli i.v3{background:var(--s3)}.dli i.v4{background:var(--s4)}
+.dli span{color:var(--ink2)}.dli b{text-align:right}.dli small{grid-column:2/4;color:var(--ink2);font-size:10.5px;margin-top:-3px}
+.hbs{display:flex;flex-direction:column;gap:7px}
+.hb{display:grid;grid-template-columns:minmax(70px,30%) minmax(0,1fr) auto;gap:10px;align-items:center;font-size:12px;color:var(--ink);outline:none;border-radius:6px}
+.hb:hover,.hb:focus{background:var(--grid)}
+.hbl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink2)}.hbt{display:block}.hbt i{display:block;height:14px;border-radius:0 4px 4px 0}
+.hb b{font-weight:600;text-align:right}
+.tv{margin-top:6px;font-size:12px}.tv summary{cursor:pointer;color:var(--ink2);font-size:11px}
+.tv table{margin-top:6px}
+.fs,.tv table{min-width:0!important}.fs{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:6px}
+.fs th,.fs td{border:0;border-bottom:1px solid var(--grid);padding:5px 8px;text-align:left;color:var(--ink);background:transparent!important}
+.fs th{font-size:11px;color:var(--ink2);border-bottom:1px solid var(--ink)}
+.fs td,.fs th{white-space:normal}.fs .rnum,.fs th.rnum{text-align:right;white-space:nowrap}
+.fs tr.sec td{font-weight:700;background:var(--sec)!important;letter-spacing:.02em}
+.fs tr.ind td:first-child{padding-left:24px}
+.fs tr.tot td{font-weight:700;border-top:1px solid var(--ink)}
+.fs tr.grand td{font-weight:700;border-top:2px solid var(--ink);border-bottom:3px double var(--ink)}
+.fs tr.memo td{color:var(--ink2);font-size:11px}
+.rsig{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:26px;font-size:11px;color:var(--ink2)}.rsig div{border-top:1px solid var(--ink);padding-top:4px}
+.report-ids{font-size:11px;color:var(--ink2);margin:2px 0}
+.viztip{position:fixed;z-index:80;display:none;pointer-events:none;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px 10px;box-shadow:0 8px 24px rgba(0,0,0,.18);font-size:12px;max-width:260px}
+.viztip .tt{font-weight:600;margin-bottom:4px}.viztip .tr{display:grid;grid-template-columns:14px auto 1fr;gap:6px;align-items:center;margin:2px 0}
+.viztip .k{display:block;width:12px;height:3px;border-radius:2px}.viztip .k.v4{background:var(--s4)}.viztip .k.v1{background:var(--s1)}.viztip .k.v2{background:var(--s2)}.viztip .k.v3{background:var(--s3)}.viztip b{font-weight:700}
+@media(max-width:560px){.fs th,.fs td{padding:5px 3px;font-size:11px}.fs tr.ind td:first-child{padding-left:10px}.fs .rnum,.fs th.rnum{white-space:normal;overflow-wrap:anywhere}}
+@media(max-width:700px){.rgrid{grid-template-columns:minmax(0,1fr)}.kpi .v{font-size:19px}}
+`;
+const VIZ_APP_CSS=`:root{--s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--ink:var(--text);--ink2:var(--muted);--surf:var(--panel);--grid:var(--line);--axis:#c3c2b7;--up:#006300;--dn:#c0392b;--sec:var(--panel2)}
+[data-theme="dark"]{--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--axis:#383835;--up:#46d5a1;--dn:#ff7f87}
+.dgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.dgrid>*{min-width:0}
+@media(max-width:900px){.dgrid{grid-template-columns:minmax(0,1fr)}}
+.dctl select,.repctl select,.dctl input,.repctl input{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:9px 10px}
+.dctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.dctl select,.dctl input{width:auto;min-width:0}
+.attn{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.attn:last-child{border-bottom:0}
+.attn .t{min-width:0}.attn .t b{display:block}.attn .t span{font-size:12px;color:var(--muted)}
+.repctl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}.repctl select,.repctl input{width:auto;min-width:0}
+`;
+const VIZ_PRINT_CSS=`.report-print{--s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--ink:#0b0b0b;--ink2:#52514e;--surf:#fff;--grid:#d9d8d1;--axis:#8f8d86;--up:#006300;--dn:#b32d2d;--sec:#ececea;--panel:#fff;--text:#0b0b0b;--line:#ddd}
+.tv{display:none}.kpi .v{font-size:15px}.kpi{padding:7px 9px}.kpi .k,.kpi .d,.kpi .s{font-size:8px}.rcard{padding:8px 10px;margin:8px 0}.rcard h4{font-size:11px}.rcard .cap{font-size:8px}.plain{font-size:9.5px;padding:7px 10px 7px 24px}.lg{font-size:8px}.chart svg text{font-size:10.5px}.hb{font-size:9px}.fs{font-size:9px}.fs th{font-size:8px}.fs th,.fs td{padding:3px 6px}.rsig{font-size:9px}.report-ids{font-size:9px}
+.rgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+`;
+(function(){const s=document.createElement('style');s.id='vizStyle';s.textContent=VIZ_APP_CSS+VIZ_COMMON_CSS;document.head.appendChild(s)})();
+
+// ---------- Dashboard ----------
+let dashKey='today';try{dashKey=localStorage.getItem('cp_dash')||'today'}catch(e){}
+const DASH_OPTS=RANGE_OPTS.filter(o=>['today','7','30','month','year'].includes(o[0]));
+function renderDashboard(){
+ const el=$('dashBody');if(!el)return;
+ if(!DASH_OPTS.some(o=>o[0]===dashKey))dashKey='today';
+ const owner=userRole!=='cashier',r=rangeFor(dashKey),p=prevRange(r),c=statsFor(r.start,r.end),q=statsFor(p.start,p.end);
+ const vs=dashKey==='today'?'yesterday':'previous period';
+ $('dashRange').innerHTML=optsHTML(DASH_OPTS,dashKey);
+ $('dashSub').textContent=r.label+(r.days>1?' · '+r.start+' to '+r.end:' · '+r.start);
+ const owed=receivablesAll(),owedN=dueGroups().length;
+ let tiles=kpi('Net sales',money(c.netSales),deltaHTML(c.netSales,q.netSales,vs),`${c.count} sale${c.count===1?'':'s'}${c.returns>0?' · '+money(c.returns)+' returned':''}`);
+ if(owner)tiles+=kpi('Gross profit',money(c.grossProfit),deltaHTML(c.grossProfit,q.grossProfit,vs),'Margin '+c.margin.toFixed(1)+'% of net sales')
+  +kpi('Operating expenses',money(c.opex),deltaHTML(c.opex,q.opex,vs,false),c.stockExp>0?'Stock-purchase entries not counted':'Running costs recorded')
+  +kpi('Net profit',money(c.netProfit),deltaHTML(c.netProfit,q.netProfit,vs),'After expenses, before income tax');
+ else tiles+=kpi('Average bill',money(c.avgBill),deltaHTML(c.avgBill,q.avgBill,vs),c.items+' items sold');
+ tiles+=kpi('Customers owe you',money(owed),'',owedN+' customer'+(owedN===1?'':'s')+' with a balance')+(owner?kpi('Cash collected',money(c.cashIn),deltaHTML(c.cashIn,q.cashIn,vs),'Sales received + earlier dues paid'):kpi('Items sold',String(c.items),deltaHTML(c.items,q.items,vs),'After returns'));
+ const tr=r.days<7?{start:addDays(r.end,-6),end:r.end}:r,B=bucketSeries(tr.start,tr.end);
+ const top=c.products.filter(x=>x.qty>0).slice(0,6).map(x=>({l:x.name,v:owner?x.rev:x.qty,sub:owner?'Net sales ('+x.qty+' sold)':'Quantity sold'}));
+ const pays=Object.entries(c.byPay).sort((a,b)=>b[1]-a[1]).map(([l,v])=>({l,v}));
+ const low=db.products.filter(x=>isLow(x)).sort((a,b)=>a.stock-b.stock),out=low.filter(x=>Number(x.stock)<=0).length;
+ const att=[];
+ att.push(`<div class="attn"><div class="t"><b>${low.length?low.length+' item'+(low.length===1?'':'s')+' running low':'Stock levels are healthy'}</b><span>${low.length?esc(low.slice(0,3).map(x=>x.name+' ('+x.stock+')').join(', '))+(low.length>3?' …':'')+(out?' · '+out+' out of stock':''):'Nothing needs re-ordering right now'}</span></div>${low.length?`<button class="secondary small" onclick="go('inventory')">Open stock</button>`:''}</div>`);
+ att.push(`<div class="attn"><div class="t"><b>${owed>0?money(owed)+' to collect':'No customer dues'}</b><span>${owed>0?owedN+' customer'+(owedN===1?'':'s')+' with unpaid balances':'Everyone is paid up'}</span></div>${owed>0?`<button class="secondary small" onclick="go('debts')">Collect</button>`:''}</div>`);
+ if(owner){const po=purOwedAll();att.push(`<div class="attn"><div class="t"><b>${po>0?money(po)+' to pay suppliers':'No supplier dues'}</b><span>${po>0?'Unpaid stock purchases':'Nothing owed to suppliers'}</span></div>${po>0?`<button class="secondary small" onclick="go('payables')">Pay</button>`:''}</div>`);
+  att.push(`<div class="attn"><div class="t"><b>${money(stockValueCost())}</b><span>Stock on hand, valued at cost</span></div></div>`)}
+ const recent=db.sales.slice().sort((a,b)=>String(b.datetime||b.date).localeCompare(String(a.datetime||a.date))).slice(0,6);
+ el.innerHTML=`<div class="kpis">${tiles}</div>
+ <div class="dgrid">
+  <div class="card chartcard"><h3>${tr===r?'Sales and profit trend':'Daily sales, last 7 days'}</h3><div class="muted" style="font-size:12px;margin-bottom:8px">${owner?'Net sales and gross profit':'Net sales'} ${B.monthly?'by month':'by day'}, after returns</div>${vTrend(B,'Sales trend',owner)}</div>
+  ${owner?`<div class="card chartcard"><h3>Where the money went</h3><div class="muted" style="font-size:12px;margin-bottom:8px">${esc(r.label)}: from net sales down to net profit</div>${vWater(c)}</div>`:`<div class="card"><h3>How customers paid</h3><div class="muted" style="font-size:12px;margin-bottom:8px">${esc(r.label)}</div>${hBars(pays,{k:1,head:'Method',empty:'No sales in this period.'})}</div>`}
+  ${owner?`<div class="card chartcard"><h3>Money summary</h3><div class="muted" style="font-size:12px;margin-bottom:8px">Cash collected and expenses for ${esc(r.label.toLowerCase())}; customer dues and supplier dues as they stand today</div>${vDonut(moneyItems(c),'Money summary')}</div>`:''}
+  <div class="card"><h3>Best sellers</h3><div class="muted" style="font-size:12px;margin-bottom:8px">${owner?'By net sales value':'By quantity sold'}, ${esc(r.label.toLowerCase())}</div>${hBars(top,{k:1,fmt:owner?money:(n=>n+' sold'),head:'Product',empty:'No sales in this period.'})}</div>
+  <div class="card"><h3>Needs attention</h3>${att.join('')}</div>
+  ${owner?`<div class="card"><h3>How customers paid</h3><div class="muted" style="font-size:12px;margin-bottom:8px">Sales value by payment method, ${esc(r.label.toLowerCase())}</div>${hBars(pays,{k:1,head:'Method',empty:'No sales in this period.'})}</div>`:''}
+  <div class="card"><h3>Recent sales</h3><div class="tablewrap"><table><thead><tr><th>Receipt</th><th>Customer</th><th class="rnum">Total</th></tr></thead><tbody>${recent.map(s=>`<tr><td><b>${esc(s.date)}</b><div class="muted" style="font-size:11px;overflow-wrap:anywhere">${esc(s.id)}</div></td><td>${esc(s.customerName||'Walk-in')}</td><td class="rnum"><b>${money(s.total)}</b></td></tr>`).join('')||'<tr><td colspan="3" class="empty">No sales yet. Start at Point of Sale.</td></tr>'}</tbody></table></div></div>
+ </div>`;
+}
+
+// ---------- Reports ----------
+let repSel={key:'month',cs:'',ce:''};
+function resolveRange(a){
+ if(a&&typeof a==='object')return a;
+ if(a===30)return rangeFor('30');
+ if(a===365)return rangeFor('last12');
+ return rangeFor(repSel.key,repSel.cs,repSel.ce);
+}
+function renderReports(){
+ const sel=$('repKey');if(!sel)return;
+ if(!sel.options.length)sel.innerHTML=optsHTML(RANGE_OPTS,repSel.key);
+ sel.value=repSel.key;$('repCustom').classList.toggle('hidden',repSel.key!=='custom');
+ $('repFrom').value=repSel.cs;$('repTo').value=repSel.ce;
+ $('reportsBody').innerHTML=reportHTML(resolveRange('rep'));
+}
+function renderPeriodReport(days){
+ const t=$(days===365?'reportYearContent':'report30Content');if(t)t.innerHTML=reportHTML(resolveRange(days));
+}
+function reportHTML(r){
+ const c=statsFor(r.start,r.end),pr=prevRange(r),q=statsFor(pr.start,pr.end),st=db.store||{},B=bucketSeries(r.start,r.end);
+ const vs='previous period';
+ const recv=receivablesAll(),inv=stockValueCost(),invRetail=r2(db.products.reduce((n,p)=>n+(Number(p.stock)||0)*(Number(p.price)||0),0)),pay=purOwedAll();
+ const ids=[st.regNo&&'BR No: '+esc(st.regNo),st.tin&&'TIN: '+esc(st.tin),st.vatOn==='yes'&&st.vatNo&&'VAT Reg No: '+esc(st.vatNo)].filter(Boolean).join(' · ');
+ const rtable=(heads,rows,empty)=>`<table><thead><tr>${heads.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.length?rows.join(''):`<tr><td colspan="${heads.length}" class="empty">${empty}</td></tr>`}</tbody></table>`;
+ const pctOf=(a,b)=>b>0?(a/b*100).toFixed(1)+'%':'—';
+ const fr=(cls,label,a,b)=>`<tr class="${cls}"><td>${label}</td><td class="rnum">${acc(a)}</td><td class="rnum">${pctOf(a,c.netSales)}</td><td class="rnum">${acc(b)}</td></tr>`;
+ const prevCat=Object.fromEntries(q.expCat);
+ const opexCats=c.expCat.filter(([k])=>k!=='Stock purchase');
+ const incomeRows=[
+  `<tr class="sec"><td colspan="4">REVENUE</td></tr>`,
+  fr('ind','Gross sales (at selling price)',c.gross,q.gross),
+  fr('ind','Less: discounts allowed',-c.discounts,-q.discounts),
+  fr('tot','Sales after discounts',c.netBefore,q.netBefore),
+  fr('ind','Less: sales returns and refunds',-c.returns,-q.returns),
+  fr('tot','NET SALES (REVENUE)',c.netSales,q.netSales),
+  fr('ind','Less: cost of goods sold',-c.cogs,-q.cogs),
+  fr('tot','GROSS PROFIT',c.grossProfit,q.grossProfit),
+  `<tr class="sec"><td colspan="4">OPERATING EXPENSES</td></tr>`,
+  ...(opexCats.length?opexCats.map(([k,v])=>fr('ind',esc(k),-v,-(prevCat[k]||0))):[`<tr class="ind"><td colspan="4" class="muted">No operating expenses recorded</td></tr>`]),
+  fr('tot','Total operating expenses',-c.opex,-q.opex),
+  fr('grand','NET PROFIT / (LOSS) FOR THE PERIOD',c.netProfit,q.netProfit)
+ ].join('');
+ const vatOn=st.vatOn==='yes',vr=Number(st.vatRate)||0,vatC=r2(c.netSales*vr/(100+vr));
+ const memo=[c.stockExp>0?`<tr class="memo"><td colspan="4">Memo: ${money(c.stockExp)} entered as “Stock purchase” expenses is not deducted again, because cost of goods sold already covers the stock you sold.</td></tr>`:'',vatOn?`<tr class="memo"><td colspan="4">Memo: output VAT included in net sales (estimate at ${vr}%): ${money(vatC)} · net sales excluding VAT: ${money(r2(c.netSales-vatC))}. Selling prices are treated as VAT-inclusive.</td></tr>`:''].join('');
+ const cashRows=[
+  `<tr class="sec"><td colspan="2">CASH RECEIVED</td></tr>`,
+  `<tr class="ind"><td>Received from customers at the time of sale</td><td class="rnum">${acc(c.cashSale)}</td></tr>`,
+  `<tr class="ind"><td>Received from customers for earlier credit sales (due payments)</td><td class="rnum">${acc(c.cashDues)}</td></tr>`,
+  `<tr class="tot"><td>Total cash received</td><td class="rnum">${acc(c.cashIn)}</td></tr>`,
+  `<tr class="sec"><td colspan="2">CASH PAID</td></tr>`,
+  `<tr class="ind"><td>Refunds paid to customers in cash</td><td class="rnum">${acc(-c.cashRefund)}</td></tr>`,
+  `<tr class="ind"><td>Paid to suppliers for stock</td><td class="rnum">${acc(-c.paidSup)}</td></tr>`,
+  `<tr class="ind"><td>Expenses paid</td><td class="rnum">${acc(-c.expAll)}</td></tr>`,
+  `<tr class="tot"><td>Total cash paid</td><td class="rnum">${acc(-c.cashOut)}</td></tr>`,
+  `<tr class="grand"><td>NET CASH MOVEMENT FOR THE PERIOD (ESTIMATE)</td><td class="rnum">${acc(c.cashNet)}</td></tr>`,
+  `<tr class="memo"><td colspan="2">Memo: credit sales left unpaid in the period ${money(c.dueCreated)} · stock bought in the period ${money(c.purchased)}. Opening and closing cash / bank balances are not recorded in the POS, so no closing cash figure is shown.</td></tr>`
+ ].join('');
+ const balRows=[
+  `<tr class="ind"><td>Inventory at cost (stock on hand × unit cost)</td><td class="rnum">${acc(inv)}</td></tr>`,
+  `<tr class="ind"><td>Trade receivables: amounts customers still owe</td><td class="rnum">${acc(recv)}</td></tr>`,
+  `<tr class="ind"><td>Less: trade payables: amounts owed to suppliers</td><td class="rnum">${acc(-pay)}</td></tr>`,
+  `<tr class="grand"><td>Inventory + receivables − payables (excludes cash and bank)</td><td class="rnum">${acc(inv+recv-pay)}</td></tr>`,
+  `<tr class="memo"><td colspan="2">Memo: stock on hand at selling price ${money(invRetail)}. These are today's balances (${today()}), not balances at the end of the period.</td></tr>`
+ ].join('');
+ const monthTotNP=B.np.reduce((a,b)=>a+b,0);
+ const monthRows=B.labels.map((k,i)=>`<tr><td>${esc(bLabel(k,true))}</td><td class="rnum">${B.count[i]}</td><td class="rnum">${money(B.net[i])}</td><td class="rnum">${money(B.cogs[i])}</td><td class="rnum">${money(B.gp[i])}</td><td class="rnum">${money(B.opex[i])}</td><td class="rnum">${money(B.np[i])}</td><td class="rnum">${monthTotNP>0?(B.np[i]/monthTotNP*100).toFixed(1)+'%':'—'}</td></tr>`).concat([`<tr class="rtotal"><td>TOTAL</td><td class="rnum">${B.count.reduce((a,b)=>a+b,0)}</td><td class="rnum">${money(c.netSales)}</td><td class="rnum">${money(c.cogs)}</td><td class="rnum">${money(c.grossProfit)}</td><td class="rnum">${money(c.opex)}</td><td class="rnum">${money(c.netProfit)}</td><td class="rnum">${monthTotNP>0?'100.0%':'—'}</td></tr>`]);
+ const sales=c.sales.slice().sort((a,b)=>saleDateKey(a).localeCompare(saleDateKey(b))||String(a.datetime||'').localeCompare(String(b.datetime||'')));
+ const debts=(Array.isArray(db.debts)?db.debts:[]).filter(d=>inPeriod(d.date||d.datetime,r.start,r.end));
+ const purs=purList().filter(x=>inPeriod(x.date,r.start,r.end)).sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+ const saleRows=sales.map(s=>`<tr><td>${esc(s.date||'')}</td><td>${esc(s.id||'')}</td><td>${esc(s.customerName||'Walk-in')}</td><td>${esc(s.payment||'')}</td><td class="rnum">${(s.items||[]).reduce((n,i)=>n+Number(i.qty||0),0)}</td><td class="rnum">${money(s.subtotal)}</td><td class="rnum">${money(s.discount)}</td><td class="rnum">${money(s.total)}</td><td class="rnum">${money(saleReturnValue(s.id))}</td><td class="rnum">${money(Math.min(Number(s.total)||0,Number(s.received??s.total)||0))}</td><td class="rnum">${money(Math.max(0,Number(s.total||0)-Number(s.received??s.total??0)))}</td></tr>`);
+ const retRows=c.rets.slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))).map(x=>`<tr><td>${esc(x.date||'')}</td><td>${esc(x.id||'')}</td><td>${esc(x.saleId||'')}</td><td>${esc(x.customerName||'Walk-in')}</td><td>${(x.items||[]).map(i=>esc(i.name)+' × '+i.qty).join(', ')}</td><td class="rnum">${money(x.refund)}</td><td class="rnum">${money(x.profitLoss)}</td><td>${x.restock?'Back in stock':'Not restocked'}</td></tr>`);
+ const expRows=c.exps.slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))).map(e=>`<tr><td>${esc(e.date||'')}</td><td>${esc(e.description||'')}</td><td>${esc(e.category||'')}</td><td class="rnum">${money(e.amount)}</td></tr>`);
+ const debtRows=debts.map(d=>`<tr><td>${esc(d.date||'')}</td><td>${esc(d.saleId||'')}</td><td>${esc(d.customerName||'Walk-in')}</td><td>${esc(d.customerPhone||'')}</td><td class="rnum">${money(d.total)}</td><td class="rnum">${money(d.received)}</td><td class="rnum">${money(d.paidLater)}</td><td class="rnum">${money(d.balance)}</td><td>${Number(d.balance||0)<=0.005?'Paid':'Due'}</td></tr>`);
+ const purRows=purs.map(x=>`<tr><td>${esc(x.date||'')}</td><td>${esc(x.supplierName||'')}</td><td>${esc(x.productName||'')}</td><td class="rnum">${x.qty}</td><td class="rnum">${money(x.unitCost)}</td><td class="rnum">${money(x.total)}</td><td class="rnum">${money((Number(x.total)||0)-(Number(x.balance)||0))}</td><td class="rnum">${money(x.balance)}</td></tr>`);
+ const prodRows=c.products.map(x=>`<tr><td>${esc(x.name)}</td><td class="rnum">${x.qty}</td><td class="rnum">${money(x.rev)}</td><td class="rnum">${money(x.profit)}</td></tr>`);
+ const debtorRows=dueGroups().sort((a,b)=>b.balance-a.balance).map(g=>`<tr><td>${esc(g.name)}</td><td>${esc(g.phone||'')}</td><td class="rnum">${g.debts.length}</td><td class="rnum">${money(g.balance)}</td></tr>`);
+ const stockRows=(db.products||[]).map(p=>`<tr><td>${esc(p.sku||'')}</td><td>${esc(p.name||'')}</td><td>${esc(p.category||'')}</td><td class="rnum">${Number(p.stock||0)}</td><td class="rnum">${money(p.cost)}</td><td class="rnum">${money(p.price)}</td><td class="rnum">${money(Number(p.stock||0)*Number(p.cost||0))}</td></tr>`);
+ const pays=Object.entries(c.byPay).sort((a,b)=>b[1]-a[1]).map(([l,v])=>({l,v}));
+ const topP=c.products.filter(x=>x.qty>0).slice(0,8).map(x=>({l:x.name,v:x.rev,sub:'Net sales ('+x.qty+' sold)'}));
+ const expB=c.expCat.map(([l,v])=>({l:l==='Stock purchase'?l+' (memo)':l,v}));
+ const plain=`<ul class="plain">
+  <li>You made <b>${c.count}</b> sale${c.count===1?'':'s'} worth <b>${money(c.netBefore)}</b>${c.returns>0?`; <b>${money(c.returns)}</b> was returned, so net sales are <b>${money(c.netSales)}</b>`:''}.</li>
+  <li>The goods you sold cost <b>${money(c.cogs)}</b>, so gross profit is <b>${money(c.grossProfit)}</b>${c.netSales>0?' ('+c.margin.toFixed(1)+'% of net sales)':''}.</li>
+  <li>Running costs were <b>${money(c.opex)}</b>, which leaves a net ${c.netProfit>=0?'profit':'loss'} of <b>${money(Math.abs(c.netProfit))}</b> before income tax.</li>
+  <li>Today customers owe you <b>${money(recv)}</b>, you owe suppliers <b>${money(pay)}</b>, and your stock is worth <b>${money(inv)}</b> at cost.</li></ul>`;
+ const sec=t=>`<h3>${t}</h3>`;
+ return `<div class="report-print">
+ <header class="report-brand">${st.logo?`<img class="report-logo" src="${st.logo}" alt="Store logo">`:''}<div class="report-store"><h1>${esc(st.name||'ConnectPOS Store')}</h1><div>${esc(st.address||'')}</div><div>${esc(st.phone||'')}</div>${ids?`<div class="report-ids">${ids}</div>`:''}</div><h2>Business Performance Report</h2><p>${esc(r.label)} · ${r.start} to ${r.end} · Currency: Sri Lankan Rupee (LKR) · Prepared ${esc(new Date().toLocaleString())}</p></header>
+ ${sec('At a glance')}
+ <div class="kpis">${kpi('Net sales',money(c.netSales),deltaHTML(c.netSales,q.netSales,vs),c.count+' sale'+(c.count===1?'':'s'))}${kpi('Gross profit',money(c.grossProfit),deltaHTML(c.grossProfit,q.grossProfit,vs),'Margin '+c.margin.toFixed(1)+'%')}${kpi('Operating expenses',money(c.opex),deltaHTML(c.opex,q.opex,vs,false),'')}${kpi('Net profit',money(c.netProfit),deltaHTML(c.netProfit,q.netProfit,vs),'Net margin '+c.netMargin.toFixed(1)+'%')}${kpi('Net cash movement',money(c.cashNet),'','Estimate, see cash statement')}${kpi('Average bill',money(c.avgBill),'',c.items+' items sold')}</div>
+ ${plain}
+ <div class="rcard"><h4>${B.monthly?'Monthly sales, profit and expenses':'Daily sales and gross profit'}</h4><div class="cap">Net sales are after returns. Hover or tap a point for exact figures.</div>${vTrend(B,'Sales trend')}</div>
+ <div class="rgrid"><div class="rcard"><h4>From sales to net profit</h4><div class="cap">Where each rupee of sales went</div>${vWater(c)}</div><div class="rcard"><h4>How customers paid</h4><div class="cap">Sales value by payment method</div>${hBars(pays,{k:1,head:'Method',empty:'No sales in this period.'})}</div></div>
+ <div class="rcard"><h4>Money summary</h4><div class="cap">Cash collected and expenses in the period; customer dues and supplier dues as at today</div>${vDonut(moneyItems(c),'Money summary')}</div>
+ <div class="rgrid"><div class="rcard"><h4>Best sellers</h4><div class="cap">By net sales value (after returns)</div>${hBars(topP,{k:1,head:'Product',empty:'No products sold in this period.'})}</div><div class="rcard"><h4>Expenses by category</h4><div class="cap">All recorded expenses</div>${hBars(expB,{k:2,head:'Category',empty:'No expenses recorded in this period.'})}</div></div>
+ ${sec('Statement of profit or loss')}
+ <table class="fs"><thead><tr><th>For the period ${r.start} to ${r.end} (Rs)</th><th class="rnum">This period</th><th class="rnum">% of net sales</th><th class="rnum">Previous ${r.days} day${r.days===1?'':'s'}</th></tr></thead><tbody>${incomeRows}${memo}</tbody></table>
+ ${sec('Statement of cash movement (estimate)')}
+ <table class="fs"><thead><tr><th>For the period ${r.start} to ${r.end} (Rs)</th><th class="rnum">Amount</th></tr></thead><tbody>${cashRows}</tbody></table>
+ ${sec('Key balances today')}
+ <table class="fs"><thead><tr><th>As at ${today()} (Rs)</th><th class="rnum">Amount</th></tr></thead><tbody>${balRows}</tbody></table>
+ ${B.monthly?sec('Month-by-month summary')+rtable(['Month','Sales','Net sales','Cost of goods','Gross profit','Expenses','Net profit','Share of period profit'],monthRows,'No months in this period.'):''}
+ ${sec('Sales transactions ('+sales.length+')')}${rtable(['Date','Receipt','Customer','Payment','Qty','Subtotal','Discount','Total','Returns','Received','Due at sale'],saleRows,'No sales recorded in this period.')}
+ ${sec('Returns ('+c.rets.length+')')}${rtable(['Date','Return no.','Invoice','Customer','Items returned','Refund','Profit reduced','Stock'],retRows,'No returns recorded in this period.')}
+ ${sec('Expenses ('+c.exps.length+')')}${rtable(['Date','Description','Category','Amount'],expRows,'No expenses recorded in this period.')}
+ ${sec('Credit sales created in the period ('+debts.length+')')}${rtable(['Date','Receipt','Customer','Phone','Bill total','Received at sale','Paid later','Balance due','Status'],debtRows,'No credit sales in this period.')}
+ ${sec('Customers who owe money today')}${rtable(['Customer','Phone','Invoices','Balance due'],debtorRows,'No customer dues. Everyone is paid up.')}
+ ${sec('Supplier purchases ('+purs.length+')')}${rtable(['Date','Supplier','Product','Qty','Unit cost','Total','Paid so far','To pay'],purRows,'No supplier purchases recorded in this period.')}
+ ${sec('Suppliers summary')}${rtable(['Supplier','Purchases','Total bought','Paid so far','To pay'],supplierSummaryRows(purs),'No supplier purchases in this period.')}
+ ${sec('Products sold (net of returns)')}${rtable(['Product','Quantity sold','Net sales value','Gross profit before bill discounts'],prodRows,'No products sold in this period.')}
+ ${sec('Current inventory')}${rtable(['SKU','Product','Category','Stock now','Unit cost','Unit price','Stock cost value'],stockRows,'No products in inventory.')}
+ ${sec('Notes to this report')}
+ <div class="report-note"><b>1. Basis of preparation.</b> Management report prepared from the transactions recorded in Con-Nect POS on the accrual (invoice date) basis, in Sri Lankan Rupees. The statements follow the presentation structure of IAS 1 / SLFRS for SMEs (statement of profit or loss, by function) but are unaudited and are not a complete set of financial statements.</div>
+ <div class="report-note"><b>2. Revenue.</b> Recognised on the invoice date at the invoiced value after discounts (IFRS 15 / SLFRS for SMEs Section 23). Returns are deducted on the date the return is processed. Credit sales are included in revenue when invoiced.</div>
+ <div class="report-note"><b>3. Cost of goods sold and inventory.</b> Cost of goods sold is the recorded unit cost of items sold on each invoice. The cost of returned items put back in stock is removed from cost of goods sold; returned items not restocked stay as cost. Inventory is valued at recorded cost and is not tested for net realisable value (IAS 2 / SLFRS for SMEs Section 13). The inventory list is today's snapshot, not stock at the end of the period.</div>
+ <div class="report-note"><b>4. Expenses.</b> Operating expenses are taken on the expense date. Stock bought for resale belongs in inventory, so “Stock purchase” entries are not deducted again.</div>
+ <div class="report-note"><b>5. Cash and balances.</b> The cash movement statement is estimated from recorded receipts and payments. Opening and closing cash and bank balances are not recorded, so no closing cash figure is given. Receivables and payables are today's balances.</div>
+ <div class="report-note"><b>6. Tax.</b> ${vatOn?`VAT-registered. Selling prices are treated as VAT-inclusive at ${vr}%; VAT figures are estimates for convenience.`:'VAT is not applied in this report.'} Income tax is not calculated. Please confirm VAT, income tax and statutory filings with your accountant.</div>
+ <div class="rsig"><div>Prepared by</div><div>Reviewed by</div><div>Date</div></div>
+ </div>`;
+}
+/*ANALYTICS-END*/
+
 async function downloadPeriodPdf(days){
  const PW=794,PH=1123,M=45,CW=PW-2*M,CH=PH-2*M-14,SCALE=2;
- const name=days===365?'Last-1-Year':'Last-30-Days';
+ const rng=resolveRange(days),name=rng.label.replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,'');
  toast('Preparing A4 PDF… please wait');
  let frame;
  try{
-  const body=periodReportHTML(days);
+  const body=reportHTML(rng);
   frame=document.createElement('iframe');
   frame.style.cssText=`position:fixed;left:-10000px;top:0;width:${CW}px;height:${PH}px;border:0;visibility:hidden`;
   document.body.appendChild(frame);
@@ -887,7 +1209,7 @@ async function downloadPeriodPdf(days){
   const doc=frame.contentDocument,top0=doc.body.getBoundingClientRect().top;
   const total=Math.ceil(doc.documentElement.scrollHeight);
   // safe places to start a new page: the bottom edge of a table row / summary line
-  const cuts=[...doc.querySelectorAll('tbody tr,.report-summary-list>div,.report-brand,.report-note')].map(e=>Math.floor(e.getBoundingClientRect().bottom-top0+0.5)).sort((a,b)=>a-b);
+  const cuts=[...doc.querySelectorAll('tbody tr,.report-summary-list>div,.report-brand,.report-note,.kpis,.rcard,.plain,.rsig')].map(e=>Math.floor(e.getBoundingClientRect().bottom-top0+0.5)).sort((a,b)=>a-b);
   const ranges=[];let start=0;
   while(start<total-2){
    const limit=start+CH;let end;
@@ -918,26 +1240,29 @@ async function downloadPeriodPdf(days){
   downloadPeriodReport(days);
  }finally{if(frame)frame.remove()}
 }
-const REPORT_PRINT_CSS=`*{box-sizing:border-box}body{font:10px/1.4 Arial,sans-serif;color:#171717;margin:0}.report-print{width:100%}.report-brand{position:relative;text-align:center;border-bottom:2px solid #222;padding:2px 0 8px;margin-bottom:12px;min-height:40px}.report-brand .report-logo{position:absolute;top:0;left:0;width:auto;height:auto;max-width:55px;max-height:38px;object-fit:contain}.report-brand h1{font-size:20px;margin:2px}.report-brand h2{font-size:16px;margin:8px 0 2px}.report-brand p{margin:2px;color:#444}h3{font-size:12px;margin:14px 0 5px;page-break-after:avoid}table{width:100%;border-collapse:collapse;table-layout:auto;margin-bottom:10px;font-size:8px}th,td{border:1px solid #777;padding:4px 5px;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:#eee;font-weight:bold}tr{page-break-inside:avoid}.report-summary-list{display:flex;flex-direction:column;border:1px solid #bbb;margin-bottom:10px}.report-summary-list>div{display:flex;justify-content:space-between;gap:10px;padding:5px 7px;border-bottom:1px solid #ddd}.report-summary-list>div:last-child{border-bottom:0}.report-summary-list strong{font-weight:bold}.report-summary-list b{text-align:right;font-weight:bold}tbody tr:nth-child(even) td{background:#f5f5f5}.rtotal td{font-weight:bold;background:#e2e2e2!important;border-top:2px solid #333}.rnum{text-align:right}.report-note{font-size:8px;color:#555;margin-top:12px;border-top:1px solid #aaa;padding-top:6px}.empty{text-align:center;color:#555}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}`;
+const REPORT_PRINT_CSS=`*{box-sizing:border-box}body{font:10px/1.4 Arial,sans-serif;color:#171717;margin:0}.report-print{width:100%}.report-brand{position:relative;text-align:center;border-bottom:2px solid #222;padding:2px 0 8px;margin-bottom:12px;min-height:40px}.report-brand .report-logo{position:absolute;top:0;left:0;width:auto;height:auto;max-width:55px;max-height:38px;object-fit:contain}.report-brand h1{font-size:20px;margin:2px}.report-brand h2{font-size:16px;margin:8px 0 2px}.report-brand p{margin:2px;color:#444}h3{font-size:12px;margin:14px 0 5px;page-break-after:avoid}table{width:100%;border-collapse:collapse;table-layout:auto;margin-bottom:10px;font-size:8px}th,td{border:1px solid #777;padding:4px 5px;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:#eee;font-weight:bold}tr{page-break-inside:avoid}.report-summary-list{display:flex;flex-direction:column;border:1px solid #bbb;margin-bottom:10px}.report-summary-list>div{display:flex;justify-content:space-between;gap:10px;padding:5px 7px;border-bottom:1px solid #ddd}.report-summary-list>div:last-child{border-bottom:0}.report-summary-list strong{font-weight:bold}.report-summary-list b{text-align:right;font-weight:bold}tbody tr:nth-child(even) td{background:#f5f5f5}.rtotal td{font-weight:bold;background:#e2e2e2!important;border-top:2px solid #333}.rnum{text-align:right}.report-note{font-size:8px;color:#555;margin-top:12px;border-top:1px solid #aaa;padding-top:6px}.empty{text-align:center;color:#555}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}`+VIZ_COMMON_CSS+VIZ_PRINT_CSS;
 function downloadPeriodReport(days){
- const body=periodReportHTML(days),title=days===365?'Last 1 Year Full Report':'Last 30 Days Full Report';
+ const rng=resolveRange(days),body=reportHTML(rng),title='Business Performance Report — '+rng.label;
  const w=window.open('','_blank');if(!w){toast('Please allow pop-ups to print the PDF report');return}
  w.document.open();w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${title}</title><style>
  @page{size:A4 portrait;margin:12mm}${REPORT_PRINT_CSS}
  </style></head><body>${body}<script>window.onload=()=>{setTimeout(()=>{window.focus();window.print()},350)};<\/script></body></html>`);
  w.document.close();
 }
-function fillSettings(){let s=db.store;$('setStoreName').value=s.name||'';$('setPhone').value=s.phone||'';$('setAddress').value=s.address||'';$('setFooter').value=s.footer||'';$('setLowStock').value=s.lowStock??5;$('setReceiptSize').value=s.receiptSize||'80';$('setAutoPrint').value=s.autoPrint||'yes';$('setShowLogo').value=s.showLogo||'yes';$('logoPreview').innerHTML=s.logo?`<img src="${s.logo}" alt="Store logo" style="max-width:120px;max-height:60px;object-fit:contain"><span class="muted">Current logo</span>`:'<span class="muted">No logo uploaded</span>'; $('setLogo').value=''}
+$('dashRange').onchange=e=>{dashKey=e.target.value;try{localStorage.setItem('cp_dash',dashKey)}catch(x){}renderDashboard()};
+$('repKey').onchange=e=>{repSel.key=e.target.value;if(repSel.key==='custom'&&!repSel.cs){repSel.ce=today();repSel.cs=addDays(today(),-29)}renderReports()};
+$('repFrom').onchange=e=>{repSel.cs=e.target.value;renderReports()};$('repTo').onchange=e=>{repSel.ce=e.target.value;renderReports()};
+function fillSettings(){let s=db.store;$('setStoreName').value=s.name||'';$('setPhone').value=s.phone||'';$('setAddress').value=s.address||'';$('setFooter').value=s.footer||'';$('setLowStock').value=s.lowStock??5;$('setReceiptSize').value=s.receiptSize||'80';$('setAutoPrint').value=s.autoPrint||'yes';$('setShowLogo').value=s.showLogo||'yes';$('setRegNo').value=s.regNo||'';$('setTin').value=s.tin||'';$('setVatNo').value=s.vatNo||'';$('setVatOn').value=s.vatOn||'no';$('setVatRate').value=s.vatRate??18;$('setReturnPolicy').value=s.returnPolicy||'';$('logoPreview').innerHTML=s.logo?`<img src="${s.logo}" alt="Store logo" style="max-width:120px;max-height:60px;object-fit:contain"><span class="muted">Current logo</span>`:'<span class="muted">No logo uploaded</span>'; $('setLogo').value=''}
 $('setLogo').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;if(f.size>2*1024*1024){toast('Please use a logo under 2 MB');e.target.value='';return}let r=new FileReader();r.onload=()=>{let img=new Image();img.onload=()=>{let logo;try{let iw=img.width||400,ih=img.height||200,sc=Math.min(1,400/iw,200/ih),w=Math.max(1,Math.round(iw*sc)),h=Math.max(1,Math.round(ih*sc)),cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);logo=cv.toDataURL('image/png')}catch(x){logo=String(r.result)}if(logo.length>700000){toast('Logo is too large. Please use a smaller image.');return}db.store.logo=logo;save();fillSettings();toast('Store logo saved')};img.onerror=()=>toast('Could not read that image');img.src=String(r.result)};r.readAsDataURL(f)});
-function saveSettings(){db.store={name:$('setStoreName').value.trim()||'My Communication Store',phone:$('setPhone').value.trim(),address:$('setAddress').value.trim(),footer:$('setFooter').value.trim(),lowStock:Math.max(0,Number($('setLowStock').value)||0),logo:db.store.logo||'',receiptSize:$('setReceiptSize').value||'80',autoPrint:$('setAutoPrint').value||'yes',showLogo:$('setShowLogo').value||'yes'};save();toast('Settings saved')}
+function saveSettings(){db.store={...db.store,name:$('setStoreName').value.trim()||'My Communication Store',phone:$('setPhone').value.trim(),address:$('setAddress').value.trim(),footer:$('setFooter').value.trim(),lowStock:Math.max(0,Number($('setLowStock').value)||0),logo:db.store.logo||'',receiptSize:$('setReceiptSize').value||'80',autoPrint:$('setAutoPrint').value||'yes',showLogo:$('setShowLogo').value||'yes',regNo:$('setRegNo').value.trim(),tin:$('setTin').value.trim(),vatNo:$('setVatNo').value.trim(),vatOn:$('setVatOn').value||'no',vatRate:Math.min(100,Math.max(0,Number($('setVatRate').value)||0)),returnPolicy:$('setReturnPolicy').value.trim()};save();toast('Settings saved')}
 function download(name,content,type='text/plain'){let blob=content instanceof Blob?content:new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
-function csv(rows){return rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n')}
+function csv(rows){const cell=v=>{let t=String(v??'');if(/^[=+\-@\t\r]/.test(t)&&isNaN(Number(t)))t="'"+t;return '"'+t.replace(/"/g,'""')+'"'};return rows.map(r=>r.map(cell).join(',')).join('\r\n')}
 function exportProducts(){download('connectpos-products.csv',csv([['SKU','Name','Category','Cost','Price','Stock','Reorder'],...db.products.map(p=>[p.sku,p.name,p.category,p.cost,p.price,p.stock,p.reorder])]),'text/csv')}
 function exportSales(){download('connectpos-sales.csv',csv([['Receipt','Date','Customer','Payment','Subtotal','Discount','Total','Profit'],...db.sales.map(s=>[s.id,s.datetime||s.date,s.customerName,s.payment,s.subtotal,s.discount,s.total,s.profit])]),'text/csv')}
 function exportCustomers(){download('connectpos-customers.csv',csv([['Name','Phone','Email','Notes'],...db.customers.map(c=>[c.name,c.phone,c.email,c.notes])]),'text/csv')}
 function exportExpenses(){download('connectpos-expenses.csv',csv([['Date','Description','Category','Amount'],...db.expenses.map(e=>[e.date,e.description,e.category,e.amount])]),'text/csv')}
 function backupData(){download('connectpos-backup-'+today()+'.json',JSON.stringify(db,null,2),'application/json')}
-function restoreData(){let f=$('restoreFile').files[0];if(!f)return toast('Choose a backup JSON file first');let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!d.products||!d.sales||!d.customers||!d.expenses||!d.store)throw Error('Invalid format');if(!Array.isArray(d.debts))d.debts=[];if(!Array.isArray(d.returns))d.returns=[];if(!Array.isArray(d.purchases))d.purchases=[];if(!confirm('Replace current data with this backup?'))return;db=d;save();fillSettings();toast('Backup restored')}catch(e){toast('Could not restore: invalid backup file')}};r.readAsText(f)}
+function restoreData(){let f=$('restoreFile').files[0];if(!f)return toast('Choose a backup JSON file first');let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!d.products||!d.sales||!d.customers||!d.expenses||!d.store)throw Error('Invalid format');if(!Array.isArray(d.debts))d.debts=[];if(!Array.isArray(d.returns))d.returns=[];if(!Array.isArray(d.purchases))d.purchases=[];if(!confirm('Replace current data with this backup?'))return;db=Object.assign(structuredClone(defaults),d);db.store={...defaults.store,...d.store};['products','customers','sales','expenses','debts','returns','purchases'].forEach(k=>{if(!Array.isArray(db[k]))db[k]=[]});save();fillSettings();toast('Backup restored')}catch(e){toast('Could not restore: invalid backup file')}};r.readAsText(f)}
 function resetAllData(){if(confirm('Delete ALL products, customers, sales, expenses and settings? Export a backup first if needed.')){db=structuredClone(defaults);cart=[];save();fillSettings();toast('All data cleared')}}
 function loadDemoData(){if(!confirm('Add sample products and customers to your current data?'))return;db.products.push(...[{id:uid(),sku:'SIM-001',name:'Prepaid SIM Card',category:'SIM cards',cost:100,price:150,stock:30,reorder:5,emoji:'📱'},{id:uid(),sku:'CAB-001',name:'USB-C Cable',category:'Accessories',cost:250,price:450,stock:18,reorder:5,emoji:'🔌'},{id:uid(),sku:'CHG-001',name:'Fast Charger 20W',category:'Accessories',cost:900,price:1400,stock:8,reorder:3,emoji:'🔋'},{id:uid(),sku:'EAR-001',name:'Wired Earphones',category:'Accessories',cost:400,price:750,stock:12,reorder:4,emoji:'🎧'},{id:uid(),sku:'SCR-001',name:'Screen Protector',category:'Accessories',cost:150,price:350,stock:25,reorder:6,emoji:'📲'}]);db.customers.push({id:uid(),name:'Sample Customer',phone:'0771234567',email:'',notes:'Demo record'});save();toast('Sample data added')}
 try{const se=localStorage.getItem('cp_login_email');if(se){$('loginEmail').value=se;$('rememberLogin').checked=true}}catch(e){}
