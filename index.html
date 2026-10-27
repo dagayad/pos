@@ -140,6 +140,7 @@ body.role-cashier .ownonly{display:none!important}
   <button class="nav" data-view="payables"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg><span>Supplier Dues</span></button>
   <button class="nav" data-view="customers"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Customers</span></button>
   <button class="nav" data-view="expenses"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg><span>Expenses</span></button>
+  <button class="nav" data-view="bank"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V10M9.5 21V10M14.5 21V10M19 21V10"/><path d="M2.5 10 12 4l9.5 6z"/></svg><span>Bank Balance</span></button>
   <button class="nav" data-view="reports"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg><span>Reports</span></button>
   <button class="nav" data-view="report30"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg><span>Last 30 Days Report</span></button>
   <button class="nav" data-view="reportyear"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg><span>Last 1 Year Report</span></button>
@@ -157,7 +158,7 @@ body.role-cashier .ownonly{display:none!important}
  <div class="pagehead"><div><h1>Point of Sale</h1><div class="muted">Select products, collect payment and print a receipt.</div></div><button class="secondary" onclick="clearCart()">Clear cart</button></div>
  <div class="grid poslayout">
   <div class="card"><div class="toolbar"><input id="posSearch" placeholder="Search product, SKU or category…"><select id="posCategory"><option value="">All categories</option></select></div><div class="grid products" id="posProducts"></div></div>
-  <div class="card"><h3>Current order <span class="pill" id="cartCount">0 items</span></h3><div class="field" style="margin-bottom:12px"><label>Customer</label><select id="saleCustomer"><option value="">Walk-in customer</option></select></div><div id="cartLines"></div><div style="margin-top:12px"><div class="field"><label>Discount (Rs)</label><input type="number" min="0" id="discount" value="0"></div><div class="field" style="margin-top:9px"><label>Payment method</label><select id="paymentMethod"><option>Cash</option><option>Card</option><option>Bank transfer</option><option>Mobile payment</option><option>Credit</option></select></div><div class="field" style="margin-top:9px"><label>Amount received (Rs)</label><input type="number" min="0" id="amountReceived" placeholder="Leave blank to use total"></div></div><div style="margin-top:14px"><div class="totalrow"><span>Subtotal</span><strong id="cartSubtotal">Rs 0.00</strong></div><div class="totalrow"><span>Discount</span><strong id="cartDiscount">Rs 0.00</strong></div><div class="totalrow final"><span>Total</span><span id="cartTotal">Rs 0.00</span></div><div class="totalrow"><span>Change due</span><strong id="cartChange">Rs 0.00</strong></div><div class="totalrow"><span>Due Payments</span><strong id="cartDue">Rs 0.00</strong></div></div><div class="salebtns"><button class="secondary" id="completeSale">Complete sale</button><button id="completeSalePrint">Complete & print receipt</button></div><div class="muted" style="font-size:11px;margin-top:8px">Stock reduces automatically after a completed sale.</div></div>
+  <div class="card"><h3>Current order <span class="pill" id="cartCount">0 items</span></h3><div class="field" style="margin-bottom:12px"><label>Customer</label><select id="saleCustomer"><option value="">Walk-in customer</option></select></div><div id="cartLines"></div><div style="margin-top:12px"><div class="field"><label>Discount (Rs)</label><input type="number" min="0" id="discount" value="0"></div><div class="field" style="margin-top:9px"><label>Payment method</label><select id="paymentMethod"><option>Cash</option><option>Card</option><option>Cheque</option><option>Bank transfer</option><option>Mobile payment</option><option>Credit</option></select></div><div id="posChequeHost" style="margin-top:9px"></div><div class="field" style="margin-top:9px"><label>Amount received (Rs)</label><input type="number" min="0" id="amountReceived" placeholder="Leave blank to use total"></div></div><div style="margin-top:14px"><div class="totalrow"><span>Subtotal</span><strong id="cartSubtotal">Rs 0.00</strong></div><div class="totalrow"><span>Discount</span><strong id="cartDiscount">Rs 0.00</strong></div><div class="totalrow final"><span>Total</span><span id="cartTotal">Rs 0.00</span></div><div class="totalrow"><span>Change due</span><strong id="cartChange">Rs 0.00</strong></div><div class="totalrow"><span>Due Payments</span><strong id="cartDue">Rs 0.00</strong></div></div><div class="salebtns"><button class="secondary" id="completeSale">Complete sale</button><button id="completeSalePrint">Complete & print receipt</button></div><div class="muted" style="font-size:11px;margin-top:8px">Stock reduces automatically after a completed sale.</div></div>
  </div>
 </section>
 <section class="view" id="view-inventory">
@@ -203,7 +204,14 @@ body.role-cashier .ownonly{display:none!important}
  <div class="pagehead"><div><h1>Expenses</h1><div class="muted">Record rent, utilities, transport and other costs.</div></div><button onclick="openExpenseModal()">＋ Add expense</button></div>
  <div class="grid stats" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div class="stat"><div class="label">THIS MONTH</div><div class="value" id="expenseMonthTotal">Rs 0.00</div></div><div class="stat"><div class="label">ALL EXPENSES</div><div class="value" id="expenseAllTotal">Rs 0.00</div></div></div>
  <div class="toolbar"><input id="expenseSearch" placeholder="Search expense or category…"><button class="secondary" onclick="exportExpenses()">Export CSV</button></div>
- <div class="card"><div class="tablewrap"><table><thead><tr><th>Date</th><th>Description</th><th>Category</th><th>Amount</th><th>Actions</th></tr></thead><tbody id="expenseRows"></tbody></table></div></div>
+ <div class="card"><div class="tablewrap"><table><thead><tr><th>Date</th><th>Description</th><th>Category</th><th>Paid by</th><th>Amount</th><th>Actions</th></tr></thead><tbody id="expenseRows"></tbody></table></div></div>
+</section>
+<section class="view" id="view-bank">
+ <div class="pagehead"><div><h1>Bank Balance</h1><div class="muted">Cheques you receive and issue, deposits and withdrawals, and what is in your bank.</div></div><div class="actions ownonly"><button onclick="openChequeModal('received')">＋ Cheque received</button><button class="secondary" onclick="openChequeModal('issued')">＋ Cheque issued</button><button class="secondary" onclick="openBankTxModal()">＋ Deposit / withdrawal</button><button class="secondary" onclick="openBankOpening()">Opening balance</button></div></div>
+ <div class="kpis bankkpis"><div class="kpi"><div class="k">BANK BALANCE</div><div class="v" id="bkBal">Rs 0.00</div><div class="s">Opening + cleared cheques + deposits</div></div><div class="kpi"><div class="k">CHEQUES RECEIVED, PENDING</div><div class="v" id="bkPendIn">Rs 0.00</div><div class="s" id="bkPendInN"></div></div><div class="kpi"><div class="k">CHEQUES ISSUED, PENDING</div><div class="v" id="bkPendOut">Rs 0.00</div><div class="s" id="bkPendOutN"></div></div><div class="kpi"><div class="k">BALANCE AFTER PENDING CHEQUES</div><div class="v" id="bkProj">Rs 0.00</div><div class="s">If every pending cheque clears</div></div></div>
+ <div class="toolbar"><input id="chqSearch" placeholder="Search cheque no, bank, name, invoice…"><select id="chqType"><option value="all">Received + issued</option><option value="received">Received only</option><option value="issued">Issued only</option></select><select id="chqStatus"><option value="all">All statuses</option><option value="pending">Pending</option><option value="cleared">Cleared</option><option value="bounced">Bounced</option><option value="cancelled">Cancelled</option></select><select id="chqPeriod"><option value="all">All time</option><option value="month">This month</option><option value="30">Last 30 days</option><option value="year">This year</option></select><button class="secondary ownonly" onclick="exportCheques()">Export</button></div>
+ <div class="card"><h3>Cheque register</h3><div class="tablewrap"><table><thead><tr><th>Received / issued on</th><th>Type</th><th>Cheque no.</th><th>Cheque date</th><th>Name</th><th>Invoice / ref.</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead><tbody id="chqRows"></tbody></table></div></div>
+ <div class="card" style="margin-top:16px"><div class="pagehead" style="margin:0 0 8px"><div><h3 style="margin:0">Bank ledger</h3><div class="muted" style="font-size:12px">Only cleared cheques and your deposits / withdrawals change the balance.</div></div><button class="secondary ownonly" onclick="exportBankLedger()">Export</button></div><div class="tablewrap"><table><thead><tr><th>Date</th><th>Description</th><th>In</th><th>Out</th><th>Balance</th><th></th></tr></thead><tbody id="bankLedgerRows"></tbody></table></div></div>
 </section>
 <section class="view" id="view-reports">
  <div class="pagehead"><div><h1>Reports</h1><div class="muted">Profit or loss, cash movement and key balances in accounting format, with charts.</div></div><div class="actions"><button onclick="downloadPeriodPdf('rep')">⬇ Download A4 PDF</button><button class="secondary" onclick="downloadPeriodReport('rep')">🖨 Print</button><button class="secondary ownonly" onclick="exportSales()">Export sales CSV</button></div></div>
@@ -242,12 +250,13 @@ const r2=n=>Math.round((Number(n)||0)*100)/100;
 const dateTime=()=>new Date().toLocaleString();
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const defaults={store:{name:'My Communication Store',phone:'',address:'',footer:'Thank you! Come again.',lowStock:5,logo:'',receiptSize:'80',autoPrint:'yes',showLogo:'yes',regNo:'',tin:'',vatNo:'',vatOn:'no',vatRate:18,returnPolicy:''},products:[],customers:[],sales:[],expenses:[],debts:[],returns:[],purchases:[]};
+const defaults={store:{name:'My Communication Store',phone:'',address:'',footer:'Thank you! Come again.',lowStock:5,logo:'',receiptSize:'80',autoPrint:'yes',showLogo:'yes',regNo:'',tin:'',vatNo:'',vatOn:'no',vatRate:18,returnPolicy:''},products:[],customers:[],sales:[],expenses:[],debts:[],returns:[],purchases:[],cheques:[],bankTx:[]};
 let db=structuredClone(defaults),cart=[];
 
 /*CLOUD-START*/
 const firebaseConfig={apiKey:"AIzaSyCC0pRFxD8TJ7ofhEzfWoeJ8PEf5j7kCvE",authDomain:"jc-new-28cd7.firebaseapp.com",projectId:"jc-new-28cd7",storageBucket:"jc-new-28cd7.firebasestorage.app",messagingSenderId:"1085822884258",appId:"1:1085822884258:web:c94254b125ab797eaf7afb"};
-const COLS=['products','customers','sales','expenses','debts','returns','purchases'];
+const COLS=['products','customers','sales','expenses','debts','returns','purchases','cheques','bankTx'];
+const SOFT=['cheques','bankTx'];let softBlocked={};
 let fsdb=null,auth=null,storeId='',userRole='',unsubs=[],remote={},settingsRemote=null,readyFlags={},loginMsg='';
 const stable=v=>JSON.stringify(v,(k,x)=>x&&typeof x==='object'&&!Array.isArray(x)?Object.keys(x).sort().reduce((o,key)=>(o[key]=x[key],o),{}):x);
 const cleanDoc=o=>JSON.parse(JSON.stringify(o));
@@ -256,8 +265,8 @@ function sortCol(c,arr){const byId=(a,b)=>String(a.id).localeCompare(String(b.id
 function showLogin(msg,loading){$('appRoot').classList.add('hidden');$('loginScreen').classList.remove('hidden');$('loginForm').classList.toggle('hidden',!!loading);$('loginLoading').classList.toggle('hidden',!loading);$('loginMsg').textContent=msg||''}
 function hideLogin(){$('loginScreen').classList.add('hidden');$('appRoot').classList.remove('hidden')}
 function setSync(){const p=$('syncPill');if(!p)return;const on=navigator.onLine;p.textContent=on?'● Cloud synced':'● Offline — saved on this PC, will sync later';p.className='pill '+(on?'good':'warn')}
-function applyRole(){document.body.classList.toggle('role-cashier',userRole==='cashier');const hide=userRole==='cashier'?['reports','report30','reportyear','expenses','settings','payables']:[];document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('hidden',hide.includes(b.dataset.view)));go('dashboard')}
-function stopListeners(){unsubs.forEach(u=>{try{u()}catch(e){}});unsubs=[];storeId='';userRole='';remote={};settingsRemote=null;readyFlags={};db=structuredClone(defaults);cart=[];renderAll()}
+function applyRole(){document.body.classList.toggle('role-cashier',userRole==='cashier');const hide=userRole==='cashier'?['reports','report30','reportyear','expenses','settings','payables','bank']:[];document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('hidden',hide.includes(b.dataset.view)));go('dashboard')}
+function stopListeners(){unsubs.forEach(u=>{try{u()}catch(e){}});unsubs=[];storeId='';userRole='';remote={};settingsRemote=null;readyFlags={};softBlocked={};db=structuredClone(defaults);cart=[];renderAll()}
 function onSnapErr(err){console.error(err);loginMsg='Could not load store data ('+(err.code||'error')+'). Check the security rules and the storeId of this user.';if(auth)auth.signOut()}
 function startListeners(){
  const base=fsdb.collection('stores').doc(storeId);
@@ -265,7 +274,7 @@ function startListeners(){
   const m=new Map(),arr=[];
   snap.forEach(d=>{const o=d.data();o.id=o.id||d.id;m.set(d.id,{s:stable(cleanDoc(o)),stock:o.stock});arr.push(o)});
   remote[c]=m;db[c]=sortCol(c,arr);readyFlags[c]=true;renderAll();if(isReady())hideLogin();
- },onSnapErr))});
+ },err=>{if(SOFT.includes(c)){console.warn(err);remote[c]=new Map();readyFlags[c]=true;softBlocked[c]=true;toast('Cheque / bank data cannot sync yet: add the new collections to your Firestore rules.');if(isReady())hideLogin()}else onSnapErr(err)}))});
  unsubs.push(base.collection('meta').doc('settings').onSnapshot(d=>{
   db.store=d.exists?{...structuredClone(defaults.store),...d.data()}:structuredClone(defaults.store);
   settingsRemote=stable(cleanDoc(db.store));readyFlags.settings=true;
@@ -279,6 +288,7 @@ function cloudSync(){
  if(!fsdb||!storeId||!isReady())return;
  const base=fsdb.collection('stores').doc(storeId),ops=[];
  COLS.forEach(c=>{
+  if(softBlocked[c])return;
   const rem=remote[c]||new Map(),cur=new Map();
   (db[c]||[]).forEach(o=>{if(!o||o.id==null)return;const id=String(o.id),data=cleanDoc(o);cur.set(id,{data,s:stable(data),stock:data.stock})});
   cur.forEach((v,id)=>{
@@ -295,11 +305,11 @@ function cloudSync(){
  });
  const sd=cleanDoc(db.store),ss=stable(sd);
  if(ss!==settingsRemote){ops.push({t:'set',ref:base.collection('meta').doc('settings'),data:sd});settingsRemote=ss}
- for(let i=0;i<ops.length;i+=400){
+ [ops.filter(o=>!SOFT.includes(o.ref.parent.id)),ops.filter(o=>SOFT.includes(o.ref.parent.id))].forEach(list=>{for(let i=0;i<list.length;i+=400){
   const b=fsdb.batch();
-  ops.slice(i,i+400).forEach(op=>{if(op.t==='del')b.delete(op.ref);else if(op.t==='merge')b.set(op.ref,op.data,{merge:true});else b.set(op.ref,op.data)});
+  list.slice(i,i+400).forEach(op=>{if(op.t==='del')b.delete(op.ref);else if(op.t==='merge')b.set(op.ref,op.data,{merge:true});else b.set(op.ref,op.data)});
   b.commit().catch(e=>{console.error(e);toast('Could not save to the cloud: '+(e.code||e.message))});
- }
+ }});
 }
 async function onUser(user){
  stopListeners();
@@ -342,7 +352,7 @@ function importLocalData(){
 function save(){cloudSync();renderAll()}
 /*CLOUD-END*/
 function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2600)}
-function go(name){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('active',b.dataset.view===name));$('topTitle').textContent=({dashboard:'Dashboard',pos:'Point of Sale',inventory:'Inventory & Products',sales:'Sales & Receipts',customers:'Customers',expenses:'Expenses',reports:'Reports',report30:'Last 30 Days Report',reportyear:'Last 1 Year Report',settings:'Settings & Backup',debts:'Due Payments',returns:'Returns',payables:'Supplier Dues'})[name]||name;$('sidebar').classList.remove('open');if(name==='dashboard')renderDashboard();if(name==='pos')renderPOS();if(name==='inventory')renderInventory();if(name==='sales')renderSales();if(name==='debts')renderDebts();if(name==='returns')renderReturns();if(name==='payables')renderPayables();if(name==='customers')renderCustomers();if(name==='expenses')renderExpenses();if(name==='reports')renderReports();if(name==='report30')renderPeriodReport(30);if(name==='reportyear')renderPeriodReport(365);if(name==='settings')fillSettings()}
+function go(name){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('active',b.dataset.view===name));$('topTitle').textContent=({dashboard:'Dashboard',pos:'Point of Sale',inventory:'Inventory & Products',sales:'Sales & Receipts',customers:'Customers',expenses:'Expenses',reports:'Reports',report30:'Last 30 Days Report',reportyear:'Last 1 Year Report',settings:'Settings & Backup',debts:'Due Payments',returns:'Returns',payables:'Supplier Dues',bank:'Bank Balance'})[name]||name;$('sidebar').classList.remove('open');if(name==='dashboard')renderDashboard();if(name==='pos')renderPOS();if(name==='inventory')renderInventory();if(name==='sales')renderSales();if(name==='debts')renderDebts();if(name==='returns')renderReturns();if(name==='payables')renderPayables();if(name==='customers')renderCustomers();if(name==='expenses')renderExpenses();if(name==='bank')renderBank();if(name==='reports')renderReports();if(name==='report30')renderPeriodReport(30);if(name==='reportyear')renderPeriodReport(365);if(name==='settings')fillSettings()}
 document.querySelectorAll('.nav').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view)));
 $('menuBtn').onclick=()=>$('sidebar').classList.toggle('open');
 $('todayLabel').innerHTML=esc(new Date().toLocaleDateString())+'<br>Have A Nice Day!';
@@ -354,7 +364,7 @@ function totalSale(s){return Number(s.total)||0}
 function renderTopbar(){const st=db.store||{},img=$('topLogo');$('todayLabel').innerHTML=esc(new Date().toLocaleDateString())+'<br>Have A Nice Day!';$('topStoreName').textContent=st.name||'';const has=!!st.logo;img.classList.toggle('hidden',!has);if(has&&img.getAttribute('src')!==st.logo)img.src=st.logo}
 function renderActiveView(){
  const a=document.querySelector('.view.active'),n=a?a.id.slice(5):'dashboard';
- const map={dashboard:renderDashboard,pos:renderPOS,inventory:renderInventory,sales:renderSales,returns:renderReturns,debts:renderDebts,payables:renderPayables,customers:renderCustomers,expenses:renderExpenses,reports:renderReports,report30:()=>renderPeriodReport(30),reportyear:()=>renderPeriodReport(365)};
+ const map={dashboard:renderDashboard,pos:renderPOS,inventory:renderInventory,sales:renderSales,returns:renderReturns,debts:renderDebts,payables:renderPayables,customers:renderCustomers,expenses:renderExpenses,bank:renderBank,reports:renderReports,report30:()=>renderPeriodReport(30),reportyear:()=>renderPeriodReport(365)};
  if(map[n])map[n]();
 }
 function renderAll(){renderTopbar();fillCustomerOptions();fillCategoryOptions();renderActiveView()}
@@ -373,10 +383,11 @@ function doCompleteSale(printAfter){
  for(let it of cart){let p=db.products.find(p=>p.id===it.id);if(!p||p.stock<it.qty)return toast('Stock changed for '+it.name+'. Review the cart.')}
  let {sub,discount,total}=cartTotals(),customer=db.customers.find(c=>c.id===$('saleCustomer').value),method=$('paymentMethod').value,received=$('amountReceived').value===''?(method==='Credit'?0:total):Math.max(0,Number($('amountReceived').value)||0);
  if(total-received>0.005&&!customer){$('saleCustomer').focus();return toast('Choose a customer for a credit / part-payment sale, so the balance can be collected later')}
+ let chq=null;if(method==='Cheque'){const r=readChequeFields('pc');if(r.err){$('pcNo').focus();return toast(r.err)}if(!(Math.min(received,total)>0))return toast('Enter the amount received by cheque');chq=r}
  // Partial payments are allowed: the unpaid balance is automatically recorded under Due Payments.
- let sale={id:'CP-'+new Date().toISOString().replace(/\D/g,'').slice(0,14)+'-'+Math.random().toString(36).slice(2,5).toUpperCase(),date:today(),datetime:dateTime(),customerId:customer?.id||'',customerName:customer?.name||'Walk-in',customerPhone:customer?.phone||'',items:cart.map(x=>({...x})),subtotal:sub,discount,total,received:Math.min(received,total),change:Math.max(0,received-total),payment:method,ts:Date.now(),served:(auth&&auth.currentUser&&auth.currentUser.email)||''};
+ let sale={id:'CP-'+new Date().toISOString().replace(/\D/g,'').slice(0,14)+'-'+Math.random().toString(36).slice(2,5).toUpperCase(),date:today(),datetime:dateTime(),customerId:customer?.id||'',customerName:customer?.name||'Walk-in',customerPhone:customer?.phone||'',items:cart.map(x=>({...x})),subtotal:sub,discount,total,received:Math.min(received,total),change:Math.max(0,received-total),payment:method,ts:Date.now(),served:(auth&&auth.currentUser&&auth.currentUser.email)||''};if(chq)sale.cheque={no:chq.no,bank:chq.bank,date:chq.chequeDate};
  sale.profit=r2(sale.items.reduce((a,x)=>a+(x.price-x.cost)*x.qty,0)-discount);
- sale.items.forEach(x=>{let p=db.products.find(p=>p.id===x.id);if(p)p.stock-=x.qty});db.sales.push(sale);let due=Math.max(0,total-received);if(due>0){if(!Array.isArray(db.debts))db.debts=[];db.debts.push({id:uid(),saleId:sale.id,date:today(),datetime:sale.datetime,customerId:sale.customerId,customerName:sale.customerName,customerPhone:sale.customerPhone,total:total,received:Math.min(received,total),paidLater:0,balance:due,payments:[]});}save();cart=[];$('discount').value=0;$('amountReceived').value='';$('paymentMethod').value='Cash';$('saleCustomer').value='';renderCart();showReceipt(sale,printAfter);toast(due>0?'Sale completed; unpaid balance added to Due Payments':'Sale completed successfully')
+ sale.items.forEach(x=>{let p=db.products.find(p=>p.id===x.id);if(p)p.stock-=x.qty});db.sales.push(sale);if(chq)addCheque({type:'received',no:chq.no,bank:chq.bank,chequeDate:chq.chequeDate,amount:Math.min(received,total),party:sale.customerName,partyId:sale.customerId,partyPhone:sale.customerPhone,refKind:'sale',ref:sale.id,invoice:sale.id,linkId:sale.id});let due=Math.max(0,total-received);if(due>0){if(!Array.isArray(db.debts))db.debts=[];db.debts.push({id:uid(),saleId:sale.id,date:today(),datetime:sale.datetime,customerId:sale.customerId,customerName:sale.customerName,customerPhone:sale.customerPhone,total:total,received:Math.min(received,total),paidLater:0,balance:due,payments:[]});}save();cart=[];$('discount').value=0;$('amountReceived').value='';$('paymentMethod').value='Cash';resetChequeBox('pc');$('saleCustomer').value='';renderCart();showReceipt(sale,printAfter);toast(due>0?'Sale completed; unpaid balance added to Due Payments':'Sale completed successfully')
 }
 $('completeSale').onclick=()=>doCompleteSale(false);$('completeSalePrint').onclick=()=>doCompleteSale(true);
 const RECEIPT_SPECS={'80':{w:80,pad:4,font:11.5,logo:46},'58':{w:58,pad:4.5,font:9.5,logo:34}};
@@ -397,7 +408,7 @@ function statementBodyHTML(s){
 }
 function paymentBodyHTML(s){
  const st=db.store||{};
- return `<div class="rc">${rcHead(st,'PAYMENT RECEIPT')}<div class="id">Receipt: ${esc(s.id)}</div><div>Date: ${esc(s.datetime)}</div><div>Customer: ${esc(s.customerName)}</div>${s.customerPhone?`<div>Phone: ${esc(s.customerPhone)}</div>`:''}<div>Method: ${esc(s.method)}</div><hr><div class="row b small"><span>PAID AGAINST INVOICE</span><span>AMOUNT (LKR)</span></div><hr class="thin">${s.allocations.map(a=>`<div class="it id">${esc(a.saleId)}</div>${rcLine('Paid now',rcNum(a.paid),'small')}${rcLine(a.balanceAfter>0.005?'Balance left':'Status',a.balanceAfter>0.005?rcNum(a.balanceAfter):'Fully paid','small')}`).join('')}<hr><div class="row tot"><span>RECEIVED</span><span>${money(s.amount)}</span></div>${rcLine('Balance before',money(s.balanceBefore))}${rcLine('<b>Balance remaining</b>','<b>'+money(s.balanceAfter)+'</b>')}${s.balanceAfter<=0.005?'<div class="c small" style="margin-top:3px">Account settled. Thank you!</div>':''}${rcFoot(st)}</div>`;
+ return `<div class="rc">${rcHead(st,'PAYMENT RECEIPT')}<div class="id">Receipt: ${esc(s.id)}</div><div>Date: ${esc(s.datetime)}</div><div>Customer: ${esc(s.customerName)}</div>${s.customerPhone?`<div>Phone: ${esc(s.customerPhone)}</div>`:''}<div>Method: ${esc(s.method)}${s.cheque?' (Cheque '+esc(s.cheque.no)+', '+esc(s.cheque.bank)+', '+esc(s.cheque.date)+')':''}</div><hr><div class="row b small"><span>PAID AGAINST INVOICE</span><span>AMOUNT (LKR)</span></div><hr class="thin">${s.allocations.map(a=>`<div class="it id">${esc(a.saleId)}</div>${rcLine('Paid now',rcNum(a.paid),'small')}${rcLine(a.balanceAfter>0.005?'Balance left':'Status',a.balanceAfter>0.005?rcNum(a.balanceAfter):'Fully paid','small')}`).join('')}<hr><div class="row tot"><span>RECEIVED</span><span>${money(s.amount)}</span></div>${rcLine('Balance before',money(s.balanceBefore))}${rcLine('<b>Balance remaining</b>','<b>'+money(s.balanceAfter)+'</b>')}${s.balanceAfter<=0.005?'<div class="c small" style="margin-top:3px">Account settled. Thank you!</div>':''}${rcFoot(st)}</div>`;
 }
 function receiptBodyHTML(s){
  if(s.kind==='statement')return statementBodyHTML(s);if(s.kind==='payment')return paymentBodyHTML(s);
@@ -405,7 +416,7 @@ function receiptBodyHTML(s){
  const logo=(st.logo&&st.showLogo!=='no')?`<div class="logo"><img src="${st.logo}" alt=""></div>`:'';
  const line=(a,b,cls='')=>`<div class="row ${cls}"><span>${a}</span><span>${b}</span></div>`;
  const vatOn=st.vatOn==='yes',vr=Number(st.vatRate)||0,vat=vatOn?Math.round(tot*vr/(100+vr)*100)/100:0,rets=(Array.isArray(db.returns)?db.returns:[]).filter(r=>r.saleId===s.id),retAmt=rets.reduce((a,r)=>a+(Number(r.refund)||0),0);
- return `<div class="rc">${rcHead(st,vatOn?'TAX INVOICE':'SALES RECEIPT')}<div class="id">${vatOn?'Invoice':'Receipt'}: ${esc(s.id)}</div><div>Date: ${esc(s.datetime||s.date)}</div>${s.served?`<div>Served by: ${esc(String(s.served).split('@')[0])}</div>`:''}<div>Customer: ${esc(s.customerName||'Walk-in')}</div>${s.customerPhone?`<div>Phone: ${esc(s.customerPhone)}</div>`:''}<hr><div class="row b small"><span>ITEM (QTY × UNIT PRICE)</span><span>AMOUNT (LKR)</span></div><hr class="thin">${items.map(x=>`<div class="it">${esc(x.name)}</div>${line(`${x.qty} x ${rcNum(x.price)}`,rcNum(x.price*x.qty),'small')}`).join('')}<hr>${line('Items',qty)}${line('Subtotal',money(s.subtotal))}${Number(s.discount)>0?line('Discount','- '+money(s.discount)):''}<div class="row tot"><span>TOTAL</span><span>${money(tot)}</span></div>${vatOn?line('VAT included ('+vr+'%)',money(vat),'small'):''}${retAmt>0?line('Returned / refunded','- '+money(retAmt),'small'):''}${line('Payment',esc(s.payment||''))}${line('Paid',money(Math.min(rec,tot)))}${Number(s.change)>0?line('Change',money(s.change)):''}${due>0.005?line('<b>Balance due</b>','<b>'+money(due)+'</b>'):''}<hr><div class="c" style="white-space:pre-wrap">${esc(st.footer||'Thank you!')}</div>${st.returnPolicy?`<div class="c small" style="margin-top:3px;white-space:pre-wrap">${esc(st.returnPolicy)}</div>`:''}<div class="c small" style="margin-top:3px">Please keep this receipt for your records.</div><div class="c tiny">Con-Nect POS by Sio Creations<br>Tel: 075 510 3772</div></div>`;
+ return `<div class="rc">${rcHead(st,vatOn?'TAX INVOICE':'SALES RECEIPT')}<div class="id">${vatOn?'Invoice':'Receipt'}: ${esc(s.id)}</div><div>Date: ${esc(s.datetime||s.date)}</div>${s.served?`<div>Served by: ${esc(String(s.served).split('@')[0])}</div>`:''}<div>Customer: ${esc(s.customerName||'Walk-in')}</div>${s.customerPhone?`<div>Phone: ${esc(s.customerPhone)}</div>`:''}<hr><div class="row b small"><span>ITEM (QTY × UNIT PRICE)</span><span>AMOUNT (LKR)</span></div><hr class="thin">${items.map(x=>`<div class="it">${esc(x.name)}</div>${line(`${x.qty} x ${rcNum(x.price)}`,rcNum(x.price*x.qty),'small')}`).join('')}<hr>${line('Items',qty)}${line('Subtotal',money(s.subtotal))}${Number(s.discount)>0?line('Discount','- '+money(s.discount)):''}<div class="row tot"><span>TOTAL</span><span>${money(tot)}</span></div>${vatOn?line('VAT included ('+vr+'%)',money(vat),'small'):''}${retAmt>0?line('Returned / refunded','- '+money(retAmt),'small'):''}${line('Payment',esc(s.payment||''))}${s.cheque?line('Cheque no',esc(s.cheque.no),'small')+line('Bank / date',esc(s.cheque.bank)+' · '+esc(s.cheque.date),'small'):''}${line('Paid',money(Math.min(rec,tot)))}${Number(s.change)>0?line('Change',money(s.change)):''}${due>0.005?line('<b>Balance due</b>','<b>'+money(due)+'</b>'):''}<hr><div class="c" style="white-space:pre-wrap">${esc(st.footer||'Thank you!')}</div>${st.returnPolicy?`<div class="c small" style="margin-top:3px;white-space:pre-wrap">${esc(st.returnPolicy)}</div>`:''}<div class="c small" style="margin-top:3px">Please keep this receipt for your records.</div><div class="c tiny">Con-Nect POS by Sio Creations<br>Tel: 075 510 3772</div></div>`;
 }
 function receiptDocHTML(s,extraCss=''){
  const size=db.store.receiptSize||'80';
@@ -476,7 +487,7 @@ function deleteProduct(id){if(userRole==='cashier')return toast('Only the owner 
 function renderSales(){let q=($('salesSearch')?.value||'').toLowerCase(),d=$('salesDate')?.value||'';let ss=db.sales.slice().reverse().filter(s=>(!q||[s.id,s.customerName,s.customerPhone].join(' ').toLowerCase().includes(q))&&(!d||s.date===d));$('salesRows').innerHTML=ss.map(s=>`<tr><td><b>${esc(s.id)}</b></td><td>${esc(s.datetime||s.date)}</td><td>${esc(s.customerName||'Walk-in')}</td><td>${esc(s.payment)}</td><td>${s.items.reduce((a,x)=>a+x.qty,0)}</td><td><b>${money(s.total)}</b></td><td><div class="actions"><button class="secondary small" onclick="reprintSale('${s.id}')">Print</button><button class="secondary small" onclick="downloadReceipt('${s.id}')">Download</button><button class="danger small ownonly" onclick="voidSale('${s.id}')">Void</button></div></td></tr>`).join('')||'<tr><td colspan="7" class="empty">No sales found.</td></tr>'}
 $('salesSearch').addEventListener('input',renderSales);$('salesDate').addEventListener('change',renderSales);
 function reprintSale(id){let s=db.sales.find(x=>x.id===id);if(s)showReceipt(s,true)}
-function voidSale(id){if(userRole==='cashier')return toast('Only the owner can void a sale');let s=db.sales.find(x=>x.id===id);if(!s)return;const dd=(db.debts||[]).find(d=>d.saleId===id),later=dd?Number(dd.paidLater)||0:0;if(!confirm('Void this sale and return sold quantities to stock?'+(later>0?'\n\nNOTE: '+money(later)+' that was received later against this sale will also disappear from the reports.':'')+'\n\nThis cannot be undone.'))return;s.items.forEach(x=>{let p=db.products.find(p=>p.id===x.id);if(p)p.stock+=x.qty-retQtyFor(id,x.id,true)});db.sales=db.sales.filter(x=>x.id!==id);db.debts=(db.debts||[]).filter(d=>d.saleId!==id);db.returns=retList().filter(r=>r.saleId!==id);save();toast('Sale voided; stock restored and related dues and returns removed')}
+function voidSale(id){if(userRole==='cashier')return toast('Only the owner can void a sale');let s=db.sales.find(x=>x.id===id);if(!s)return;const dd=(db.debts||[]).find(d=>d.saleId===id),later=dd?Number(dd.paidLater)||0:0;if(!confirm('Void this sale and return sold quantities to stock?'+(later>0?'\n\nNOTE: '+money(later)+' that was received later against this sale will also disappear from the reports.':'')+'\n\nThis cannot be undone.'))return;s.items.forEach(x=>{let p=db.products.find(p=>p.id===x.id);if(p)p.stock+=x.qty-retQtyFor(id,x.id,true)});db.sales=db.sales.filter(x=>x.id!==id);db.debts=(db.debts||[]).filter(d=>d.saleId!==id);db.returns=retList().filter(r=>r.saleId!==id);chqList().forEach(c=>{if(c.refKind==='sale'&&c.linkId===id&&c.status==='pending'){c.status='cancelled';c.statusDate=today();c.note=(c.note?c.note+' · ':'')+'Sale voided'}});save();toast('Sale voided; stock restored and related dues and returns removed')}
 /*RETURNS-START*/
 let retSaleId='';
 const retList=()=>Array.isArray(db.returns)?db.returns:[];
@@ -595,19 +606,21 @@ function openReceivePayment(k,onlyDebtId){
  else g=dueGroupByKey(k);
  if(!g||!g.debts.length)return toast('No outstanding balance');
  const total=g.balance,ids=g.debts.map(d=>d.id);
- openModal('Receive payment',`<form id="payForm" class="formgrid"><div class="field wide"><div class="notice"><b>${esc(g.name)}</b>${g.phone?' · '+esc(g.phone):''}<br>Balance due: <b>${money(total)}</b> (${g.debts.length} invoice${g.debts.length>1?'s':''})</div></div><div class="field"><label>Amount received (Rs) *</label><input name="amount" id="payAmount" type="number" min="0.01" max="${total}" step="0.01" required value="${total.toFixed(2)}"></div><div class="field"><label>Payment method</label><select name="method"><option>Cash</option><option>Card</option><option>Bank transfer</option><option>Mobile payment</option></select></div><div class="field wide"><div class="muted" id="payAlloc" style="font-size:12.5px"></div></div><div class="field wide"><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="print" checked style="width:auto"> Print payment receipt</label></div><div class="field wide"><button type="submit">Receive payment</button></div></form>`);
+ openModal('Receive payment',`<form id="payForm" class="formgrid"><div class="field wide"><div class="notice"><b>${esc(g.name)}</b>${g.phone?' · '+esc(g.phone):''}<br>Balance due: <b>${money(total)}</b> (${g.debts.length} invoice${g.debts.length>1?'s':''})</div></div><div class="field"><label>Amount received (Rs) *</label><input name="amount" id="payAmount" type="number" min="0.01" max="${total}" step="0.01" required value="${total.toFixed(2)}"></div><div class="field"><label>Payment method</label><select name="method" id="dcMethod"><option>Cash</option><option>Cheque</option><option>Card</option><option>Bank transfer</option><option>Mobile payment</option></select></div>${chequeFieldsHTML('dc')}<div class="field wide"><div class="muted" id="payAlloc" style="font-size:12.5px"></div></div><div class="field wide"><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="print" checked style="width:auto"> Print payment receipt</label></div><div class="field wide"><button type="submit">Receive payment</button></div></form>`);
  const live=()=>{const debts=ids.map(id=>db.debts.find(x=>x.id===id)).filter(Boolean),a=Math.max(0,Number($('payAmount').value)||0);const al=allocateDuePayment(debts,Math.min(a,total));$('payAlloc').innerHTML=al.map(x=>`${esc(x.d.saleId)}: ${money(x.paid)} → ${x.balanceAfter>0.005?'balance '+money(x.balanceAfter):'<b>paid in full</b>'}`).join('<br>')+`<br><b>Remaining balance after this payment: ${money(Math.max(0,total-Math.min(a,total)))}</b>`};
- $('payAmount').addEventListener('input',live);live();
+ $('payAmount').addEventListener('input',live);live();bindChequeToggle($('dcMethod'),'dc');
  $('payForm').onsubmit=e=>{
   e.preventDefault();
   const f=new FormData(e.target),amount=r2(Number(f.get('amount'))),method=f.get('method')||'Cash',doPrint=f.get('print')==='on';
   if(!(amount>0))return toast('Enter a valid payment amount');
   if(amount>total+0.005)return toast('Payment cannot be more than the balance due');
+  let cq=null;if(method==='Cheque'){cq=readChequeFields('dc');if(cq.err)return toast(cq.err)}
   const debts=ids.map(id=>db.debts.find(x=>x.id===id)).filter(Boolean),al=allocateDuePayment(debts,Math.min(amount,total));
   const rid='PR-'+new Date().toISOString().replace(/\D/g,'').slice(0,14)+'-'+Math.random().toString(36).slice(2,5).toUpperCase(),dt=dateTime(),dd=today();
   al.forEach(x=>{x.d.paidLater=r2((Number(x.d.paidLater)||0)+x.paid);x.d.balance=x.balanceAfter;x.d.payments=Array.isArray(x.d.payments)?x.d.payments:[];x.d.payments.push({date:dd,datetime:dt,amount:x.paid,method,rid})});
   const after=r2(total-al.reduce((a,x)=>a+x.paid,0));
   const rc={kind:'payment',id:rid,customerName:g.name,customerPhone:g.phone,date:dd,datetime:dt,method,amount:r2(al.reduce((a,x)=>a+x.paid,0)),balanceBefore:total,balanceAfter:after,allocations:al.map(x=>({saleId:x.d.saleId,paid:x.paid,balanceAfter:x.balanceAfter}))};
+  if(cq){rc.cheque={no:cq.no,bank:cq.bank,date:cq.chequeDate};addCheque({type:'received',no:cq.no,bank:cq.bank,chequeDate:cq.chequeDate,amount:rc.amount,party:g.name,partyId:(g.debts[0]||{}).customerId||'',partyPhone:g.phone,refKind:'due',ref:al.map(x=>x.d.saleId).join(', '),invoice:al.map(x=>x.d.saleId).join(', '),linkId:rid})}
   closeModal();save();toast(after<=0.005?'Payment received; balance fully settled':'Payment received; remaining balance '+money(after));
   if(doPrint)printReceipt(rc);
  };
@@ -699,16 +712,19 @@ function openPaySupplier(k,onlyId){
  else g=supGroupByKey(k);
  if(!g||!g.list.length)return toast('You do not owe this supplier anything');
  const total=g.balance,ids=g.list.map(x=>x.id);
- openModal('Pay supplier',`<form id="supPayForm" class="formgrid"><div class="field wide"><div class="notice"><b>${esc(g.name)}</b>${g.phone?' · '+esc(g.phone):''}<br>You owe: <b>${money(total)}</b> (${g.list.length} purchase${g.list.length>1?'s':''})</div></div><div class="field"><label>Amount paid (Rs) *</label><input id="supPayAmt" name="amount" type="number" min="0.01" max="${total}" step="0.01" required value="${total.toFixed(2)}"></div><div class="field"><label>Payment method</label><select name="method"><option>Cash</option><option>Bank transfer</option><option>Card</option><option>Mobile payment</option></select></div><div class="field wide"><label>Note (optional)</label><input name="note" placeholder="Cheque no, reference…"></div><div class="field wide"><div class="muted" id="supPayAlloc" style="font-size:12.5px"></div></div><div class="field wide"><button type="submit">Record payment</button></div></form>`);
+ openModal('Pay supplier',`<form id="supPayForm" class="formgrid"><div class="field wide"><div class="notice"><b>${esc(g.name)}</b>${g.phone?' · '+esc(g.phone):''}<br>You owe: <b>${money(total)}</b> (${g.list.length} purchase${g.list.length>1?'s':''})</div></div><div class="field"><label>Amount paid (Rs) *</label><input id="supPayAmt" name="amount" type="number" min="0.01" max="${total}" step="0.01" required value="${total.toFixed(2)}"></div><div class="field"><label>Payment method</label><select name="method" id="syMethod"><option>Cash</option><option>Cheque</option><option>Bank transfer</option><option>Card</option><option>Mobile payment</option></select></div>${chequeFieldsHTML('sy',{hint:'This cheque is added to the Bank Balance register as an issued cheque. The date and time it was issued is saved automatically.'})}<div class="field"><label>Supplier invoice / bill no.</label><input name="inv" autocomplete="off" placeholder="Optional"></div><div class="field"><label>Note (optional)</label><input name="note" placeholder="Reference…"></div><div class="field wide"><div class="muted" id="supPayAlloc" style="font-size:12.5px"></div></div><div class="field wide"><button type="submit">Record payment</button></div></form>`);
  const items=()=>ids.map(id=>purList().find(x=>x.id===id)).filter(Boolean);
  const live=()=>{const a=Math.min(total,Math.max(0,Number($('supPayAmt').value)||0)),al=allocateDuePayment(items(),a);$('supPayAlloc').innerHTML=al.map(x=>`${esc(x.d.productName||'')} (${esc(x.d.date||'')}): ${money(x.paid)} → ${x.balanceAfter>0.005?'still '+money(x.balanceAfter):'<b>paid in full</b>'}`).join('<br>')+`<br><b>Still owed after this payment: ${money(total-a)}</b>`};
- $('supPayAmt').addEventListener('input',live);live();
+ $('supPayAmt').addEventListener('input',live);live();bindChequeToggle($('syMethod'),'sy');
  $('supPayForm').onsubmit=e=>{
   e.preventDefault();
   const f=new FormData(e.target),amount=r2(Number(f.get('amount')));
   if(!(amount>0))return toast('Enter a valid amount');if(amount>total+0.005)return toast('Payment cannot be more than you owe');
+  const method=f.get('method')||'Cash',inv=String(f.get('inv')||'').trim();
+  let ch=null;if(method==='Cheque'){const r=readChequeFields('sy');if(r.err)return toast(r.err);ch=r}
   const al=allocateDuePayment(items(),Math.min(amount,total)),dt=dateTime(),dd=today();
-  al.forEach(x=>{x.d.balance=x.balanceAfter;x.d.payments=Array.isArray(x.d.payments)?x.d.payments:[];x.d.payments.push({date:dd,datetime:dt,amount:x.paid,method:f.get('method')||'Cash',note:String(f.get('note')||'').trim()})});
+  const chRec=ch?addCheque({type:'issued',no:ch.no,bank:ch.bank,chequeDate:ch.chequeDate,amount:al.reduce((a,x)=>a+x.paid,0),party:g.name,partyPhone:g.phone,refKind:'supplier',ref:inv||al.map(x=>x.d.productName||'').filter(Boolean).join(', '),invoice:inv,linkId:g.name}):null;
+  al.forEach(x=>{x.d.balance=x.balanceAfter;x.d.payments=Array.isArray(x.d.payments)?x.d.payments:[];x.d.payments.push({date:dd,datetime:dt,amount:x.paid,method,note:String(f.get('note')||'').trim(),invoice:inv,chequeId:chRec?chRec.id:''})});
   const left=r2(total-al.reduce((a,x)=>a+x.paid,0));
   closeModal();save();toast(left<=0.005?'Paid in full':'Payment recorded; still owe '+money(left));
  };
@@ -739,9 +755,9 @@ function exportDebts(){let ds=Array.isArray(db.debts)?db.debts:[];download('conn
 function openCustomerModal(c={}){openModal(c.id?'Edit customer':'Add customer',`<form id="customerForm" class="formgrid"><input type="hidden" name="id" value="${esc(c.id||'')}"><div class="field wide"><label>Full name *</label><input name="name" required value="${esc(c.name||'')}"></div><div class="field"><label>Phone</label><input name="phone" value="${esc(c.phone||'')}"></div><div class="field"><label>Email</label><input name="email" type="email" value="${esc(c.email||'')}"></div><div class="field wide"><label>Notes</label><textarea name="notes" rows="2">${esc(c.notes||'')}</textarea></div><div class="field wide"><button type="submit">Save customer</button></div></form>`);$('customerForm').onsubmit=e=>{e.preventDefault();let v=Object.fromEntries(new FormData(e.target).entries());v.id=v.id||uid();let i=db.customers.findIndex(x=>x.id===v.id);i>=0?db.customers[i]=v:db.customers.push(v);closeModal();save();toast('Customer saved')}}
 function renderCustomers(){let q=($('customerSearch')?.value||'').toLowerCase(),cs=db.customers.filter(c=>[c.name,c.phone,c.email,c.notes].join(' ').toLowerCase().includes(q));$('customerRows').innerHTML=cs.map(c=>`<tr><td><b>${esc(c.name)}</b></td><td>${esc(c.phone||'—')}</td><td>${esc(c.email||'—')}</td><td>${esc(c.notes||'—')}</td><td><div class="actions"><button class="secondary small" onclick="editCustomer('${c.id}')">Edit</button><button class="danger small" onclick="deleteCustomer('${c.id}')">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="5" class="empty">No customers yet.</td></tr>'}
 $('customerSearch').addEventListener('input',renderCustomers);function editCustomer(id){let c=db.customers.find(x=>x.id===id);if(c)openCustomerModal(c)}function deleteCustomer(id){if(confirm('Delete this customer?')){db.customers=db.customers.filter(c=>c.id!==id);save()}}
-function openExpenseModal(e={}){openModal(e.id?'Edit expense':'Add expense',`<form id="expenseForm" class="formgrid"><input type="hidden" name="id" value="${esc(e.id||'')}"><div class="field wide"><label>Description *</label><input name="description" required value="${esc(e.description||'')}"></div><div class="field"><label>Category</label><select name="category">${['Rent','Utilities','Transport','Stock purchase','Internet/Phone','Salary','Other'].map(x=>`<option ${e.category===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Amount (Rs) *</label><input name="amount" type="number" min="0" step=".01" required value="${e.amount??''}"></div><div class="field"><label>Date *</label><input name="date" type="date" required value="${esc(e.date||today())}"></div><div class="field wide muted" style="font-size:12px">Do not enter stock you buy for resale here. Record it in Inventory (Add product / Restock) so it is not counted twice. Expenses in the "Stock purchase" category are listed in reports but are not deducted from profit again, because the cost of goods sold already covers them.</div><div class="field wide"><button type="submit">Save expense</button></div></form>`);$('expenseForm').onsubmit=ev=>{ev.preventDefault();let v=Object.fromEntries(new FormData(ev.target).entries());v.id=v.id||uid();v.amount=Math.max(0,Number(v.amount)||0);let i=db.expenses.findIndex(x=>x.id===v.id);i>=0?db.expenses[i]=v:db.expenses.push(v);closeModal();save();toast('Expense saved')}}
-function renderExpenses(){let q=($('expenseSearch')?.value||'').toLowerCase(),es=db.expenses.filter(e=>[e.description,e.category,e.date].join(' ').toLowerCase().includes(q));$('expenseRows').innerHTML=es.slice().reverse().map(e=>`<tr><td>${esc(e.date)}</td><td><b>${esc(e.description)}</b></td><td>${esc(e.category)}</td><td>${money(e.amount)}</td><td><div class="actions"><button class="secondary small" onclick="editExpense('${e.id}')">Edit</button><button class="danger small" onclick="deleteExpense('${e.id}')">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="5" class="empty">No expenses recorded.</td></tr>';let all=db.expenses.reduce((a,e)=>a+e.amount,0),mo=db.expenses.filter(e=>monthMatch(e.date)).reduce((a,e)=>a+e.amount,0);$('expenseMonthTotal').textContent=money(mo);$('expenseAllTotal').textContent=money(all)}
-$('expenseSearch').addEventListener('input',renderExpenses);function editExpense(id){let e=db.expenses.find(x=>x.id===id);if(e)openExpenseModal(e)}function deleteExpense(id){if(confirm('Delete this expense?')){db.expenses=db.expenses.filter(x=>x.id!==id);save()}}
+function openExpenseModal(e={}){openModal(e.id?'Edit expense':'Add expense',`<form id="expenseForm" class="formgrid"><input type="hidden" name="id" value="${esc(e.id||'')}"><div class="field wide"><label>Description *</label><input name="description" required value="${esc(e.description||'')}"></div><div class="field"><label>Category</label><select name="category">${['Rent','Utilities','Transport','Stock purchase','Internet/Phone','Salary','Other'].map(x=>`<option ${e.category===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Amount (Rs) *</label><input name="amount" type="number" min="0" step=".01" required value="${e.amount??''}"></div><div class="field"><label>Date *</label><input name="date" type="date" required value="${esc(e.date||today())}"></div>${expenseExtraHTML(e)}<div class="field wide muted" style="font-size:12px">Do not enter stock you buy for resale here. Record it in Inventory (Add product / Restock) so it is not counted twice. Expenses in the "Stock purchase" category are listed in reports but are not deducted from profit again, because the cost of goods sold already covers them.</div><div class="field wide"><button type="submit">Save expense</button></div></form>`);$('expenseForm').onsubmit=ev=>{ev.preventDefault();saveExpenseFromForm(ev)};initExpenseForm(e)}
+function renderExpenses(){let q=($('expenseSearch')?.value||'').toLowerCase(),es=db.expenses.filter(e=>[e.description,e.category,e.date].join(' ').toLowerCase().includes(q));$('expenseRows').innerHTML=es.slice().reverse().map(e=>`<tr><td>${esc(e.date)}</td><td><b>${esc(e.description)}</b>${e.payee||e.invoiceNo?`<div class="muted" style="font-size:11px">${esc([e.payee,e.invoiceNo&&'Inv '+e.invoiceNo].filter(Boolean).join(' · '))}</div>`:''}</td><td>${esc(e.category)}</td><td>${esc(e.method||'Cash')}${expRef(e)?`<div class="muted" style="font-size:11px">${esc(expRef(e))}</div>`:''}</td><td>${money(e.amount)}</td><td><div class="actions"><button class="secondary small" onclick="editExpense('${e.id}')">Edit</button><button class="danger small" onclick="deleteExpense('${e.id}')">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="6" class="empty">No expenses recorded.</td></tr>';let all=db.expenses.reduce((a,e)=>a+e.amount,0),mo=db.expenses.filter(e=>monthMatch(e.date)).reduce((a,e)=>a+e.amount,0);$('expenseMonthTotal').textContent=money(mo);$('expenseAllTotal').textContent=money(all)}
+$('expenseSearch').addEventListener('input',renderExpenses);function editExpense(id){let e=db.expenses.find(x=>x.id===id);if(e)openExpenseModal(e)}function deleteExpense(id){if(confirm('Delete this expense?')){const e=db.expenses.find(x=>x.id===id);if(e&&e.chequeId)db.cheques=chqList().filter(c=>!(c.id===e.chequeId&&c.status==='pending'));db.expenses=db.expenses.filter(x=>x.id!==id);save()}}
 function periodDateRange(days){
  const end=new Date();end.setHours(0,0,0,0);
  const start=new Date(end);
@@ -817,7 +833,8 @@ function statsFor(start,end){
  o.cashSale=sum(sales,s=>Math.min(Number(s.total)||0,Number(s.received??s.total)||0));
  o.cashDues=r2(debts.reduce((n,d)=>n+(d.payments||[]).reduce((m,p)=>m+(inR(p.date)?Number(p.amount)||0:0),0),0));
  o.cashRefund=sum(rets,r=>r.cashRefund);o.paidSup=purPaidIn(start,end);
- o.cashIn=r2(o.cashSale+o.cashDues);o.cashOut=r2(o.cashRefund+o.paidSup+o.expAll);o.cashNet=r2(o.cashIn-o.cashOut);
+ const CQ=chqList();o.chqBounced=sum(CQ.filter(c=>c.type==='received'&&c.status==='bounced'&&inR(c.date)),c=>c.amount);o.chqRecv=sum(CQ.filter(c=>c.type==='received'&&inR(c.date)),c=>c.amount);o.chqIssued=sum(CQ.filter(c=>c.type==='issued'&&c.status!=='cancelled'&&inR(c.date)),c=>c.amount);
+ o.cashIn=r2(o.cashSale+o.cashDues-o.chqBounced);o.cashOut=r2(o.cashRefund+o.paidSup+o.expAll);o.cashNet=r2(o.cashIn-o.cashOut);
  o.dueCreated=r2(debts.filter(d=>inR(d.date||d.datetime)).reduce((n,d)=>n+(Number(d.total)||0)-(Number(d.received)||0),0));
  o.purchased=sum(purList().filter(x=>inR(x.date)&&!x.manual),x=>x.total);o.extraDues=sum(purList().filter(x=>inR(x.date)&&x.manual),x=>x.total);
  const P={};
@@ -1036,6 +1053,7 @@ const VIZ_COMMON_CSS=`
 `;
 const VIZ_APP_CSS=`:root{--s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--ink:var(--text);--ink2:var(--muted);--surf:var(--panel);--grid:var(--line);--axis:#c3c2b7;--up:#006300;--dn:#c0392b;--sec:var(--panel2)}
 [data-theme="dark"]{--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--axis:#383835;--up:#46d5a1;--dn:#ff7f87}
+#view-bank .tablewrap table{font-size:12.5px;min-width:0}#view-bank th,#view-bank td{padding:9px 8px}#view-bank .actions button{padding:6px 9px;font-size:12px}#view-bank #chqRows td{overflow-wrap:anywhere}#view-bank #chqRows td:nth-child(6){max-width:150px}#view-bank #chqRows .actions{flex-direction:column;align-items:stretch}#view-bank .pagehead .actions{flex-direction:row}
 .dgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.dgrid>*{min-width:0}
 @media(max-width:900px){.dgrid{grid-template-columns:minmax(0,1fr)}}
 .dctl select,.repctl select,.dctl input,.repctl input{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:9px 10px}
@@ -1075,7 +1093,7 @@ function renderDashboard(){
  att.push(`<div class="attn"><div class="t"><b>${low.length?low.length+' item'+(low.length===1?'':'s')+' running low':'Stock levels are healthy'}</b><span>${low.length?esc(low.slice(0,3).map(x=>x.name+' ('+x.stock+')').join(', '))+(low.length>3?' …':'')+(out?' · '+out+' out of stock':''):'Nothing needs re-ordering right now'}</span></div>${low.length?`<button class="secondary small" onclick="go('inventory')">Open stock</button>`:''}</div>`);
  att.push(`<div class="attn"><div class="t"><b>${owed>0?money(owed)+' to collect':'No customer dues'}</b><span>${owed>0?owedN+' customer'+(owedN===1?'':'s')+' with unpaid balances':'Everyone is paid up'}</span></div>${owed>0?`<button class="secondary small" onclick="go('debts')">Collect</button>`:''}</div>`);
  if(owner){const po=purOwedAll();att.push(`<div class="attn"><div class="t"><b>${po>0?money(po)+' to pay suppliers':'No supplier dues'}</b><span>${po>0?'Unpaid stock purchases':'Nothing owed to suppliers'}</span></div>${po>0?`<button class="secondary small" onclick="go('payables')">Pay</button>`:''}</div>`);
-  att.push(`<div class="attn"><div class="t"><b>${money(stockValueCost())}</b><span>Stock on hand, valued at cost</span></div></div>`)}
+  att.push(`<div class="attn"><div class="t"><b>${money(stockValueCost())}</b><span>Stock on hand, valued at cost</span></div></div>`);att.push(chequeAttn())}
  const recent=db.sales.slice().sort((a,b)=>String(b.datetime||b.date).localeCompare(String(a.datetime||a.date))).slice(0,6);
  el.innerHTML=`<div class="kpis">${tiles}</div>
  <div class="dgrid">
@@ -1135,8 +1153,9 @@ function reportHTML(r){
  const memo=[c.stockExp>0?`<tr class="memo"><td colspan="4">Memo: ${money(c.stockExp)} entered as “Stock purchase” expenses is not deducted again, because cost of goods sold already covers the stock you sold.</td></tr>`:'',vatOn?`<tr class="memo"><td colspan="4">Memo: output VAT included in net sales (estimate at ${vr}%): ${money(vatC)} · net sales excluding VAT: ${money(r2(c.netSales-vatC))}. Selling prices are treated as VAT-inclusive.</td></tr>`:''].join('');
  const cashRows=[
   `<tr class="sec"><td colspan="2">CASH RECEIVED</td></tr>`,
-  `<tr class="ind"><td>Received from customers at the time of sale</td><td class="rnum">${acc(c.cashSale)}</td></tr>`,
+  `<tr class="ind"><td>Received from customers at the time of sale (cash, cheque, card, transfer)</td><td class="rnum">${acc(c.cashSale)}</td></tr>`,
   `<tr class="ind"><td>Received from customers for earlier credit sales (due payments)</td><td class="rnum">${acc(c.cashDues)}</td></tr>`,
+  c.chqBounced>0?`<tr class="ind"><td>Less: customer cheques returned unpaid (bounced)</td><td class="rnum">${acc(-c.chqBounced)}</td></tr>`:'',
   `<tr class="tot"><td>Total cash received</td><td class="rnum">${acc(c.cashIn)}</td></tr>`,
   `<tr class="sec"><td colspan="2">CASH PAID</td></tr>`,
   `<tr class="ind"><td>Refunds paid to customers in cash</td><td class="rnum">${acc(-c.cashRefund)}</td></tr>`,
@@ -1144,7 +1163,7 @@ function reportHTML(r){
   `<tr class="ind"><td>Expenses paid</td><td class="rnum">${acc(-c.expAll)}</td></tr>`,
   `<tr class="tot"><td>Total cash paid</td><td class="rnum">${acc(-c.cashOut)}</td></tr>`,
   `<tr class="grand"><td>NET CASH MOVEMENT FOR THE PERIOD (ESTIMATE)</td><td class="rnum">${acc(c.cashNet)}</td></tr>`,
-  `<tr class="memo"><td colspan="2">Memo: credit sales left unpaid in the period ${money(c.dueCreated)} · stock bought in the period ${money(c.purchased)}. Opening and closing cash / bank balances are not recorded in the POS, so no closing cash figure is shown.</td></tr>`
+  `<tr class="memo"><td colspan="2">Memo: credit sales left unpaid in the period ${money(c.dueCreated)} · stock bought in the period ${money(c.purchased)}. Opening and closing cash / bank balances are not recorded in the POS, so no closing cash figure is shown.${c.chqRecv||c.chqIssued?` Cheques in the period: received ${money(c.chqRecv)}, issued ${money(c.chqIssued)}; these are counted above when written. Clearing status is in the Bank Balance tab.`:''}</td></tr>`
  ].join('');
  const balRows=[
   `<tr class="ind"><td>Inventory at cost (stock on hand × unit cost)</td><td class="rnum">${acc(inv)}</td></tr>`,
@@ -1160,7 +1179,7 @@ function reportHTML(r){
  const purs=purList().filter(x=>inPeriod(x.date,r.start,r.end)).sort((a,b)=>String(a.date).localeCompare(String(b.date)));
  const saleRows=sales.map(s=>`<tr><td>${esc(s.date||'')}</td><td>${esc(s.id||'')}</td><td>${esc(s.customerName||'Walk-in')}</td><td>${esc(s.payment||'')}</td><td class="rnum">${(s.items||[]).reduce((n,i)=>n+Number(i.qty||0),0)}</td><td class="rnum">${money(s.subtotal)}</td><td class="rnum">${money(s.discount)}</td><td class="rnum">${money(s.total)}</td><td class="rnum">${money(saleReturnValue(s.id))}</td><td class="rnum">${money(Math.min(Number(s.total)||0,Number(s.received??s.total)||0))}</td><td class="rnum">${money(Math.max(0,Number(s.total||0)-Number(s.received??s.total??0)))}</td></tr>`);
  const retRows=c.rets.slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))).map(x=>`<tr><td>${esc(x.date||'')}</td><td>${esc(x.id||'')}</td><td>${esc(x.saleId||'')}</td><td>${esc(x.customerName||'Walk-in')}</td><td>${(x.items||[]).map(i=>esc(i.name)+' × '+i.qty).join(', ')}</td><td class="rnum">${money(x.refund)}</td><td class="rnum">${money(x.profitLoss)}</td><td>${x.restock?'Back in stock':'Not restocked'}</td></tr>`);
- const expRows=c.exps.slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))).map(e=>`<tr><td>${esc(e.date||'')}</td><td>${esc(e.description||'')}</td><td>${esc(e.category||'')}</td><td class="rnum">${money(e.amount)}</td></tr>`);
+ const expRows=c.exps.slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))).map(e=>`<tr><td>${esc(e.date||'')}</td><td>${esc(e.description||'')}${e.payee?'<div>'+esc(e.payee)+'</div>':''}</td><td>${esc(e.category||'')}</td><td>${esc(e.method||'Cash')}</td><td>${esc(expRef(e))}</td><td class="rnum">${money(e.amount)}</td></tr>`);
  const debtRows=debts.map(d=>`<tr><td>${esc(d.date||'')}</td><td>${esc(d.saleId||'')}</td><td>${esc(d.customerName||'Walk-in')}</td><td>${esc(d.customerPhone||'')}</td><td class="rnum">${money(d.total)}</td><td class="rnum">${money(d.received)}</td><td class="rnum">${money(d.paidLater)}</td><td class="rnum">${money(d.balance)}</td><td>${Number(d.balance||0)<=0.005?'Paid':'Due'}</td></tr>`);
  const purRows=purs.map(x=>`<tr><td>${esc(x.date||'')}</td><td>${esc(x.supplierName||'')}</td><td>${esc(x.productName||'')}</td><td class="rnum">${x.qty}</td><td class="rnum">${money(x.unitCost)}</td><td class="rnum">${money(x.total)}</td><td class="rnum">${money((Number(x.total)||0)-(Number(x.balance)||0))}</td><td class="rnum">${money(x.balance)}</td></tr>`);
  const prodRows=c.products.map(x=>`<tr><td>${esc(x.name)}</td><td class="rnum">${x.qty}</td><td class="rnum">${money(x.rev)}</td><td class="rnum">${money(x.profit)}</td></tr>`);
@@ -1193,7 +1212,7 @@ function reportHTML(r){
  ${B.monthly?sec('Month-by-month summary')+rtable(['Month','Sales','Net sales','Cost of goods','Gross profit','Expenses','Net profit','Share of period profit'],monthRows,'No months in this period.'):''}
  ${sec('Sales transactions ('+sales.length+')')}${rtable(['Date','Receipt','Customer','Payment','Qty','Subtotal','Discount','Total','Returns','Received','Due at sale'],saleRows,'No sales recorded in this period.')}
  ${sec('Returns ('+c.rets.length+')')}${rtable(['Date','Return no.','Invoice','Customer','Items returned','Refund','Profit reduced','Stock'],retRows,'No returns recorded in this period.')}
- ${sec('Expenses ('+c.exps.length+')')}${rtable(['Date','Description','Category','Amount'],expRows,'No expenses recorded in this period.')}
+ ${sec('Expenses ('+c.exps.length+')')}${rtable(['Date','Description','Category','Paid by','Invoice / cheque','Amount'],expRows,'No expenses recorded in this period.')}
  ${sec('Credit sales created in the period ('+debts.length+')')}${rtable(['Date','Receipt','Customer','Phone','Bill total','Received at sale','Paid later','Balance due','Status'],debtRows,'No credit sales in this period.')}
  ${sec('Customers who owe money today')}${rtable(['Customer','Phone','Invoices','Balance due'],debtorRows,'No customer dues. Everyone is paid up.')}
  ${sec('Supplier purchases ('+purs.length+')')}${rtable(['Date','Supplier','Product','Qty','Unit cost','Total','Paid so far','To pay'],purRows,'No supplier purchases recorded in this period.')}
@@ -1211,6 +1230,247 @@ function reportHTML(r){
  </div>`;
 }
 /*ANALYTICS-END*/
+/*BANK-START*/
+// ---------- cheques, bank balance ----------
+const chqList=()=>Array.isArray(db.cheques)?db.cheques:[];
+const bankTxList=()=>Array.isArray(db.bankTx)?db.bankTx:[];
+const BANKS=["Bank of Ceylon","People's Bank","Commercial Bank","Sampath Bank","Hatton National Bank","Seylan Bank","National Savings Bank","DFCC Bank","NDB Bank","Nations Trust Bank","Pan Asia Bank","Union Bank","Cargills Bank","Amana Bank","Sanasa Development Bank"];
+const stampId=p=>p+'-'+new Date().toISOString().replace(/\D/g,'').slice(0,14)+'-'+Math.random().toString(36).slice(2,5).toUpperCase();
+(function(){const dl=document.createElement('datalist');dl.id='bankNames';dl.innerHTML=BANKS.map(b=>`<option value="${esc(b)}">`).join('');document.body.appendChild(dl)})();
+function chequeFieldsHTML(p,o={}){
+ return `<div id="${p}Box" class="chqbox formgrid${o.show?'':' hidden'}" style="grid-column:1/-1;margin:0;padding:10px;border:1px dashed var(--line);border-radius:12px"><div class="field"><label>Cheque no. *</label><input id="${p}No" inputmode="numeric" autocomplete="off" placeholder="e.g. 000123"></div><div class="field"><label>Bank *</label><input id="${p}Bank" list="bankNames" autocomplete="off" placeholder="Bank name"></div><div class="field"><label>Cheque date *</label><input id="${p}Date" type="date" value="${today()}"></div><div class="field wide muted" style="font-size:12px">${esc(o.hint||'The date and time you received / issued this cheque is saved automatically. For a post-dated cheque, enter the date written on the cheque.')}</div></div>`;
+}
+function readChequeFields(p){
+ const g=id=>($(p+id)?$(p+id).value:'').trim();
+ const c={no:g('No'),bank:g('Bank'),chequeDate:g('Date')||today()};
+ if(!c.no)return {err:'Enter the cheque number'};
+ if(!c.bank)return {err:'Enter the bank name'};
+ return c;
+}
+function resetChequeBox(p){['No','Bank'].forEach(k=>{if($(p+k))$(p+k).value=''});if($(p+'Date'))$(p+'Date').value=today();if($(p+'Box'))$(p+'Box').classList.add('hidden')}
+function bindChequeToggle(sel,p){const f=()=>$(p+'Box').classList.toggle('hidden',sel.value!=='Cheque');sel.addEventListener('change',f);f()}
+function addCheque(c){
+ if(!Array.isArray(db.cheques))db.cheques=[];
+ const rec={id:stampId('CH'),status:'pending',date:today(),datetime:dateTime(),ts:Date.now(),by:(auth&&auth.currentUser&&auth.currentUser.email)||'',...c,amount:r2(c.amount)};
+ db.cheques.push(rec);return rec;
+}
+// point of sale: cheque box
+$('posChequeHost').innerHTML=chequeFieldsHTML('pc',{hint:'This sale\'s invoice number is saved with the cheque automatically.'});
+bindChequeToggle($('paymentMethod'),'pc');
+
+// ---------- expenses (paid by / invoice / cheque) ----------
+const expRef=e=>[e.method==='Cheque'&&e.chequeId?('Cheque '+((chqList().find(c=>c.id===e.chequeId)||{}).no||'')):'',e.invoiceNo&&('Inv '+e.invoiceNo)].filter(Boolean).join(' · ');
+function expenseExtraHTML(e){
+ return `<div class="field"><label>Paid by</label><select name="method">${['Cash','Cheque','Bank transfer','Card','Mobile payment'].map(x=>`<option ${(e.method||'Cash')===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Paid to (supplier / shop)</label><input name="payee" value="${esc(e.payee||'')}" placeholder="Optional"></div><div class="field"><label>Invoice / bill no.</label><input name="invoiceNo" value="${esc(e.invoiceNo||'')}" placeholder="Optional"></div>${chequeFieldsHTML('ex',{hint:'This cheque is added to the Bank Balance register as an issued cheque. The date and time it was issued is saved automatically.'})}`;
+}
+function initExpenseForm(e){
+ const sel=document.querySelector('#expenseForm [name=method]');if(!sel)return;
+ const c=e&&e.chequeId?chqList().find(x=>x.id===e.chequeId):null;
+ if(c){$('exNo').value=c.no;$('exBank').value=c.bank;$('exDate').value=c.chequeDate||today()}
+ bindChequeToggle(sel,'ex');
+}
+function saveExpenseFromForm(ev){
+ const v=Object.fromEntries(new FormData(ev.target).entries());
+ v.id=v.id||uid();v.amount=Math.max(0,Number(v.amount)||0);v.method=v.method||'Cash';v.payee=String(v.payee||'').trim();v.invoiceNo=String(v.invoiceNo||'').trim();
+ const old=db.expenses.find(x=>x.id===v.id),oldCh=old&&old.chequeId?chqList().find(c=>c.id===old.chequeId):null;
+ if(v.method==='Cheque'){
+  const r=readChequeFields('ex');if(r.err)return toast(r.err);
+  if(!(v.amount>0))return toast('Enter the expense amount');
+  const data={type:'issued',no:r.no,bank:r.bank,chequeDate:r.chequeDate,amount:v.amount,party:v.payee||v.description,refKind:'expense',ref:v.invoiceNo||v.description,invoice:v.invoiceNo,linkId:v.id};
+  if(oldCh&&oldCh.status==='pending'){Object.assign(oldCh,data,{amount:r2(v.amount)});v.chequeId=oldCh.id}
+  else if(oldCh){v.chequeId=oldCh.id}
+  else{v.chequeId=addCheque(data).id}
+ }else{
+  if(oldCh&&oldCh.status==='pending')db.cheques=chqList().filter(c=>c.id!==oldCh.id);
+  v.chequeId=(oldCh&&oldCh.status!=='pending')?oldCh.id:'';
+ }
+ const i=db.expenses.findIndex(x=>x.id===v.id);i>=0?db.expenses[i]=v:db.expenses.push(v);
+ closeModal();save();toast('Expense saved');
+}
+
+// ---------- bank ledger ----------
+function bankLedger(){
+ const op=Number(db.store.bankOpening)||0,rows=[];
+ chqList().filter(c=>c.status==='cleared').forEach(c=>rows.push({date:c.clearedDate||c.date,ts:c.ts||0,desc:(c.type==='received'?'Cheque received ':'Cheque issued ')+c.no+' ('+c.bank+')'+(c.party?' · '+c.party:''),inn:c.type==='received'?c.amount:0,out:c.type==='issued'?c.amount:0,kind:'chq',ref:c.id}));
+ bankTxList().forEach(t=>rows.push({date:t.date,ts:t.ts||0,desc:(t.type==='deposit'?'Deposit':'Withdrawal')+(t.note?' · '+t.note:''),inn:t.type==='deposit'?t.amount:0,out:t.type==='withdrawal'?t.amount:0,kind:'tx',ref:t.id}));
+ rows.sort((a,b)=>String(a.date).localeCompare(String(b.date))||(a.ts-b.ts));
+ let bal=op;rows.forEach(r=>{bal=r2(bal+r.inn-r.out);r.bal=bal});
+ return {opening:op,rows,balance:bal};
+}
+const chqPending=t=>chqList().filter(c=>c.status==='pending'&&c.type===t);
+const chqSum=a=>r2(a.reduce((n,c)=>n+(Number(c.amount)||0),0));
+const statusPill=c=>`<span class="pill ${c.status==='cleared'?'good':c.status==='pending'?'warn':'bad'}">${({pending:'Pending',cleared:'Cleared',bounced:'Bounced',cancelled:'Cancelled'})[c.status]||esc(c.status)}</span>`;
+function chequeDateNote(c){
+ if(c.status!=='pending')return c.clearedDate&&c.status==='cleared'?`<div class="muted" style="font-size:11px">Cleared ${esc(c.clearedDate)}</div>`:(c.statusDate?`<div class="muted" style="font-size:11px">${esc(c.statusDate)}</div>`:'');
+ const t=today(),d=c.chequeDate||t;
+ if(d>t){const n=daysBetween(t,d)-1;return `<div class="muted" style="font-size:11px">Post-dated: ${n} day${n===1?'':'s'} to go</div>`}
+ const lim=localISO(new Date(new Date(d+'T00:00:00').setMonth(new Date(d+'T00:00:00').getMonth()+6)));
+ if(t>lim)return `<div style="font-size:11px;color:var(--bad)">Stale: older than 6 months</div>`;
+ return c.type==='received'?`<div style="font-size:11px;color:var(--good)">Ready to deposit</div>`:'';
+}
+function chequeAttn(){
+ const pi=chqPending('received'),po=chqPending('issued'),pl=n=>n+' cheque'+(n===1?'':'s');
+ if(!pi.length&&!po.length)return `<div class="attn"><div class="t"><b>No pending cheques</b><span>Nothing waiting to clear</span></div></div>`;
+ const ready=pi.filter(c=>(c.chequeDate||'')<=today()).length;
+ return `<div class="attn"><div class="t"><b>${pl(pi.length)} to deposit · ${money(chqSum(pi))}</b><span>${ready} ready now · ${pl(po.length)} issued, not cleared (${money(chqSum(po))})</span></div><button class="secondary small" onclick="go('bank')">Open</button></div>`;
+}
+function renderBank(){
+ if(!$('chqRows'))return;
+ const L=bankLedger(),pi=chqPending('received'),po=chqPending('issued');
+ $('bkBal').textContent=money(L.balance);
+ $('bkPendIn').textContent=money(chqSum(pi));$('bkPendInN').textContent=pi.length+' cheque'+(pi.length===1?'':'s')+' waiting to be deposited';
+ $('bkPendOut').textContent=money(chqSum(po));$('bkPendOutN').textContent=po.length+' issued cheque'+(po.length===1?'':'s')+' not yet cleared';
+ $('bkProj').textContent=money(r2(L.balance+chqSum(pi)-chqSum(po)));
+ const q=($('chqSearch').value||'').toLowerCase(),ty=$('chqType').value,stt=$('chqStatus').value,per=$('chqPeriod').value;
+ let from='';if(per==='month')from=today().slice(0,8)+'01';else if(per==='30')from=addDays(today(),-29);else if(per==='year')from=today().slice(0,4)+'-01-01';
+ const list=chqList().filter(c=>(!q||[c.no,c.bank,c.party,c.ref,c.invoice,c.note].join(' ').toLowerCase().includes(q))&&(ty==='all'||c.type===ty)&&(stt==='all'||c.status===stt)&&(!from||c.date>=from)).slice().sort((a,b)=>String(b.ts||b.date).localeCompare(String(a.ts||a.date)));
+ $('chqRows').innerHTML=list.map(c=>{
+  const rec=c.type==='received',acts=[];
+  if(c.status==='pending'){acts.push(`<button class="small" onclick="chqClear('${c.id}')">${rec?'Cleared / deposited':'Cleared'}</button>`,`<button class="danger small" onclick="chqBounce('${c.id}')">${rec?'Bounced':'Cancel'}</button>`);if(c.refKind==='other')acts.push(`<button class="secondary small ownonly" onclick="chqDelete('${c.id}')">Delete</button>`)}
+  else if(c.status==='cleared')acts.push(`<button class="secondary small" onclick="chqUndo('${c.id}')">Undo</button>`);
+  return `<tr><td><b>${esc(c.date)}</b><div class="muted" style="font-size:11px">${esc(String(c.datetime||'').split(', ')[1]||'')}</div></td><td><span class="pill ${rec?'good':'warn'}">${rec?'Received':'Issued'}</span></td><td><b>${esc(c.no)}</b><div class="muted" style="font-size:11px">${esc(c.bank)}</div></td><td>${esc(c.chequeDate||'')}${chequeDateNote(c)}</td><td>${esc(c.party||'')}${c.partyPhone?`<div class="muted" style="font-size:11px">${esc(c.partyPhone)}</div>`:''}</td><td>${esc(c.invoice||c.ref||'')}${c.note?`<div class="muted" style="font-size:11px">${esc(c.note)}</div>`:''}</td><td class="rnum"><b>${money(c.amount)}</b></td><td>${statusPill(c)}</td><td><div class="actions">${acts.join('')}</div></td></tr>`;
+ }).join('')||'<tr><td colspan="9" class="empty">No cheques match. Cheques taken at Point of Sale, in Due Payments, Supplier Dues and Expenses appear here automatically.</td></tr>';
+ const lr=L.rows.slice().reverse().map(r=>`<tr><td>${esc(r.date)}</td><td>${esc(r.desc)}</td><td class="rnum">${r.inn?money(r.inn):''}</td><td class="rnum">${r.out?money(r.out):''}</td><td class="rnum"><b>${money(r.bal)}</b></td><td>${r.kind==='tx'?`<button class="danger small ownonly" onclick="bankTxDelete('${r.ref}')">Delete</button>`:''}</td></tr>`).join('');
+ $('bankLedgerRows').innerHTML=lr+`<tr><td colspan="4"><b>Opening balance</b><div class="muted" style="font-size:11px">${esc(db.store.bankOpenNote||'Balance before you started recording here')}</div></td><td class="rnum"><b>${money(L.opening)}</b></td><td></td></tr>`;
+}
+['chqSearch','chqType','chqStatus','chqPeriod'].forEach(id=>$(id).addEventListener(id==='chqSearch'?'input':'change',renderBank));
+function chqClear(id){
+ const c=chqList().find(x=>x.id===id);if(!c||c.status!=='pending')return;
+ openModal(c.type==='received'?'Cheque cleared / deposited':'Issued cheque cleared',`<form id="chqClearForm" class="formgrid"><div class="field wide"><div class="notice">Cheque <b>${esc(c.no)}</b> · ${esc(c.bank)} · <b>${money(c.amount)}</b><br>${esc(c.party||'')}${c.invoice?' · '+esc(c.invoice):''}<br>${c.type==='received'?'When it clears, the amount is added to your bank balance.':'When it clears, the amount is taken off your bank balance.'}</div></div><div class="field"><label>Date it cleared *</label><input id="chqClearDate" type="date" required value="${today()}"></div><div class="field wide"><button type="submit">Mark as cleared</button></div></form>`);
+ $('chqClearForm').onsubmit=e=>{e.preventDefault();c.status='cleared';c.clearedDate=$('chqClearDate').value||today();c.statusDate=c.clearedDate;closeModal();save();toast('Cheque marked as cleared')};
+}
+function chqUndo(id){
+ const c=chqList().find(x=>x.id===id);if(!c||c.status!=='cleared')return;
+ if(!confirm('Set cheque '+c.no+' back to Pending? It will leave the bank balance until you clear it again.'))return;
+ c.status='pending';delete c.clearedDate;delete c.statusDate;save();
+}
+function chqBounce(id){
+ const c=chqList().find(x=>x.id===id);if(!c||c.status!=='pending')return;
+ const rec=c.type==='received',hasCust=rec&&c.party&&c.party!=='Walk-in';
+ const msg=rec?('Mark cheque '+c.no+' ('+money(c.amount)+') as bounced / returned?\n\n'+(hasCust?c.party+' will owe you '+money(c.amount)+' again (added to Due Payments).':'This was a walk-in customer, so no customer due can be created.')+'\n\nThis cannot be undone.'):('Cancel issued cheque '+c.no+' ('+money(c.amount)+')?\n\n'+(c.refKind==='supplier'?'The payment is reversed and the amount is added back to what you owe the supplier.':c.refKind==='expense'?'The linked expense is removed.':'Nothing else is changed.')+'\n\nThis cannot be undone.');
+ if(!confirm(msg))return;
+ if(rec){
+  c.status='bounced';c.statusDate=today();
+  if(hasCust){
+   if(!Array.isArray(db.debts))db.debts=[];
+   const d={id:uid(),saleId:c.invoice||c.ref||c.id,date:today(),datetime:dateTime(),customerId:c.partyId||'',customerName:c.party,customerPhone:c.partyPhone||'',total:c.amount,received:0,paidLater:0,balance:c.amount,payments:[],note:'Bounced cheque '+c.no+' ('+c.bank+')',bounced:true};
+   db.debts.push(d);c.dueId=d.id;
+  }
+ }else{
+  c.status='cancelled';c.statusDate=today();
+  if(c.refKind==='supplier')purList().forEach(x=>{const mine=(x.payments||[]).filter(p=>p.chequeId===c.id);if(mine.length){const s=r2(mine.reduce((a,p)=>a+(Number(p.amount)||0),0));x.payments=x.payments.filter(p=>p.chequeId!==c.id);x.balance=r2((Number(x.balance)||0)+s)}});
+  if(c.refKind==='expense')db.expenses=db.expenses.filter(e=>e.chequeId!==c.id);
+ }
+ save();toast(rec?'Cheque marked as bounced'+(hasCust?'; added to '+c.party+'\'s dues':''):'Cheque cancelled');
+}
+function chqDelete(id){const c=chqList().find(x=>x.id===id);if(!c||c.status!=='pending'||c.refKind!=='other')return;if(!confirm('Delete cheque '+c.no+'?'))return;db.cheques=chqList().filter(x=>x.id!==id);save()}
+function openChequeModal(type){
+ if(userRole==='cashier')return toast('Only the owner can add cheques here');
+ const rec=type==='received',names=[...new Set((rec?db.customers.map(c=>c.name):purList().map(x=>x.supplierName)).filter(Boolean))];
+ openModal(rec?'Cheque received':'Cheque issued',`<form id="chqForm" class="formgrid"><div class="field wide"><div class="notice">Cheques taken at Point of Sale, in Due Payments, Supplier Dues and Expenses are added automatically. Use this form for any other cheque.</div></div><div class="field"><label>${rec?'Received from':'Issued to'} *</label><input id="cfParty" list="cfNames" required autocomplete="off"><datalist id="cfNames">${names.map(n=>`<option value="${esc(n)}">`).join('')}</datalist></div><div class="field"><label>Phone</label><input id="cfPhone"></div><div class="field"><label>Cheque no. *</label><input id="cfNo" required inputmode="numeric" autocomplete="off"></div><div class="field"><label>Bank *</label><input id="cfBank" required list="bankNames" autocomplete="off"></div><div class="field"><label>Cheque date *</label><input id="cfDate" type="date" required value="${today()}"></div><div class="field"><label>Amount (Rs) *</label><input id="cfAmt" type="number" min="0.01" step=".01" required></div><div class="field"><label>Invoice / reference no.</label><input id="cfInv"></div><div class="field"><label>${rec?'Received':'Issued'} on</label><input id="cfOn" type="date" value="${today()}"></div><div class="field wide"><label>Note</label><input id="cfNote" placeholder="Optional"></div><div class="field wide"><button type="submit">Save cheque</button></div></form>`);
+ $('chqForm').onsubmit=e=>{
+  e.preventDefault();
+  const amt=r2($('cfAmt').value);if(!(amt>0))return toast('Enter the cheque amount');
+  const cust=rec?db.customers.find(c=>c.name===$('cfParty').value.trim()):null,on=$('cfOn').value||today();
+  addCheque({type,no:$('cfNo').value.trim(),bank:$('cfBank').value.trim(),chequeDate:$('cfDate').value||today(),amount:amt,party:$('cfParty').value.trim(),partyId:cust?cust.id:'',partyPhone:$('cfPhone').value.trim()||(cust&&cust.phone)||'',refKind:'other',ref:$('cfInv').value.trim(),invoice:$('cfInv').value.trim(),note:$('cfNote').value.trim(),date:on,datetime:on===today()?dateTime():on});
+  closeModal();save();toast('Cheque saved');
+ };
+}
+function openBankTxModal(){
+ if(userRole==='cashier')return toast('Only the owner can do this');
+ openModal('Bank deposit / withdrawal',`<form id="bankTxForm" class="formgrid"><div class="field"><label>Type *</label><select id="btType"><option value="deposit">Deposit (money into the bank)</option><option value="withdrawal">Withdrawal / bank charges (money out)</option></select></div><div class="field"><label>Amount (Rs) *</label><input id="btAmt" type="number" min="0.01" step=".01" required></div><div class="field"><label>Date *</label><input id="btDate" type="date" required value="${today()}"></div><div class="field"><label>Description</label><input id="btNote" placeholder="e.g. Cash deposit, bank charges, transfer"></div><div class="field wide"><button type="submit">Save</button></div></form>`);
+ $('bankTxForm').onsubmit=e=>{
+  e.preventDefault();const amt=r2($('btAmt').value);if(!(amt>0))return toast('Enter the amount');
+  if(!Array.isArray(db.bankTx))db.bankTx=[];
+  db.bankTx.push({id:stampId('BT'),type:$('btType').value,amount:amt,date:$('btDate').value||today(),note:$('btNote').value.trim(),datetime:dateTime(),ts:Date.now()});
+  closeModal();save();toast('Bank entry saved');
+ };
+}
+function bankTxDelete(id){if(userRole==='cashier')return;if(!confirm('Delete this bank entry?'))return;db.bankTx=bankTxList().filter(x=>x.id!==id);save()}
+function openBankOpening(){
+ if(userRole==='cashier')return toast('Only the owner can do this');
+ openModal('Opening bank balance',`<form id="bankOpenForm" class="formgrid"><div class="field wide"><div class="notice">Enter the balance in your bank account <b>before</b> you started recording cheques and deposits here. The bank balance is this amount + cleared cheques received − cleared cheques issued + deposits − withdrawals.</div></div><div class="field"><label>Opening balance (Rs)</label><input id="boAmt" type="number" step=".01" value="${Number(db.store.bankOpening)||0}"></div><div class="field"><label>Note</label><input id="boNote" value="${esc(db.store.bankOpenNote||'')}" placeholder="e.g. Balance as at 1 Oct"></div><div class="field wide"><button type="submit">Save opening balance</button></div></form>`);
+ $('bankOpenForm').onsubmit=e=>{e.preventDefault();db.store.bankOpening=r2($('boAmt').value);db.store.bankOpenNote=$('boNote').value.trim();closeModal();save();toast('Opening balance saved')};
+}
+function exportCheques(){
+ download('connectpos-cheques.csv',csv([['Received / issued on','Type','Cheque no','Bank','Cheque date','Name','Phone','Invoice / reference','Amount','Status','Cleared / status date','Note'],...chqList().map(c=>[c.datetime||c.date,c.type==='received'?'Received':'Issued',c.no,c.bank,c.chequeDate,c.party,c.partyPhone,c.invoice||c.ref,c.amount,c.status,c.clearedDate||c.statusDate||'',c.note||''])]),'text/csv');
+}
+function exportBankLedger(){
+ const L=bankLedger();
+ download('connectpos-bank-ledger.csv',csv([['Date','Description','In','Out','Balance'],['','Opening balance','','',L.opening],...L.rows.map(r=>[r.date,r.desc,r.inn||'',r.out||'',r.bal])]),'text/csv');
+}
+
+// ---------- download chooser: CSV / A4 PDF / Excel with A4 print setup ----------
+function parseCsv(t){
+ const rows=[];let row=[],cell='',q=false;
+ for(let i=0;i<t.length;i++){
+  const ch=t[i];
+  if(q){if(ch==='"'){if(t[i+1]==='"'){cell+='"';i++}else q=false}else cell+=ch}
+  else if(ch==='"')q=true;
+  else if(ch===','){row.push(cell);cell=''}
+  else if(ch==='\n'||ch==='\r'){if(ch==='\r'&&t[i+1]==='\n')i++;row.push(cell);rows.push(row);row=[];cell=''}
+  else cell+=ch;
+ }
+ if(cell!==''||row.length){row.push(cell);rows.push(row)}
+ return rows;
+}
+let _exp=null;
+function openExportChooser(name,content){
+ const rows=parseCsv(content),title=name.replace(/^connectpos-/,'').replace(/\.csv$/i,'').replace(/-/g,' ').replace(/^./,c=>c.toUpperCase());
+ _exp={name,content,rows,title};
+ openModal('Download '+title,`<div class="formgrid"><div class="field wide"><div class="notice">${Math.max(0,rows.length-1)} row${rows.length===2?'':'s'} · ${(rows[0]||[]).length} columns. Choose a format. The A4 PDF and the Excel sheet are set up to fit the width of an A4 page.</div></div><div class="field wide"><label>Page orientation (PDF and Excel)</label><select id="expOrient"><option value="auto">Automatic (landscape for wide tables)</option><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div><div class="field wide"><button onclick="doExport('pdf')">⬇ A4 PDF (fits the page)</button></div><div class="field wide"><button class="secondary" onclick="doExport('xls')">⬇ Excel sheet (A4 print setup)</button></div><div class="field wide"><button class="secondary" onclick="doExport('csv')">⬇ CSV (data only)</button></div></div>`);
+}
+async function doExport(kind){
+ if(!_exp)return;
+ const o=($('expOrient')||{}).value||'auto',e=_exp,base=e.name.replace(/\.csv$/i,'')+'-'+today();
+ if(kind==='csv'){downloadRaw(e.name,e.content,'text/csv');closeModal();return}
+ if(kind==='xls'){downloadRaw(base+'.xls',tableXls(e.title,e.rows,o),'application/vnd.ms-excel');closeModal();toast('Excel sheet downloaded (A4, fit to page width)');return}
+ closeModal();toast('Preparing A4 PDF…');
+ try{await tablePdf(e.title,e.rows,o,base+'.pdf');toast('A4 PDF downloaded')}catch(err){console.error(err);toast('PDF failed in this browser. Downloading CSV instead.');downloadRaw(e.name,e.content,'text/csv')}
+}
+const xmlEsc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,'');
+function tableXls(title,rows,orient){
+ const clean=v=>String(v==null?'':v).replace(/^'(?=[=+\-@\t\r])/,''),heads=rows[0]||[],land=orient==='landscape'||(orient!=='portrait'&&heads.length>6);
+ const isN=v=>/^-?(0|[1-9]\d{0,14})(\.\d+)?$/.test(v);
+ const widths=heads.map((h,i)=>Math.min(48,Math.max(8,...rows.slice(0,200).map(r=>clean(r[i]).length))));
+ const cell=(v,st)=>{v=clean(v);return isN(v)?`<Cell${st}><Data ss:Type="Number">${v}</Data></Cell>`:`<Cell${st}><Data ss:Type="String">${xmlEsc(v)}</Data></Cell>`};
+ return `<?xml version="1.0" encoding="UTF-8"?><?mso-application progid="Excel.Sheet"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"><Styles><Style ss:ID="h"><Font ss:Bold="1"/><Interior ss:Color="#E8E8E8" ss:Pattern="Solid"/><Alignment ss:Vertical="Top" ss:WrapText="1"/></Style><Style ss:ID="d"><Alignment ss:Vertical="Top" ss:WrapText="1"/></Style></Styles><Worksheet ss:Name="${xmlEsc(title.slice(0,28)||'Data')}"><Names><NamedRange ss:Name="Print_Titles" ss:RefersTo="=R1"/></Names><Table>${widths.map(w=>`<Column ss:Width="${Math.round(w*5.6+8)}"/>`).join('')}${rows.map((r,i)=>`<Row>${r.map(c=>cell(c,i===0?' ss:StyleID="h"':' ss:StyleID="d"')).join('')}</Row>`).join('')}</Table><WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel"><PageSetup><Layout x:Orientation="${land?'Landscape':'Portrait'}"/><Header x:Data="&amp;L${xmlEsc((db.store&&db.store.name)||'')} - ${xmlEsc(title)}&amp;RPage &amp;P of &amp;N"/><PageMargins x:Bottom="0.5" x:Left="0.4" x:Right="0.4" x:Top="0.6"/></PageSetup><FitToPage/><Print><ValidPrinterInfo/><PaperSizeIndex>9</PaperSizeIndex><FitWidth>1</FitWidth><FitHeight>0</FitHeight></Print></WorksheetOptions></Worksheet></Workbook>`;
+}
+async function tablePdf(title,rows,orient,fname){
+ const heads=rows[0]||[],body=rows.slice(1),n=Math.max(1,heads.length),land=orient==='landscape'||(orient!=='portrait'&&n>6);
+ const PW=land?1123:794,PH=land?794:1123,M=36,CW=PW-2*M,CH=PH-2*M-14,SC=2,fs=n<=5?11:n<=8?9.5:n<=11?8.5:7.5,st=db.store||{};
+ const css=`*{box-sizing:border-box}.pg{font:${fs}px/1.35 Arial,Helvetica,sans-serif;color:#171717;width:${CW}px}h1{font-size:15px;margin:0 0 2px}.meta{color:#555;font-size:${Math.max(8,fs-1)}px;margin:0 0 8px}table{width:100%;border-collapse:collapse;table-layout:auto}th,td{border:1px solid #888;padding:3px 5px;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:#e8e8e8;font-weight:700}tbody tr:nth-child(even) td{background:#f6f6f6}td.n{text-align:right;white-space:nowrap}`;
+ const clean=v=>String(v==null?'':v).replace(/^'(?=[=+\-@\t\r])/,''),isNum=v=>/^-?[\d,]+(\.\d+)?$/.test(String(v).trim())&&String(v).trim().length<=14;
+ const rowH=r=>`<tr>${heads.map((_,i)=>`<td${isNum(r[i]??'')?' class="n"':''}>${esc(clean(r[i]??''))}</td>`).join('')}</tr>`;
+ const headH=`<thead><tr>${heads.map(h=>`<th>${esc(clean(h))}</th>`).join('')}</tr></thead>`;
+ const topH=`<h1>${esc(st.name||'Store')}</h1><div class="meta"><b>${esc(title)}</b> · ${esc(new Date().toLocaleString())} · ${body.length} row${body.length===1?'':'s'}</div>`;
+ const frame=document.createElement('iframe');frame.style.cssText=`position:fixed;left:-10000px;top:0;width:${CW}px;height:${PH}px;border:0;visibility:hidden`;document.body.appendChild(frame);
+ let tTop,hH,hs;
+ try{
+  await new Promise(r=>{frame.onload=r;frame.srcdoc=`<!doctype html><html><head><meta charset="utf-8"><style>${css}body{margin:0}</style></head><body><div class="pg">${topH}<table>${headH}<tbody>${body.map(rowH).join('')}</tbody></table></div></body></html>`});
+  const d=frame.contentDocument;tTop=d.querySelector('table').getBoundingClientRect().top;hH=d.querySelector('thead').getBoundingClientRect().height;hs=[...d.querySelectorAll('tbody tr')].map(t=>t.getBoundingClientRect().height);
+ }finally{frame.remove()}
+ const groups=[];let cur=[],avail=CH-tTop-hH-4;
+ hs.forEach((h,i)=>{if(cur.length&&h+1>avail){groups.push(cur);cur=[];avail=CH-hH-26}cur.push(i);avail-=h+1});
+ if(cur.length||!groups.length)groups.push(cur);
+ const pages=[],xml=s=>s;
+ for(let p=0;p<groups.length;p++){
+  const html=`<div class="pg">${p===0?topH:`<div class="meta">${esc(title)} (continued)</div>`}<table>${headH}<tbody>${groups[p].map(i=>rowH(body[i])).join('')}</tbody></table></div>`;
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${PW}" height="${PH}"><foreignObject x="0" y="0" width="${PW}" height="${PH}"><div xmlns="http://www.w3.org/1999/xhtml" style="width:${PW}px;height:${PH}px;background:#fff;position:relative;overflow:hidden"><style>${css}</style><div style="position:absolute;left:${M}px;top:${M}px;width:${CW}px">${html}</div></div></foreignObject></svg>`;
+  const img=new Image();
+  await new Promise((res,rej)=>{img.onload=res;img.onerror=()=>rej(new Error('render'));img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg)});
+  const cv=document.createElement('canvas');cv.width=PW*SC;cv.height=PH*SC;
+  const ctx=cv.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,cv.width,cv.height);ctx.drawImage(img,0,0,cv.width,cv.height);
+  ctx.fillStyle='#666';ctx.font=`${9*SC}px Arial, Helvetica, sans-serif`;
+  ctx.textAlign='left';ctx.fillText('Con-Nect POS by Sio Creations  |  Tel: 075 510 3772',M*SC,(PH-M+14)*SC);
+  ctx.textAlign='right';ctx.fillText(`Page ${p+1} of ${groups.length}`,(PW-M)*SC,(PH-M+14)*SC);
+  const blob=await new Promise((res,rej)=>cv.toBlob(x=>x?res(x):rej(new Error('canvas')),'image/jpeg',0.92));
+  pages.push({w:cv.width,h:cv.height,pw:land?841.89:595.28,ph:land?595.28:841.89,bytes:new Uint8Array(await blob.arrayBuffer())});
+ }
+ downloadRaw(fname,buildPdfBlob(pages),'application/pdf');
+}
+/*BANK-END*/
+
 
 async function downloadPeriodPdf(days){
  const PW=794,PH=1123,M=45,CW=PW-2*M,CH=PH-2*M-14,SCALE=2;
@@ -1272,14 +1532,15 @@ $('repFrom').onchange=e=>{repSel.cs=e.target.value;renderReports()};$('repTo').o
 function fillSettings(){let s=db.store;$('setStoreName').value=s.name||'';$('setPhone').value=s.phone||'';$('setAddress').value=s.address||'';$('setFooter').value=s.footer||'';$('setLowStock').value=s.lowStock??5;$('setReceiptSize').value=s.receiptSize||'80';$('setAutoPrint').value=s.autoPrint||'yes';$('setShowLogo').value=s.showLogo||'yes';$('setRegNo').value=s.regNo||'';$('setTin').value=s.tin||'';$('setVatNo').value=s.vatNo||'';$('setVatOn').value=s.vatOn||'no';$('setVatRate').value=s.vatRate??18;$('setReturnPolicy').value=s.returnPolicy||'';$('logoPreview').innerHTML=s.logo?`<img src="${s.logo}" alt="Store logo" style="max-width:120px;max-height:60px;object-fit:contain"><span class="muted">Current logo</span>`:'<span class="muted">No logo uploaded</span>'; $('setLogo').value=''}
 $('setLogo').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;if(f.size>2*1024*1024){toast('Please use a logo under 2 MB');e.target.value='';return}let r=new FileReader();r.onload=()=>{let img=new Image();img.onload=()=>{let logo;try{let iw=img.width||400,ih=img.height||200,sc=Math.min(1,400/iw,200/ih),w=Math.max(1,Math.round(iw*sc)),h=Math.max(1,Math.round(ih*sc)),cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);logo=cv.toDataURL('image/png')}catch(x){logo=String(r.result)}if(logo.length>700000){toast('Logo is too large. Please use a smaller image.');return}db.store.logo=logo;save();fillSettings();toast('Store logo saved')};img.onerror=()=>toast('Could not read that image');img.src=String(r.result)};r.readAsDataURL(f)});
 function saveSettings(){db.store={...db.store,name:$('setStoreName').value.trim()||'My Communication Store',phone:$('setPhone').value.trim(),address:$('setAddress').value.trim(),footer:$('setFooter').value.trim(),lowStock:Math.max(0,Number($('setLowStock').value)||0),logo:db.store.logo||'',receiptSize:$('setReceiptSize').value||'80',autoPrint:$('setAutoPrint').value||'yes',showLogo:$('setShowLogo').value||'yes',regNo:$('setRegNo').value.trim(),tin:$('setTin').value.trim(),vatNo:$('setVatNo').value.trim(),vatOn:$('setVatOn').value||'no',vatRate:Math.min(100,Math.max(0,Number($('setVatRate').value)||0)),returnPolicy:$('setReturnPolicy').value.trim()};save();toast('Settings saved')}
-function download(name,content,type='text/plain'){let blob=content instanceof Blob?content:new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function download(name,content,type='text/plain'){if(type==='text/csv'&&typeof content==='string')return openExportChooser(name,content);return downloadRaw(name,content,type)}
+function downloadRaw(name,content,type='text/plain'){let blob=content instanceof Blob?content:new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 function csv(rows){const cell=v=>{let t=String(v??'');if(/^[=+\-@\t\r]/.test(t)&&isNaN(Number(t)))t="'"+t;return '"'+t.replace(/"/g,'""')+'"'};return rows.map(r=>r.map(cell).join(',')).join('\r\n')}
 function exportProducts(){download('connectpos-products.csv',csv([['SKU','Name','Category','Cost','Price','Stock','Reorder'],...db.products.map(p=>[p.sku,p.name,p.category,p.cost,p.price,p.stock,p.reorder])]),'text/csv')}
 function exportSales(){download('connectpos-sales.csv',csv([['Receipt','Date','Customer','Payment','Subtotal','Discount','Total','Profit'],...db.sales.map(s=>[s.id,s.datetime||s.date,s.customerName,s.payment,s.subtotal,s.discount,s.total,s.profit])]),'text/csv')}
 function exportCustomers(){download('connectpos-customers.csv',csv([['Name','Phone','Email','Notes'],...db.customers.map(c=>[c.name,c.phone,c.email,c.notes])]),'text/csv')}
-function exportExpenses(){download('connectpos-expenses.csv',csv([['Date','Description','Category','Amount'],...db.expenses.map(e=>[e.date,e.description,e.category,e.amount])]),'text/csv')}
+function exportExpenses(){download('connectpos-expenses.csv',csv([['Date','Description','Paid to','Category','Paid by','Invoice / cheque','Amount'],...db.expenses.map(e=>[e.date,e.description,e.payee||'',e.category,e.method||'Cash',expRef(e),e.amount])]),'text/csv')}
 function backupData(){download('connectpos-backup-'+today()+'.json',JSON.stringify(db,null,2),'application/json')}
-function restoreData(){let f=$('restoreFile').files[0];if(!f)return toast('Choose a backup JSON file first');let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!d.products||!d.sales||!d.customers||!d.expenses||!d.store)throw Error('Invalid format');if(!Array.isArray(d.debts))d.debts=[];if(!Array.isArray(d.returns))d.returns=[];if(!Array.isArray(d.purchases))d.purchases=[];if(!confirm('Replace current data with this backup?'))return;db=Object.assign(structuredClone(defaults),d);db.store={...defaults.store,...d.store};['products','customers','sales','expenses','debts','returns','purchases'].forEach(k=>{if(!Array.isArray(db[k]))db[k]=[]});save();fillSettings();toast('Backup restored')}catch(e){toast('Could not restore: invalid backup file')}};r.readAsText(f)}
+function restoreData(){let f=$('restoreFile').files[0];if(!f)return toast('Choose a backup JSON file first');let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!d.products||!d.sales||!d.customers||!d.expenses||!d.store)throw Error('Invalid format');if(!Array.isArray(d.debts))d.debts=[];if(!Array.isArray(d.returns))d.returns=[];if(!Array.isArray(d.purchases))d.purchases=[];if(!confirm('Replace current data with this backup?'))return;db=Object.assign(structuredClone(defaults),d);db.store={...defaults.store,...d.store};COLS.forEach(k=>{if(!Array.isArray(db[k]))db[k]=[]});save();fillSettings();toast('Backup restored')}catch(e){toast('Could not restore: invalid backup file')}};r.readAsText(f)}
 function resetAllData(){if(confirm('Delete ALL products, customers, sales, expenses and settings? Export a backup first if needed.')){db=structuredClone(defaults);cart=[];save();fillSettings();toast('All data cleared')}}
 function loadDemoData(){if(!confirm('Add sample products and customers to your current data?'))return;db.products.push(...[{id:uid(),sku:'SIM-001',name:'Prepaid SIM Card',category:'SIM cards',cost:100,price:150,stock:30,reorder:5,emoji:'📱'},{id:uid(),sku:'CAB-001',name:'USB-C Cable',category:'Accessories',cost:250,price:450,stock:18,reorder:5,emoji:'🔌'},{id:uid(),sku:'CHG-001',name:'Fast Charger 20W',category:'Accessories',cost:900,price:1400,stock:8,reorder:3,emoji:'🔋'},{id:uid(),sku:'EAR-001',name:'Wired Earphones',category:'Accessories',cost:400,price:750,stock:12,reorder:4,emoji:'🎧'},{id:uid(),sku:'SCR-001',name:'Screen Protector',category:'Accessories',cost:150,price:350,stock:25,reorder:6,emoji:'📲'}]);db.customers.push({id:uid(),name:'Sample Customer',phone:'0771234567',email:'',notes:'Demo record'});save();toast('Sample data added')}
 try{const se=localStorage.getItem('cp_login_email');if(se){$('loginEmail').value=se;$('rememberLogin').checked=true}}catch(e){}
